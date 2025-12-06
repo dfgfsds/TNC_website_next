@@ -1,0 +1,116 @@
+{
+  "gallery": [
+    {
+      "id": 1,
+      "src": "/assets/about/3.png"
+    },
+    {
+      "id": 2,
+      "src": "/assets/about/2.png"
+    },
+    {
+      "id": 3,
+      "src": "/assets/about/1.png"
+    },
+    {
+      "id": 4,
+      "src": "/assets/about/5.png"
+    },
+    {
+      "id": 5,
+      "src": "/assets/about/10.png"
+    },
+    {
+      "id": 6,
+      "src": "/assets/about/11.png"
+    },
+    {
+      "id": 7,
+      "src": "/assets/about/13.png"
+    }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "src": "https://www.youtube.com/embed/gwLf3yI5Bvk"
+    },
+    {
+      "id": 2,
+      "src": "https://www.youtube.com/embed/LBAhzCNIaRQ"
+    },
+    {
+      "id": 3,
+      "src": "https://www.youtube.com/embed/0dxTE5B770g"
+    },
+    {
+      "id": 4,
+      "src": "https://www.youtube.com/embed/EoF_3TE-U6c"
+    },
+    {
+      "id": 5,
+      "src": "https://www.youtube.com/embed/vxZj9Wm-6HE"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "src": "/assets/customer/1.webp"
+    },
+    {
+      "id": 2,
+      "src": "/assets/customer/2.webp"
+    },
+    {
+      "id": 3,
+      "src": "/assets/customer/3.webp"
+    },
+    {
+      "id": 4,
+      "src": "/assets/customer/4.webp"
+    },
+    {
+      "id": 5,
+      "src": "/assets/customer/5.webp"
+    },
+    {
+      "id": 6,
+      "src": "/assets/customer/6.webp"
+    },
+    {
+      "id": 7,
+      "src": "/assets/customer/7.webp"
+    },
+    {
+      "id": 8,
+      "src": "/assets/customer/8.webp"
+    },
+    {
+      "id": 9,
+      "src": "/assets/customer/9.webp"
+    },
+    {
+      "id": 10,
+      "src": "/assets/customer/10.webp"
+    },
+    {
+      "id": 11,
+      "src": "/assets/customer/11.webp"
+    },
+    {
+      "id": 12,
+      "src": "/assets/customer/12.webp"
+    },
+    {
+      "id": 13,
+      "src": "/assets/customer/13.webp"
+    },
+    {
+      "id": 14,
+      "src": "/assets/customer/14.webp"
+    },
+    {
+      "id": 15,
+      "src": "/assets/customer/15.webp"
+    }
+  ]
+}

@@ -1,0 +1,714 @@
+[
+  {
+    "id": 1,
+    "title": "Laptops Product 1",
+    "price": 1067,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg",
+    "description": "Weighing in under 7 pounds...",
+    "colors": [
+      "#808080",
+      "#000000",
+      "#2196f3",
+      "#ffc107"
+    ],
+    "features": [
+      "Fingerprint Resistant",
+      "Full-Width, Temperature-Controlled Drawer",
+      "Frameless Glass Shelves"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Laptops Product 2",
+    "price": 1128,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Laptops Product 3",
+    "price": 161,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 4,
+    "title": "Laptops Product 4",
+    "price": 1764,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 5,
+    "title": "Laptops Product 5",
+    "price": 669,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Laptops Product 6",
+    "price": 998,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 7,
+    "title": "Laptops Product 7",
+    "price": 753,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 8,
+    "title": "Laptops Product 8",
+    "price": 214,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Laptops Product 9",
+    "price": 1195,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 10,
+    "title": "Laptops Product 10",
+    "price": 267,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 11,
+    "title": "Laptops Product 11",
+    "price": 1971,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Laptops Product 12",
+    "price": 1106,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 13,
+    "title": "Laptops Product 13",
+    "price": 1072,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 14,
+    "title": "Laptops Product 14",
+    "price": 775,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Laptops Product 15",
+    "price": 867,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 16,
+    "title": "Laptops Product 16",
+    "price": 1560,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 17,
+    "title": "Laptops Product 17",
+    "price": 1026,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 18,
+    "title": "Laptops Product 18",
+    "price": 1951,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 19,
+    "title": "Laptops Product 19",
+    "price": 1800,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 20,
+    "title": "Laptops Product 20",
+    "price": 291,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 21,
+    "title": "Laptops Product 21",
+    "price": 1399,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 22,
+    "title": "Laptops Product 22",
+    "price": 907,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 23,
+    "title": "Laptops Product 23",
+    "price": 1744,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 24,
+    "title": "Laptops Product 24",
+    "price": 1044,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 25,
+    "title": "Laptops Product 25",
+    "price": 1451,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 26,
+    "title": "Laptops Product 26",
+    "price": 397,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 27,
+    "title": "Laptops Product 27",
+    "price": 226,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 28,
+    "title": "Laptops Product 28",
+    "price": 1292,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg"
+  },
+  {
+    "id": 29,
+    "title": "Laptops Product 29",
+    "price": 1334,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+  },
+  {
+    "id": 30,
+    "title": "Laptops Product 30",
+    "price": 1083,
+    "category": "Laptops",
+    "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+  },
+  {
+    "id": 31,
+    "title": "Monitors Product 1",
+    "price": 710,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 32,
+    "title": "Monitors Product 2",
+    "price": 193,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 33,
+    "title": "Monitors Product 3",
+    "price": 962,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 34,
+    "title": "Monitors Product 4",
+    "price": 624,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 35,
+    "title": "Monitors Product 5",
+    "price": 483,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 36,
+    "title": "Monitors Product 6",
+    "price": 380,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 37,
+    "title": "Monitors Product 7",
+    "price": 1731,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 38,
+    "title": "Monitors Product 8",
+    "price": 812,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 39,
+    "title": "Monitors Product 9",
+    "price": 726,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 40,
+    "title": "Monitors Product 10",
+    "price": 348,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 41,
+    "title": "Monitors Product 11",
+    "price": 897,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 42,
+    "title": "Monitors Product 12",
+    "price": 1321,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 43,
+    "title": "Monitors Product 13",
+    "price": 596,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 44,
+    "title": "Monitors Product 14",
+    "price": 170,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 45,
+    "title": "Monitors Product 15",
+    "price": 1556,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 46,
+    "title": "Monitors Product 16",
+    "price": 966,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 47,
+    "title": "Monitors Product 17",
+    "price": 1621,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 48,
+    "title": "Monitors Product 18",
+    "price": 1748,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 49,
+    "title": "Monitors Product 19",
+    "price": 1088,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 50,
+    "title": "Monitors Product 20",
+    "price": 1090,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 51,
+    "title": "Monitors Product 21",
+    "price": 1857,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 52,
+    "title": "Monitors Product 22",
+    "price": 1547,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 53,
+    "title": "Monitors Product 23",
+    "price": 1782,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 54,
+    "title": "Monitors Product 24",
+    "price": 1085,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 55,
+    "title": "Monitors Product 25",
+    "price": 302,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 56,
+    "title": "Monitors Product 26",
+    "price": 1743,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 57,
+    "title": "Monitors Product 27",
+    "price": 1091,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 58,
+    "title": "Monitors Product 28",
+    "price": 1979,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2016/11/29/09/08/monitor-1869235_1280.jpg"
+  },
+  {
+    "id": 59,
+    "title": "Monitors Product 29",
+    "price": 1076,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2014/12/27/15/40/home-office-581131_1280.jpg"
+  },
+  {
+    "id": 60,
+    "title": "Monitors Product 30",
+    "price": 962,
+    "category": "Monitors",
+    "image": "https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761_1280.jpg"
+  },
+  {
+    "id": 61,
+    "title": "Desktops Product 1",
+    "price": 1383,
+    "category": "Desktops",
+    "image": "/images/desktops/product-1.jpg"
+  },
+  {
+    "id": 62,
+    "title": "Desktops Product 2",
+    "price": 365,
+    "category": "Desktops",
+    "image": "/images/desktops/product-2.jpg"
+  },
+  {
+    "id": 63,
+    "title": "Desktops Product 3",
+    "price": 996,
+    "category": "Desktops",
+    "image": "/images/desktops/product-3.jpg"
+  },
+  {
+    "id": 64,
+    "title": "Desktops Product 4",
+    "price": 1806,
+    "category": "Desktops",
+    "image": "/images/desktops/product-4.jpg"
+  },
+  {
+    "id": 65,
+    "title": "Desktops Product 5",
+    "price": 682,
+    "category": "Desktops",
+    "image": "/images/desktops/product-5.jpg"
+  },
+  {
+    "id": 66,
+    "title": "Desktops Product 6",
+    "price": 1765,
+    "category": "Desktops",
+    "image": "/images/desktops/product-6.jpg"
+  },
+  {
+    "id": 67,
+    "title": "Desktops Product 7",
+    "price": 1059,
+    "category": "Desktops",
+    "image": "/images/desktops/product-7.jpg"
+  },
+  {
+    "id": 68,
+    "title": "Desktops Product 8",
+    "price": 913,
+    "category": "Desktops",
+    "image": "/images/desktops/product-8.jpg"
+  },
+  {
+    "id": 69,
+    "title": "Desktops Product 9",
+    "price": 1489,
+    "category": "Desktops",
+    "image": "/images/desktops/product-9.jpg"
+  },
+  {
+    "id": 70,
+    "title": "Desktops Product 10",
+    "price": 1268,
+    "category": "Desktops",
+    "image": "/images/desktops/product-10.jpg"
+  },
+  {
+    "id": 71,
+    "title": "Desktops Product 11",
+    "price": 1552,
+    "category": "Desktops",
+    "image": "/images/desktops/product-11.jpg"
+  },
+  {
+    "id": 72,
+    "title": "Desktops Product 12",
+    "price": 152,
+    "category": "Desktops",
+    "image": "/images/desktops/product-12.jpg"
+  },
+  {
+    "id": 73,
+    "title": "Desktops Product 13",
+    "price": 1419,
+    "category": "Desktops",
+    "image": "/images/desktops/product-13.jpg"
+  },
+  {
+    "id": 74,
+    "title": "Desktops Product 14",
+    "price": 1069,
+    "category": "Desktops",
+    "image": "/images/desktops/product-14.jpg"
+  },
+  {
+    "id": 75,
+    "title": "Desktops Product 15",
+    "price": 310,
+    "category": "Desktops",
+    "image": "/images/desktops/product-15.jpg"
+  },
+  {
+    "id": 76,
+    "title": "Desktops Product 16",
+    "price": 1949,
+    "category": "Desktops",
+    "image": "/images/desktops/product-16.jpg"
+  },
+  {
+    "id": 77,
+    "title": "Desktops Product 17",
+    "price": 493,
+    "category": "Desktops",
+    "image": "/images/desktops/product-17.jpg"
+  },
+  {
+    "id": 78,
+    "title": "Desktops Product 18",
+    "price": 382,
+    "category": "Desktops",
+    "image": "/images/desktops/product-18.jpg"
+  },
+  {
+    "id": 79,
+    "title": "Desktops Product 19",
+    "price": 1485,
+    "category": "Desktops",
+    "image": "/images/desktops/product-19.jpg"
+  },
+  {
+    "id": 80,
+    "title": "Desktops Product 20",
+    "price": 1056,
+    "category": "Desktops",
+    "image": "/images/desktops/product-20.jpg"
+  },
+  {
+    "id": 81,
+    "title": "Desktops Product 21",
+    "price": 451,
+    "category": "Desktops",
+    "image": "/images/desktops/product-21.jpg"
+  },
+  {
+    "id": 82,
+    "title": "Desktops Product 22",
+    "price": 752,
+    "category": "Desktops",
+    "image": "/images/desktops/product-22.jpg"
+  },
+  {
+    "id": 83,
+    "title": "Desktops Product 23",
+    "price": 1709,
+    "category": "Desktops",
+    "image": "/images/desktops/product-23.jpg"
+  },
+  {
+    "id": 84,
+    "title": "Desktops Product 24",
+    "price": 1366,
+    "category": "Desktops",
+    "image": "/images/desktops/product-24.jpg"
+  },
+  {
+    "id": 85,
+    "title": "Desktops Product 25",
+    "price": 1790,
+    "category": "Desktops",
+    "image": "/images/desktops/product-25.jpg"
+  },
+  {
+    "id": 86,
+    "title": "Desktops Product 26",
+    "price": 1006,
+    "category": "Desktops",
+    "image": "/images/desktops/product-26.jpg"
+  },
+  {
+    "id": 87,
+    "title": "Desktops Product 27",
+    "price": 1713,
+    "category": "Desktops",
+    "image": "/images/desktops/product-27.jpg"
+  },
+  {
+    "id": 88,
+    "title": "Desktops Product 28",
+    "price": 1916,
+    "category": "Desktops",
+    "image": "/images/desktops/product-28.jpg"
+  },
+  {
+    "id": 89,
+    "title": "Desktops Product 29",
+    "price": 755,
+    "category": "Desktops",
+    "image": "/images/desktops/product-29.jpg"
+  },
+  {
+    "id": 90,
+    "title": "Desktops Product 30",
+    "price": 1302,
+    "category": "Desktops",
+    "image": "/images/desktops/product-30.jpg"
+  },
+  {
+    "id": 91,
+    "title": "Keyboards & Mice Product 1",
+    "price": 639,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-1.jpg"
+  },
+  {
+    "id": 92,
+    "title": "Keyboards & Mice Product 2",
+    "price": 1371,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-2.jpg"
+  },
+  {
+    "id": 93,
+    "title": "Keyboards & Mice Product 3",
+    "price": 1225,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-3.jpg"
+  },
+  {
+    "id": 94,
+    "title": "Keyboards & Mice Product 4",
+    "price": 1984,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-4.jpg"
+  },
+  {
+    "id": 95,
+    "title": "Keyboards & Mice Product 5",
+    "price": 1398,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-5.jpg"
+  },
+  {
+    "id": 96,
+    "title": "Keyboards & Mice Product 6",
+    "price": 538,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-6.jpg"
+  },
+  {
+    "id": 97,
+    "title": "Keyboards & Mice Product 7",
+    "price": 506,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-7.jpg"
+  },
+  {
+    "id": 98,
+    "title": "Keyboards & Mice Product 8",
+    "price": 584,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-8.jpg"
+  },
+  {
+    "id": 99,
+    "title": "Keyboards & Mice Product 9",
+    "price": 867,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-9.jpg"
+  },
+  {
+    "id": 100,
+    "title": "Keyboards & Mice Product 10",
+    "price": 881,
+    "category": "Keyboards & Mice",
+    "image": "/images/keyboards-mice/product-10.jpg"
+  }
+]

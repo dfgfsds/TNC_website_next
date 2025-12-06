@@ -1,0 +1,22 @@
+{
+  "categories": [
+    { "name": "Accessories & More", "count": 9 },
+    { "name": "Baby & Kids", "count": 3 },
+    { "name": "Cell & Tablets", "count": 6 },
+    { "name": "Computer & Laptop", "count": 9 },
+    { "name": "Fashion & Clothing", "count": 3 },
+    { "name": "Furnitures & Decor", "count": 4 },
+    { "name": "Games & Consoles", "count": 2 },
+    { "name": "Makeup & Beauty", "count": 3 },
+    { "name": "Sunglasses", "count": 3 },
+    { "name": "TV & Audio", "count": 5 }
+  ],
+  "brands": [
+    { "name": "Brandname", "count": 4 },
+    { "name": "Brandon", "count": 5 },
+    { "name": "Caley Peace", "count": 1 },
+    { "name": "Design Studio", "count": 6 },
+    { "name": "Harrison", "count": 6 },
+    { "name": "Retro Design", "count": 2 }
+  ]
+}
