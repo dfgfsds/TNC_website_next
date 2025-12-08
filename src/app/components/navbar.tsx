@@ -22,6 +22,7 @@ import { useVendor } from '../../../context/VendorContext'
 import { useUser } from '../../../context/UserContext'
 import { useCartItem } from '../../../context/CartItemContext'
 import { useProducts } from '../../../context/ProductsContext'
+import { slugConvert } from '../../../lib/utils'
 
 const NavbarPage = () => {
   const { products } = useProducts();
@@ -78,9 +79,9 @@ const NavbarPage = () => {
     { path: '/', label: 'Home' },
     { path: '/shop', label: 'Shop' },
     { path: '/categories', label: 'Categories' },
-    { path: '/about', label: 'About' },
+    { path: '/about-us', label: 'About' },
     { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/contact-us', label: 'Contact' },
   ];
 
   useEffect(() => {
@@ -230,7 +231,7 @@ const NavbarPage = () => {
             </div>
           )}
         </form>
-        
+
       </div>
 
       {/* ===== DESKTOP HEADER ===== */}
@@ -290,7 +291,7 @@ const NavbarPage = () => {
                           setShowDropdown(false);
                           setQuery('');
                           setIsOpen(false);
-                          router.push(`/product/${item?.id}`);
+                          router.push(`/product/${slugConvert(item?.name)}`);
                         }}
                         className="flex gap-3 px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       >
@@ -415,7 +416,7 @@ const NavbarPage = () => {
       <div className="hidden md:block bg-[#a100fe] shadow overflow-x-auto">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-center gap-6 text-sm font-bold text-white uppercase whitespace-nowrap">
           {categories?.data?.slice(0, 8).map((item: any, index: number) => (
-            <div key={index} className="cursor-pointer" onClick={() => router.push(`/categories/${item.id}`)}>{item?.name}</div>
+            <div key={index} className="cursor-pointer" onClick={() => router.push(`/categories/${slugConvert(item.name)}`)}>{item?.name}</div>
           ))}
         </div>
       </div>

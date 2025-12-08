@@ -12,9 +12,11 @@ import { useVendor } from '../../../../context/VendorContext';
 import { useCartItem } from '../../../../context/CartItemContext';
 import LoginModal from '@/app/components/LoginModal/page';
 import ProductGrid from '@/app/components/ProductGrid';
+import { slugConvert } from '../../../../lib/utils';
 
 export default function CategoriesBasedProduct() {
     const { id } = useParams();
+
     const [getUserId, setUserId] = useState<string | null>(null);
     const [getCartId, setCartId] = useState<string | null>(null);
     const [getUserName, setUserName] = useState<string | null>(null);
@@ -39,13 +41,13 @@ export default function CategoriesBasedProduct() {
 
     // Find the category name by ID
     const category = categories?.data?.find(
-        (cat: any) => cat.id?.toString() === id
+        (cat: any) => slugConvert(cat.name) === id
     );
     const categoryName = category?.name || 'Category';
 
     // Filter products by category ID
     const filteredProducts = products?.data?.filter(
-        (product: any) => product.category?.toString() === id
+        (product: any) => slugConvert(product.category_name) === id
     );
 
     const handleUpdateCart = async (id: any, type: any, qty: any) => {

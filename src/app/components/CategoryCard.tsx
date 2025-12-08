@@ -2,21 +2,21 @@
 
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { slugConvert } from '../../../lib/utils';
 
 interface Props {
-  title: string;
+  name: string;
   image: string;
   products: number;
   link: string;
   id: any;
 }
 
-export default function CategoryCard({ title, image, products, link, id }: Props) {
+export default function CategoryCard({ name, image, products, link, id }: Props) {
   const router = useRouter();
 
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault(); // prevent default <a> behavior
-    router.push(`/categories/${id}`);
+  const handleClick = () => {
+    router.push(`/categories/${slugConvert(name)}`);
   };
 
   return (
@@ -34,9 +34,9 @@ export default function CategoryCard({ title, image, products, link, id }: Props
       <div className="absolute inset-0 bg-black bg-opacity-10 z-0 transition duration-300" />
 
       {/* Title */}
-      <h3 className="absolute top-10 sm:top-16 left-3 sm:left-5 text-dark text-lg sm:text-xl md:text-2xl font-extrabold z-10 leading-snug drop-shadow max-w-[85%] sm:max-w-[70%]">
-        {title}
-      </h3>
+      {/* <h3 className="absolute top-10 sm:top-16 left-3 sm:left-5 text-dark text-lg sm:text-xl md:text-2xl font-extrabold z-10 leading-snug drop-shadow max-w-[85%] sm:max-w-[70%]">
+        {name}
+      </h3> */}
 
       {/* Bottom Content */}
       <div className="relative z-10 p-3 sm:p-4 mt-auto">

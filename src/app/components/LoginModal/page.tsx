@@ -8,6 +8,7 @@ import { Eye, EyeOff, Lock, Mail, Phone, X } from "lucide-react";
 import { getCartApi } from "../../../../api-endpoints/CartsApi";
 import Link from "next/link";
 import { postSendSmsOtpUserApi, postVerifySmsOtpApi } from "../../../../api-endpoints/authendication";
+import { baseUrl } from "../../../../api-endpoints/ApiUrls";
 
 interface FormData {
   email: string;
@@ -45,7 +46,7 @@ function LoginModal({ open, handleClose, vendorId }: any) {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response: any = await axios.post("https://ecomapi.ftdigitalsolutions.org/user_login/", {
+      const response: any = await axios.post(`${baseUrl}/user_login/`, {
         ...data,
         vendor_id: vendorId,
       });

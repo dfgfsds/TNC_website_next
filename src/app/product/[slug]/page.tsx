@@ -17,13 +17,15 @@ import LoginModal from '@/app/components/LoginModal/page';
 import { useUser } from '../../../../context/UserContext';
 import { useVendor } from '../../../../context/VendorContext';
 import { useCartItem } from '../../../../context/CartItemContext';
+import { slugConvert } from '../../../../lib/utils';
 
 export default function ProductPage() {
   const { slug } = useParams();
+
   const router = useRouter();
   const { products } = useProducts();
 
-  const product = products?.data?.find((p: any) => p.id.toString() === slug);
+  const product = products?.data?.find((p: any) => slugConvert(p.name) === slug);
 
   const [activeColor, setActiveColor] = useState(product?.colors?.[0] || '#000');
   const [quantity, setQuantity] = useState(1);
@@ -70,9 +72,10 @@ export default function ProductPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-4 grid md:grid-cols-2 gap-8">
+  <div className="max-w-6xl mx-auto p-4">    
+    <div className=" grid md:grid-cols-2 gap-8">
       {/* Image */}
-      <div className="border p-4 rounded">
+      <div className="border h-fit p-4 rounded">
         <Image
           src={product.image_urls[0]}
           alt={product.name}
@@ -85,13 +88,16 @@ export default function ProductPage() {
       {/* Details */}
       <div>
         <h1 className="text-2xl font-bold">{product.name}</h1>
-        <div className="flex">
+        <div className="flex mt-4">
           <p className="text-red-600 text-xl mt-1 font-semibold"> ₹{product?.price}</p>
           <p className="text-gray-600 text-lg mt-1 font-semibold line-through ml-4"> ₹{product?.discount}</p>
         </div>
 
-        <h2 className="mt-6 font-bold text-sm uppercase">Description</h2>
-        <p className="text-sm text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: product?.description }} />
+                <div className="mt-6 text-sm text-gray-500">
+          <p>
+            Categories: <span className="text-red-500">{product.category_name}</span>
+          </p>
+        </div>
 
 
         {/* Buttons */}
@@ -100,7 +106,7 @@ export default function ProductPage() {
           {isInCart ?
             <button
               onClick={(e) => router.push('/cart')}
-              className="px-6 py-2 bg-[#a100fe] text-white rounded-full text-sm font-medium hover:bg-[#a100fe] transition-all duration-300 transform hover:scale-105 hover:shadow-md"
+              className="px-6 py-2 bg-[#a100fe] text-white rounded-lg text-sm font-medium hover:bg-[#a100fe] transition-all duration-300 transform hover:scale-105 hover:shadow-md"
             >
               Go to cart
             </button>
@@ -115,7 +121,7 @@ export default function ProductPage() {
                   setSignInModal(true);
                 }
               }}
-              className="px-6 py-2 bg-[#a100fe] text-white rounded-full text-sm font-medium hover:bg-[#a100fe] transition-all duration-300 transform hover:scale-105 hover:shadow-md"
+              className="px-6 py-2 bg-[#a100fe] text-white rounded-lg text-sm font-medium hover:bg-[#a100fe] transition-all duration-300 transform hover:scale-105 hover:shadow-md"
             >
               Add to cart
             </button>
@@ -123,22 +129,26 @@ export default function ProductPage() {
 
         </div>
 
+
         <div className="mt-6 text-sm text-gray-600 space-y-1">
           <p>📦 1–4 Days Delivery</p>
           <p>✅ 100% Original and Quality</p>
           <p>🛡️ Extended Warranty</p>
         </div>
 
-        <div className="mt-6 text-sm text-gray-500">
-          <p>
-            Categories: <span className="text-red-500">{product.category_name}</span>
-          </p>
-        </div>
+       
       </div>
+
 
       {signInmodal && (
         <LoginModal open={signInmodal} handleClose={() => setSignInModal(false)} vendorId={vendorId} />
       )}
     </div>
+    <div className='mt-4 md:mt-20 border-t '>
+     <h2 className="mt-6 font-bold text-sm uppercase">Description</h2>
+        <p className="text-sm text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: product?.description }} />
+        </div>
+        </div>
+
   );
 }

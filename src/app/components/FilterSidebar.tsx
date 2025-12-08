@@ -10,9 +10,10 @@ interface Category {
 }
 
 interface FilterSidebarProps {
-  categories: Category[]; // Corrected type
+  categories: Category[];
   selectedCategory: string | null;
   onSelectCategory: (category: string | null) => void;
+  className?: string; // ✅ add this
 }
 
 export default function FilterSidebar({
@@ -37,7 +38,7 @@ export default function FilterSidebar({
       </div>
 
       {/* Sidebar - Desktop */}
-      <aside className="hidden md:block md:w-1/4 border rounded p-4">
+      <aside className="hidden md:block md:w-1/4 h-fit   border rounded p-4">
         <h2 className="text-lg font-semibold mb-4">Categories</h2>
         <div className="space-y-2">
           <button
@@ -48,7 +49,7 @@ export default function FilterSidebar({
             }`}
             onClick={() => onSelectCategory(null)}
           >
-            All Products
+            All Products  
           </button>
           {isLoading ? <></>
           :

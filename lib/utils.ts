@@ -8,6 +8,15 @@ export function formatPrice(price: number): string {
   }).format(price);
 }
 
+export function slugConvert(name?: string) {
+  return name
+    ?.toLowerCase()
+    ?.trim()
+    ?.replace(/\s+/g, '-')        // Replace spaces with hyphens
+    ?.replace(/[^\w-]+/g, '')     // Remove non-word characters except hyphens
+    || ''; // fallback empty string if name is null/undefined
+}
+
 
 export function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString('en-US', {

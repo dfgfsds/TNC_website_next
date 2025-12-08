@@ -16,11 +16,11 @@ export default function WhatsAppFloatingButton({
       href={href}
       target="_blank"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-4 left-4 z-[100] group"
+      className="fixed bottom-16 md:bottom-6 left-4 z-[100] group"
     >
       <div className="relative flex items-center">
         {/* WhatsApp Button */}
-        <div className="relative flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#008f07] to-[#038031] backdrop-blur-xl border border-[#25D366]/40 shadow-[0_0_20px_rgba(37,211,102,0.3)] transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+        <div className="relative flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#008f07] to-[#038031] backdrop-blur-xl border border-[#25D366]/40 shadow-[0_0_20px_rgba(37,211,102,0.3)] transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
           {/* WhatsApp SVG Icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,13 +32,13 @@ export default function WhatsAppFloatingButton({
           </svg>
 
           {/* Glow ring */}
-          <span className="absolute inset-0 rounded-2xl animate-ping border-2 border-[#25D366]/40" />
+          {/* <span className="absolute inset-0 rounded-2xl animate-ping border-2 border-[#25D366]/40" /> */}
         </div>
 
         {/* Tooltip (Desktop Hover Only) */}
-        <span className="ml-3 hidden rounded-xl bg-[#25D366] px-3 py-1 text-sm font-medium text-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 md:block">
+        {/* <span className="ml-3 hidden rounded-xl bg-[#25D366] px-3 py-1 text-sm font-medium text-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 md:block">
           Chat with us
-        </span>
+        </span> */}
       </div>
     </Link>
   );

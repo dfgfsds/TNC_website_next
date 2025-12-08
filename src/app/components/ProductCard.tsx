@@ -4,6 +4,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { slugConvert } from '../../../lib/utils';
 
 type ProductProps = {
   product?: {
@@ -23,8 +24,8 @@ export default function ProductCard({ product, isLoading }: ProductProps) {
 
   const handleViewDetails = () => {
     if (product) {
-      const slug = product.id;
-      router.push(`/product/${slug}`);
+      const slug = product.name;
+      router.push(`/product/${slugConvert(slug)}`);
     }
   };
 

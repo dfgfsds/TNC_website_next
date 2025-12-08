@@ -1,37 +1,58 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import banner1 from "../../../public/banner/Banner1.jpg"
-import banner2 from "../../../public/banner/BANNER2.jpg"
-import banner3 from "../../../public/banner/Banner4.jpg"
-
-const images = [
-  banner1, banner2, banner3
-]
+import axios from 'axios'
+import { baseUrl } from '../../../api-endpoints/ApiUrls'
+import { useVendor } from '../../../context/VendorContext'
+import { useRouter } from 'next/navigation'
 
 export default function Carousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const router = useRouter();
+  const { vendorId } = useVendor();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [banners, setBanners] = useState<any[]>([]);
+
+  // Fetch banners
+  const bannerGetApi = async () => {
+    try {
+      const res = await axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`);
+      if (res.data?.banners) {
+        setBanners(res.data.banners);
+      } else {
+        console.warn('Unexpected API response:', res.data);
+      }
+    } catch (error) {
+      console.log('Error fetching banners:', error);
+    }
+  };
+
+  useEffect(() => {
+    bannerGetApi();
+  }, [vendorId]);
 
   const goToPrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+    setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1))
   }
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+    setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1))
   }
+  console.log(banners, 'banners');
+
 
   return (
     <div className="relative w-full">
       <div className="relative h-56 md:h-[400px] overflow-hidden ">
-        {images.map((src, index) => (
+        {banners.map((src, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
               }`}
+            onClick={() => router.push(src?.target_url || '/')}
           >
             <Image
-              src={src}
+              src={src?.image_url}
               alt={`Carousel image ${index + 1}`}
               fill
               className="object-cover"

@@ -12,7 +12,9 @@ import { useUser } from '../../../context/UserContext';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const tabs = ['Orders', 'Wishlist', 'Address', 'Account Info'];
+const tabs = ['Orders',
+  //  'Wishlist',
+  'Address', 'Account Info'];
 
 export default function Profile() {
 
@@ -63,7 +65,7 @@ export default function Profile() {
       {/* Tab Content */}
       <div className="p-4 bg-gray-50 rounded-md">
         {activeTab === 'Orders' && <OrdersTab />}
-        {activeTab === 'Wishlist' && <WishlistTab />}
+        {/* {activeTab === 'Wishlist' && <WishlistTab />} */}
         {activeTab === 'Address' && <AddressTab />}
         {activeTab === 'Account Info' && <AccountInfoTab />}
       </div>

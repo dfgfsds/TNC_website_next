@@ -7,13 +7,14 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useProducts } from '../../../context/ProductsContext';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { slugConvert } from '../../../lib/utils';
 
 
 export default function TrendingProducts() {
   const router = useRouter()
 
-  const handleViewDetails = (id: any) => {
-    router.push(`/product/${id}`)
+  const handleViewDetails = (name: any) => {
+    router.push(`/product/${slugConvert(name)}`)
   }
 
   const { products } = useProducts()
@@ -95,7 +96,7 @@ export default function TrendingProducts() {
                   </span>
                 </div>
                 <div className="mt-auto">
-                  <button onClick={() => handleViewDetails(item?.id)} className="group relative mt-4 w-full overflow-hidden rounded-md bg-[#9333ea] px-4 py-2 text-sm text-white">
+                  <button onClick={() => handleViewDetails(item?.name)} className="group relative mt-4 w-full overflow-hidden rounded-md bg-[#9333ea] px-4 py-2 text-sm text-white">
                     {/* Icon + Text Layer */}
                     <span className="relative z-10 flex items-center justify-center gap-2">
                       <AiOutlineShoppingCart size={18} />

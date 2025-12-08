@@ -23,30 +23,40 @@ export default function ShopPage() {
       <h1 className="text-2xl font-bold mb-2">Shop Product</h1>
       <p className="text-sm text-gray-500 mb-6">Home &gt; Shop Product</p>
 
-      <div className="flex flex-col md:flex-row gap-6">
-        <FilterSidebar
-          categories={categories?.data}
-          selectedCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
-        />
-        <div className="w-full">
-          <img
-            src="https://t4.ftcdn.net/jpg/02/54/80/85/360_F_254808568_fj6iuMwwzloSZYKbhDPShWzSK6GeEjXj.jpg"
-            alt="banner"
-            className="w-full h-[250px] object-cover rounded mb-10"
-          />
+     <div className="flex flex-col md:flex-row gap-6">
+  {/* Sidebar */}
+ 
+    <FilterSidebar
+      categories={categories?.data}
+      selectedCategory={selectedCategory}
+      onSelectCategory={setSelectedCategory}
+      
+    />
 
-          <div className="flex justify-between mb-4">
-            <p className="text-sm">Showing 1–{filteredProducts?.length} of {products?.data?.length} results</p>
-            <select className="border rounded px-2 py-1 text-sm">
-              <option>Relevance</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
-            </select>
-          </div>
-          <ProductGrid products={filteredProducts} isLoading={isLoading}/>
-        </div>
-      </div>
+
+  {/* Main content */}
+  <div className="w-full">
+    <img
+      src="https://t4.ftcdn.net/jpg/02/54/80/85/360_F_254808568_fj6iuMwwzloSZYKbhDPShWzSK6GeEjXj.jpg"
+      alt="banner"
+      className="w-full h-[250px] object-cover rounded mb-10"
+    />
+
+    <div className="flex justify-between mb-4">
+      <p className="text-sm">
+        Showing 1–{filteredProducts?.length} of {products?.data?.length} results
+      </p>
+      <select className="border rounded px-2 py-1 text-sm">
+        <option>Relevance</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+      </select>
+    </div>
+
+    <ProductGrid products={filteredProducts} isLoading={isLoading} />
+  </div>
+</div>
+
     </div>
   )
 }

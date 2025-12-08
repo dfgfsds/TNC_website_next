@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useCategories } from '../../../context/CategoriesContext';
 import Image from 'next/image';
+import { slugConvert } from '../../../lib/utils';
 
 export default function CategoriesPage() {
     
@@ -22,7 +23,7 @@ export default function CategoriesPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {categories?.data?.map((category: any) => (
                         <Link
-                            href={`/categories/${category?.id}`}
+                            href={`/categories/${slugConvert(category?.name)}`}
                             key={category?.id}
                             className="relative group overflow-hidden rounded-md shadow hover:shadow-lg transition"
                         >

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import Image from 'next/image'
+import { Phone } from "lucide-react";
 import logoImg from "../../../public/tn-computers-logo.png"
 
 import {
@@ -78,12 +79,12 @@ export default function Footer() {
               <h4 className="font-bold text-white mb-3">Quick Links</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <Link href="/about" className="hover:text-white transition-colors duration-200">
+                  <Link href="/about-us" className="hover:text-white transition-colors duration-200">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-white transition-colors duration-200">
+                  <Link href="/contact-us" className="hover:text-white transition-colors duration-200">
                     Contact Us
                   </Link>
                 </li>
@@ -110,7 +111,7 @@ export default function Footer() {
               <h4 className="font-bold text-white mb-3">Menu</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <Link href="/about" className="hover:text-white transition-colors duration-200">
+                  <Link href="/about-us" className="hover:text-white transition-colors duration-200">
                     About
                   </Link>
                 </li>
@@ -125,7 +126,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-white transition-colors duration-200">
+                  <Link href="/contact-us" className="hover:text-white transition-colors duration-200">
                     Contact
                   </Link>
                 </li>
@@ -162,7 +163,7 @@ export default function Footer() {
           {/* Bottom bar */}
           <div className="flex flex-col md:flex-row justify-between items-center px-6 py-6 border-t border-white">
             <p className="text-gray-400 text-sm">
-              Copyright © 2025 <span className="text-white font-semibold">TN Computers.</span> All rights reserved
+              Copyright © 2025 <a href='https://www.ftdigitalsolutions.in/' className="text-slate-300 font-semibold">Ft Digital Solutions ( Agency ).</a>   All rights reserved
             </p>
             <div className="flex gap-2 mt-4 md:mt-0">
               <img src="/assets/mastercard.svg" alt="mastercard" className="w-12" />
@@ -172,6 +173,18 @@ export default function Footer() {
             </div>
           </div>
         </div>
+   <Link
+      href="tel:+917429667788"
+      className="fixed bottom-32 md:bottom-24  left-4 z-50 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-600 text-white shadow-lg border border-blue-600 transition-transform duration-300 hover:scale-110 hover:shadow-2xl"
+      aria-label="Call Us"
+    >
+      {/* Pulsing Ring */}
+      {/* <span className="absolute w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-500 opacity-75 animate-ping"></span> */}
+
+      {/* Call Icon */}
+      <Phone size={22} className="sm:size-[28px] relative z-10" />
+    </Link>
+
       </footer>
     </>
   )
