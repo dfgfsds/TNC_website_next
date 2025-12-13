@@ -23,7 +23,7 @@ function ContactSection(props: Props) {
     };
 
     return (
-        <section className="bg-[#fffcfc] py-20 px-6 md:px-20">
+        <section className="bg-[#fffcfc] py-10 md:py-12 px-4 md:px-20">
             <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -115,13 +115,8 @@ function ContactSection(props: Props) {
                             </span>
                         </div>
                     </div>
-                    {/* Google Maps Heading */}
-                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-                        Find Us on Google Maps
-                    </h2>
-                    <p className="text-gray-600 text-sm mb-8">
-                        Locate the best computer shop in Chennai near you.
-                    </p>
+                 
+                  
                     <div className="mt-8 w-full h-64 rounded-xl overflow-hidden shadow-md">
                         <iframe
                             src="https://www.google.com/maps?q=TN+Computers+Hardware,+126+B,+Vanniar+St,+Bangaru+Colony,+K.+K.+Nagar,+Chennai,+Tamil+Nadu+600078&output=embed"

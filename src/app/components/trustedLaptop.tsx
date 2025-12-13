@@ -11,7 +11,7 @@ export default function HeroSectionTrustedLap() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 text-center">
         {/* Heading */}
         <h1 className="text-3xl sm:text-4xl md:text-4xl  font-extrabold leading-snug sm:leading-tight text-gray-900">
-           <span className="text-indigo-600 mb-2">TN Computers </span><br></br>{' '} Your Trusted Laptop Store in
+           <span className="text-[#a100fe] mb-2">TN Computers </span><br></br>{' '} Your Trusted Laptop Store in
           Chennai
         </h1>
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
+import aboutimg from "../../../public/tn-about.jpg"
 
 export default function AnimatedAbout() {
     const ref = useRef(null);
@@ -34,13 +35,13 @@ export default function AnimatedAbout() {
             >
                 {/* Image */}
                 <motion.div
-                    className="relative w-full h-64 sm:h-80 md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-md"
+                    className="relative w-full h-64 sm:h-80 md:h-[400px]  rounded-2xl overflow-hidden shadow-md"
                     variants={fadeInUp}
                     initial="hidden"
                     animate={controls}
                 >
                     <Image
-                        src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
+                        src={aboutimg}
                         alt="TN Computers - Laptops and Tech"
                         fill
                         className="object-cover"
@@ -55,18 +56,11 @@ export default function AnimatedAbout() {
                     animate={controls}
                 >
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
-                        About TN Computers
+                       About Us – TN Computers
                     </h2>
 
                     <p className="text-base sm:text-lg text-gray-700 leading-relaxed bg-gray-50 p-5 sm:p-6 rounded-xl border border-gray-200 shadow-sm">
-                        Welcome to <span className="font-semibold text-purple-600">TN Computers</span>,
-                        one of Chennai’s most trusted destinations for
-                        <span className="font-medium text-gray-900"> new laptops, desktops, custom-built PCs</span>,
-                        and <span className="font-medium text-gray-900">refurbished systems</span>.
-                        With years of experience in the computer retail and service industry, we are committed to providing
-                        <span className="text-purple-600 font-semibold"> reliable technology</span>, expert support, and
-                        <span className="font-semibold text-purple-600"> cost-effective solutions</span>
-                        for students, professionals, businesses, and gaming enthusiasts.
+                       Welcome to TN Computers, one of Chennai’s most trusted destinations for new laptops, desktops, custom-built PCs, and refurbished systems. With years of experience in the computer retail and service industry, we are committed to providing reliable technology, expert support, and cost-effective solutions for students, professionals, businesses, and gaming enthusiasts.
                     </p>
 
                     <div className="flex justify-center md:justify-start">
@@ -84,6 +78,8 @@ export default function AnimatedAbout() {
                     </div>
                 </motion.div>
             </div>
+
+        
         </section>
     );
 }
