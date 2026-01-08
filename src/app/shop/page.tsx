@@ -1,62 +1,100 @@
-'use client';
-
-import { useState } from 'react';
-import FilterSidebar from '../components/FilterSidebar';
-import ProductGrid from '../components/ProductGrid';
-import { useCategories } from '../../../context/CategoriesContext';
-import { useProducts } from '../../../context/ProductsContext';
+import ShopPage from "./ShopClient";
 
 
+export async function generateMetadata() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "TN Computers",
+        "image": "https://www.tncomputers.in/tn-computers-logo.png",
+        "url": "https://www.tncomputers.in/",
+        "telephone": "+917429667788",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "No: 126 B, Vanniar Street, Bangaru Colony, KK Nagar",
+          "addressLocality": "Chennai",
+          "postalCode": "600078",
+          "addressCountry": "IN",
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ],
+          "opens": "09:00",
+          "closes": "21:00",
+        },
+      },
+      {
+        "@type": "CollectionPage",
+        "name": "Shop - TN Computers",
+        "description":
+          "Buy laptops, desktop computers & computer accessories online from TN Computers.",
+        "url": "https://www.tncomputers.in/shop",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "TN Computers",
+          "url": "https://www.tncomputers.in/",
+        },
+      },
+    ],
+  };
 
-export default function ShopPage() {
+  return {
+    title: "Buy Laptops, Desktops & Computer Accessories Online",
+    description:
+      "Buy laptops, desktop computers & computer accessories online from TN Computers. Best computer shop for quality PCs, peripherals & affordable prices.",
 
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-   const { categories } = useCategories();
-   const {products,isLoading }=useProducts();
+    robots: {
+      index: true,
+      follow: true,
+    
+    },
 
-  const filteredProducts = selectedCategory
-    ? products?.data?.filter((p:any) => p.category === selectedCategory)
-    : products?.data;
+    alternates: {
+      canonical: "https://www.tncomputers.in/shop",
+    },
 
-  return (
-    <div className="max-w-7xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-2">Shop Product</h1>
-      <p className="text-sm text-gray-500 mb-6">Home &gt; Shop Product</p>
+    openGraph: {
+      type: "website",
+      siteName: "TN Computers",
+      title: "Buy Laptops, Desktops & Computer Accessories Online",
+      description:
+        "Buy laptops, desktop computers & computer accessories online from TN Computers. Best computer shop for quality PCs, peripherals & affordable prices.",
+      url: "https://www.tncomputers.in/shop",
+      locale: "en_IN",
+      images: [
+        {
+          url: "https://www.tncomputers.in/tn-computers-logo.png",
+          width: 1200,
+          height: 630,
+          alt: "TN Computers",
+        },
+      ],
+    },
 
-     <div className="flex flex-col md:flex-row gap-6">
-  {/* Sidebar */}
- 
-    <FilterSidebar
-      categories={categories?.data}
-      selectedCategory={selectedCategory}
-      onSelectCategory={setSelectedCategory}
-      
-    />
+    twitter: {
+      card: "summary_large_image",
+      title: "Buy Laptops, Desktops & Computer Accessories Online",
+      description:
+        "Shop the best new and refurbished laptops and desktops in Chennai at TN Computers.",
+      images: ["https://www.tncomputers.in/tn-computers-logo.png"],
+    },
+
+    other: {
+      "application/ld+json": JSON.stringify(schema),
+    },
+  };
+}
 
 
-  {/* Main content */}
-  <div className="w-full">
-    <img
-      src="https://t4.ftcdn.net/jpg/02/54/80/85/360_F_254808568_fj6iuMwwzloSZYKbhDPShWzSK6GeEjXj.jpg"
-      alt="banner"
-      className="w-full h-[250px] object-cover rounded mb-10"
-    />
-
-    <div className="flex justify-between mb-4">
-      <p className="text-sm">
-        Showing 1–{filteredProducts?.length} of {products?.data?.length} results
-      </p>
-      <select className="border rounded px-2 py-1 text-sm">
-        <option>Relevance</option>
-        <option>Price: Low to High</option>
-        <option>Price: High to Low</option>
-      </select>
-    </div>
-
-    <ProductGrid products={filteredProducts} isLoading={isLoading} />
-  </div>
-</div>
-
-    </div>
-  )
+export default function ShopClient() {
+  return <ShopPage/>;
 }
