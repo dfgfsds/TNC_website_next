@@ -57,6 +57,19 @@ export async function generateMetadata() {
       follow: true,
     
     },
+      keywords: [
+      "TN Computers shop",
+      "buy laptops online",
+      "refurbished laptops Chennai",
+      "desktop computers",
+      "computer accessories",
+      "gaming PCs",
+      "PC peripherals",
+      "budget laptops",
+      "computer store KK Nagar",
+      "new and refurbished computers"
+    ],
+
 
     alternates: {
       canonical: "https://www.tncomputers.in/shop",
