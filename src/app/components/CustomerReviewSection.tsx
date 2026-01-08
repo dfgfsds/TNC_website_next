@@ -101,8 +101,8 @@ export default function CustomerReviewSection() {
   <div className="w-full md:w-2/3 order-2 md:order-1">
     <Slider {...settings}>
       {reviews.map((review, index) => (
-        <div key={index} className="p-0 md-p-2">
-          <div className="bg-white p-4 md:p-5 rounded-xl shadow-sm h-[250px] flex">
+        <div key={index} className="p-0  md-p-2">
+          <div className="bg-white p-4 mr-4 md:p-5 rounded-xl shadow-sm h-[250px] flex">
             <div className="flex flex-row justify-between gap-4 w-full">
               {/* Text Content */}
               <div className="flex-1">
