@@ -114,7 +114,18 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       " Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
 
-    robots: {
+      keywords: [
+      "second hand laptop chennai",
+      "refurbished laptop chennai",
+      "used laptop in chennai",
+      "gaming laptop in chennai",
+      "gaming pc build chennai",
+      "best computer shop in chennai",
+      "buy laptop online india",
+      "computer accessories shop chennai",
+    ],
+    
+      robots: {
       index: true,
       follow: true,
     },
