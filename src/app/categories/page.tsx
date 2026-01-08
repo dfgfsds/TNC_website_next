@@ -1,56 +1,108 @@
-'use client';
 
-import Link from 'next/link';
-import { useCategories } from '../../../context/CategoriesContext';
-import Image from 'next/image';
-import { slugConvert } from '../../../lib/utils';
+import CategoriesPage from "./CategoriesUI";
 
-export default function CategoriesPage() {
-    
+export async function generateMetadata() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ComputerStore",
+    "@id": "https://www.tncomputers.in",
+    "name": "TN Computers",
+    "image": "https://www.tncomputers.in/tn-computers-logo.png",
+    "url": "https://www.tncomputers.in/categories",
+    "telephone": "+917429667788",
+    "priceRange": "₹₹",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No: 126 B, Vanniar Street, Bangaru Colony, KK Nagar",
+      "addressLocality": "Chennai",
+      "addressRegion": "TN",
+      "postalCode": "600078",
+      "addressCountry": "IN",
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      "opens": "09:00",
+      "closes": "21:00",
+    },
+    "sameAs": [
+      "https://www.facebook.com/tncomputershardware",
+      "https://www.instagram.com/tn__computers/",
+    ],
+  };
 
-    const { categories }: any = useCategories();
+  return {
+    title: "TN Computers Categories | Best computer online store",
+    description:
+      "Discover our wide range of electronics, including Desktops, Printers, and PC Components. We offer the best deals on new and refurbished computers in Chennai. Shop now!",
 
-    return (
-        <div className="bg-white">
-            <div className="container mx-auto px-4 py-12">
-                <div className="text-center mb-12">
-                    <h1 className="text-3xl font-bold mb-4 mt-3">Shop by Category</h1>
-                    <p className="text-muted-foreground max-w-2xl mx-auto">
-                        Browse our collection of sustainable and eco-friendly products organized by category.
-                    </p>
-                </div>
+    keywords: [
+      "TN Computers",
+      "Computer Store Chennai",
+      "Online Electronics Store",
+      "Refurbished Computers Chennai",
+      "Custom PC Build",
+      "PC Components",
+      "Desktops",
+      "Laptops",
+      "Printers",
+      "Gaming PC",
+      "Computer Hardware",
+      "Buy Computer Online India",
+    ],
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    {categories?.data?.map((category: any) => (
-                        <Link
-                            href={`/categories/${slugConvert(category?.name)}`}
-                            key={category?.id}
-                            className="relative group overflow-hidden rounded-md shadow hover:shadow-lg transition"
-                        >
-                            {/* Background Image */}
-                            <div className="aspect-[4/3] w-full overflow-hidden">
-                                <Image
-                                    src={category?.image || 'https://semantic-ui.com/images/wireframe/image.png'}
-                                    alt={category?.name || 'Category'}
-                                    className="h-full w-full object-cover  transition-transform duration-500"
-                                    width={300}
-                                    height={288}
-                                />
-                            </div>
+    authors: [{ name: "TN Computers" }],
 
-                            {/* Overlay */}
-                            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+    robots: {
+      index: true,
+      follow: true,
+    },
 
-                            {/* Text */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <h3 className="text-white text-2xl font-bold uppercase tracking-wide text-center px-4">
-                                    {category?.name}
-                                </h3>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
+    alternates: {
+      canonical: "https://www.tncomputers.in/categories",
+    },
+
+    openGraph: {
+      type: "website",
+      url: "https://www.tncomputers.in/categories",
+      siteName: "TN Computers",
+      title: "TN Computers Categories | Best computer online store",
+      description:
+        "Discover our wide range of electronics, including Desktops, Printers, and PC Components. We offer the best deals on new and refurbished computers in Chennai. Shop now!",
+      locale: "en_IN",
+      images: [
+        {
+          url: "https://www.tncomputers.in/tn-computers-logo.png",
+          width: 1200,
+          height: 630,
+          alt: "TN Computers Categories",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "TN Computers Categories | Best computer online store",
+      description:
+        "Discover our wide range of electronics, including Desktops, Printers, and PC Components. We offer the best deals on new and refurbished computers in Chennai. Shop now!",
+      images: [
+        "https://www.tncomputers.in/assets/tn-computers-logo.png",
+      ],
+    },
+
+    other: {
+      "application/ld+json": JSON.stringify(schema),
+    },
+  };
+}
+
+export default function CategoriesPageSeo() {
+  return <CategoriesPage/>
 }
