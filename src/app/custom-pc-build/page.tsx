@@ -324,7 +324,7 @@ export default function BuildPC() {
 
       <p className="text-gray-700 leading-relaxed">
         Whether you are a gamer, professional, or business owner, TN Computers is your
-        go-to solution for <strong>Custom PC Build in Chennai</strong>.
+        go-to solution for <strong>Custom PC Build in Chennai</strong>
       </p>
 
     </div>
