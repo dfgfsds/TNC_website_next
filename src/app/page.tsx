@@ -42,6 +42,29 @@ export const metadata = {
 };
 
 
+export const metadata = {
+  title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+  description: "Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
+  openGraph: {
+    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+    description: "Shop new & refurbished laptops, gaming PCs, and custom builds at TN Computers — Chennai’s trusted laptop showroom.",
+    url: "https://tncomputers.in",
+    type: "website",
+    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+    description: "Your trusted laptop store in Chennai—new laptops, refurbished systems, gaming PCs & more.",
+    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+  },
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://www.tncomputers.in/"
+  }
+};
+
+
 
 const HomePage = () => {
 
