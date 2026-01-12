@@ -15,7 +15,7 @@ import banner from "../../public/banner/Banner1.jpg"
 
 import HeroSectionTrustedLap from './components/trustedLaptop';
 import axios from 'axios';
-import { baseUrl } from '../../api-endpoints/ApiUrls';
+import { baseUrl, baseUrlTest } from '../../api-endpoints/ApiUrls';
 
 
 export const metadata = {
@@ -71,9 +71,9 @@ async function getHomeData() {
   const vendorId = 66;
 
   const [bannersRes, categoriesRes, productsRes] = await Promise.all([
-    fetch(`${baseUrl}/banners/?vendorId=${vendorId}`, { cache: 'no-store' }),
-    fetch(`${baseUrl}/api/categories/?vendor_id=${vendorId}`, { cache: 'no-store' }),
-    fetch(`${baseUrl}/api/products/?vendor_id=${vendorId}`, { cache: 'no-store' }),
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/banners/?vendorId=${vendorId}`, { cache: 'no-store' }),
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/categories/?vendor_id=${vendorId}`, { cache: 'no-store' }),
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/products/?vendor_id=${vendorId}`, { cache: 'no-store' }),
   ]);
 
   return {
@@ -89,7 +89,10 @@ async function getHomeData() {
 export default async function HomePage() {
   // const { banners } = await getHomeData();
   const { banners, categories, products } = await getHomeData();
-
+  console.log(banners, 'banners from home page');
+  console.log(categories, 'categories from home page');
+  console.log(products, 'products from home page');
+  // JSON-LD Computer Store Schema
   const computerStoreSchema = {
     "@context": "https://schema.org",
     "@type": "ComputerStore",
