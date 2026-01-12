@@ -43,45 +43,47 @@ export const metadata = {
 
 
 
-// async function getHomeData() {
-//   const vendorId = 66;
-
-//   try {
-//     const [bannerRes, categoryRes, productRes] = await Promise.all([
-//       axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`),
-//       axios.get(`${baseUrl}/api/categories/?vendor_id=${vendorId}`),
-//       axios.get(`${baseUrl}/api/products/?vendor_id=${vendorId}`),
-//     ]);
-
-//     return {
-//       banners: bannerRes?.data?.banners || [],
-//       categories: categoryRes?.data?.data || categoryRes?.data || [],
-//       products: productRes?.data?.data || productRes?.data || [],
-//     };
-//   } catch (error) {
-//     console.error("Home SSR API Error:", error);
-//     return {
-//       banners: [],
-//       categories: [],
-//       products: [],
-//     };
-//   }
-// }
 async function getHomeData() {
   const vendorId = 66;
 
-  const [bannersRes, categoriesRes, productsRes] = await Promise.all([
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/banners/?vendorId=${vendorId}`, { cache: 'no-store' }),
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/categories/?vendor_id=${vendorId}`, { cache: 'no-store' }),
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/products/?vendor_id=${vendorId}`, { cache: 'no-store' }),
-  ]);
+  try {
+    const [bannerRes, categoryRes, productRes] = await Promise.all([
+      axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/banners/?vendorId=${vendorId}`),
+      axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/categories/?vendor_id=${vendorId}`),
+      axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/products/?vendor_id=${vendorId}`),
+    ]);
 
-  return {
-    banners: (await bannersRes.json())?.banners ?? [],
-    categories: (await categoriesRes.json())?.data ?? [],
-    products: (await productsRes.json())?.data ?? [],
-  };
+    return {
+      banners: bannerRes?.data?.banners || [],
+      categories: categoryRes?.data?.data || categoryRes?.data || [],
+      products: productRes?.data?.data || productRes?.data || [],
+    };
+  } catch (error) {
+    console.error("Home SSR API Error:", error);
+    return {
+      banners: [],
+      categories: [],
+      products: [],
+    };
+  }
 }
+
+
+// async function getHomeData() {
+//   const vendorId = 66;
+
+//   const [bannersRes, categoriesRes, productsRes] = await Promise.all([
+//     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/banners/?vendorId=${vendorId}`, { cache: 'no-store' }),
+//     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/categories/?vendor_id=${vendorId}`, { cache: 'no-store' }),
+//     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/products/?vendor_id=${vendorId}`, { cache: 'no-store' }),
+//   ]);
+
+//   return {
+//     banners: (await bannersRes.json())?.banners ?? [],
+//     categories: (await categoriesRes.json())?.data ?? [],
+//     products: (await productsRes.json())?.data ?? [],
+//   };
+// }
 
 
 
