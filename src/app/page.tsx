@@ -1,4 +1,5 @@
 
+import type { Metadata } from "next";
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -7,15 +8,38 @@ import { fadeUp } from './data/animations';
 import NewArrivals from './components/newArrivals';
 import ProductPromoSection from './components/ProductPromoSection';
 import FeatureHighlights from './components/FeatureHighlights';
-import BrandsSection from './components/BrandsSection';
-import CustomerReviewSection from './components/CustomerReviewSection';
 import Carousel from './components/Carousel';
 import TopCategories from './components/TopCategories';
-import { useUser } from '../../context/UserContext';
-import logo from "../../public/tn-computers-logo.png";
-import banner from "../../public/banner/Banner1.jpg"
+
 
 import HeroSectionTrustedLap from './components/trustedLaptop';
+import { baseUrl } from "../../api-endpoints/ApiUrls";
+import { p } from "framer-motion/client";
+
+export const dynamic = 'force-dynamic'; // 🔥 ensure SSR
+
+
+export const metadata = {
+  title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+  description: "Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
+  openGraph: {
+    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+    description: "Shop new & refurbished laptops, gaming PCs, and custom builds at TN Computers — Chennai’s trusted laptop showroom.",
+    url: "https://tncomputers.in",
+    type: "website",
+    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+    description: "Your trusted laptop store in Chennai—new laptops, refurbished systems, gaming PCs & more.",
+    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+  },
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://www.tncomputers.in/"
+  }
+};
 
 
 export const metadata = {
@@ -117,6 +141,99 @@ const HomePage = () => {
         "name": "Can I build a custom Gaming PC at TN Computers?",
         "acceptedAnswer": {
           "@type": "Answer",
+          "text":
+            "Yes, we specialize in custom PC builds. As a leading Laptop Store in Chennai, we can assemble high-performance gaming PCs and editing workstations tailored to your budget.",
+        },
+      },
+    ],
+  };
+
+  return {
+    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+
+    description:
+      " Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
+
+    keywords: [
+      "second hand laptop chennai",
+      "refurbished laptop chennai",
+      "used laptop in chennai",
+      "gaming laptop in chennai",
+      "gaming pc build chennai",
+      "best computer shop in chennai",
+      "buy laptop online india",
+      "computer accessories shop chennai",
+    ],
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    alternates: {
+      canonical: "https://www.tncomputers.in/",
+    },
+
+    openGraph: {
+      title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+      description:
+        "Shop new & refurbished laptops, gaming PCs, and custom builds at TN Computers — Chennai’s trusted laptop showroom",
+      url: "https://www.tncomputers.in/",
+      siteName: "TN Computers",
+      type: "website",
+      images: [
+        {
+          url: "https://www.tncomputers.in/banner/Banner1.jpg",
+          width: 1200,
+          height: 630,
+          alt: "TN Computers Computer Shop Chennai",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+      description:
+        "Your trusted laptop store in Chennai—new laptops, refurbished systems, gaming PCs & more.",
+      images: ["https://www.tncomputers.in/banner/Banner1.jpg"],
+    },
+
+    other: {
+      "application/ld+json": JSON.stringify([
+        computerStoreSchema,
+        faqSchema,
+      ]),
+    },
+  };
+}
+
+async function getHomeData() {
+  const vendorId = 66;
+
+  try {
+    const [bannerRes, categoryRes, productRes] = await Promise.all([
+      fetch(`${baseUrl}/banners/?vendorId=${vendorId}`, { cache: "no-store" }),
+      fetch(`${baseUrl}/api/categories/?vendor_id=${vendorId}`, { cache: "no-store" }),
+      fetch(`${baseUrl}/api/products/?vendor_id=${vendorId}`, { cache: "no-store" }),
+    ]);
+
+    const banners = bannerRes.ok ? (await bannerRes.json())?.banners || [] : [];
+    const categories = categoryRes.ok ? (await categoryRes.json()) || [] : [];
+    const products = productRes.ok ? (await productRes.json()) || [] : [];
+
+    return { banners, categories, products };
+  } catch {
+    return { banners: [], categories: [], products: [] };
+  }
+}
+
+
+const HomePage = async () => {
+  // const { banners } = await getHomeData();
+  const { banners, categories, products } = await getHomeData();
+  console.log(products, 'products data in home page');
+  console.log(categories, 'categories data in home page');
           "text": "Yes, we specialize in custom PC builds. As a leading Laptop Store in Chennai, we can assemble high-performance gaming PCs and editing workstations tailored to your budget."
         }
       }
@@ -134,6 +251,7 @@ const HomePage = () => {
 
   return (
     <>
+
      <head>
         <script
           type="application/ld+json"
@@ -143,19 +261,23 @@ const HomePage = () => {
      
       <div>
         {/* Hero Section */}
-        <Carousel />
+        <Carousel banners={banners} />
 
-        <TopCategories />
-        <NewArrivals />
+        {/* <TopCategories /> */}
+        <TopCategories categories={categories} />
+        {/* <NewArrivals /> */}
+        <NewArrivals products={products} />
         <ProductPromoSection />
-        <HeroSectionTrustedLap/>
+        <HeroSectionTrustedLap />
 
         <FeatureHighlights />
-   
+
 
       </div>
     </>
   )
 }
 
-export default HomePage
+export default HomePage;
+
+
