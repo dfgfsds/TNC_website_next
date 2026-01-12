@@ -1,37 +1,23 @@
-// app/page.tsx
-import { Fragment } from "react";
-import Carousel from './components/Carousel';
-import TopCategories from './components/TopCategories';
+
+
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import CategoryCard from './components/CategoryCard';
+import { fadeUp } from './data/animations';
 import NewArrivals from './components/newArrivals';
 import ProductPromoSection from './components/ProductPromoSection';
-import HeroSectionTrustedLap from './components/trustedLaptop';
 import FeatureHighlights from './components/FeatureHighlights';
+import BrandsSection from './components/BrandsSection';
+import CustomerReviewSection from './components/CustomerReviewSection';
+import Carousel from './components/Carousel';
+import TopCategories from './components/TopCategories';
+import { useUser } from '../../context/UserContext';
+import logo from "../../public/tn-computers-logo.png";
+import banner from "../../public/banner/Banner1.jpg"
 
+import HeroSectionTrustedLap from './components/trustedLaptop';
 
-export const metadata = {
-  title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
-  description: "Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
-  openGraph: {
-    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
-    description: "Shop new & refurbished laptops, gaming PCs, and custom builds at TN Computers — Chennai’s trusted laptop showroom.",
-    url: "https://tncomputers.in",
-    type: "website",
-    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
-    description: "Your trusted laptop store in Chennai—new laptops, refurbished systems, gaming PCs & more.",
-    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
-  },
-  robots: "index, follow",
-  alternates: {
-    canonical: "https://www.tncomputers.in/"
-  }
-};
-
-export default function HomePage() {
-  // JSON-LD ComputerStore Schema
+export async function generateMetadata() {
   const computerStoreSchema = {
     "@context": "https://schema.org",
     "@type": "ComputerStore",
@@ -71,7 +57,6 @@ export default function HomePage() {
     }
   };
 
-  // JSON-LD FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -111,25 +96,74 @@ export default function HomePage() {
     ]
   };
 
-  return (
-    <Fragment>
-      {/* JSON-LD Scripts */}
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify([computerStoreSchema, faqSchema]) }}
-        />
-      </head>
+  return {
+    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+    description: "Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
+    keywords: [
+      "second hand laptop chennai",
+      "refurbished laptop chennai",
+      "gaming laptop in chennai",
+      "gaming pc build chennai",
+      "best computer shop in chennai"
+    ],
+    robots: { index: true, follow: true },
+    alternates: { canonical: "https://www.tncomputers.in/" },
+    openGraph: {
+      title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+      description: "Shop new & refurbished laptops, gaming PCs, and custom builds at TN Computers — Chennai’s trusted laptop showroom",
+      url: "https://www.tncomputers.in/",
+      type: "website",
+      siteName: "TN Computers",
+      images: [
+        {
+          url: "https://www.tncomputers.in/banner/Banner1.jpg",
+          width: 1200,
+          height: 630,
+          alt: "TN Computers Computer Shop Chennai"
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+      description: "Your trusted laptop store in Chennai—new laptops, refurbished systems, gaming PCs & more.",
+      images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+    },
+    other: { "application/ld+json": JSON.stringify([computerStoreSchema, faqSchema]) }
+  };
+}
 
-      <body>
-        {/* Page Content */}
+
+
+const HomePage = () => {
+  // const [index, setIndex] = useState(0)
+
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setIndex((prev) => (prev + 1) % slides.length)
+  //   }, 5000)
+  //   return () => clearInterval(timer)
+  // }, [])
+
+
+  return (
+    <>
+     
+      <div>
+        {/* Hero Section */}
         <Carousel />
+
         <TopCategories />
         <NewArrivals />
         <ProductPromoSection />
-        <HeroSectionTrustedLap />
+        <HeroSectionTrustedLap/>
+
         <FeatureHighlights />
-      </body>
-    </Fragment>
-  );
+   
+
+      </div>
+    </>
+  )
 }
+
+export default HomePage
