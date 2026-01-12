@@ -1,21 +1,17 @@
 
 import type { Metadata } from "next";
-import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import CategoryCard from './components/CategoryCard';
-import { fadeUp } from './data/animations';
 import NewArrivals from './components/newArrivals';
 import ProductPromoSection from './components/ProductPromoSection';
 import FeatureHighlights from './components/FeatureHighlights';
-import BrandsSection from './components/BrandsSection';
-import CustomerReviewSection from './components/CustomerReviewSection';
 import Carousel from './components/Carousel';
 import TopCategories from './components/TopCategories';
-import { useUser } from '../../context/UserContext';
-import logo from "../../public/tn-computers-logo.png";
-import banner from "../../public/banner/Banner1.jpg"
+
 
 import HeroSectionTrustedLap from './components/trustedLaptop';
+import { baseUrl } from "../../api-endpoints/ApiUrls";
+import { p } from "framer-motion/client";
+
+export const dynamic = 'force-dynamic'; // 🔥 ensure SSR
 
 export async function generateMetadata(): Promise<Metadata> {
   const computerStoreSchema = {
@@ -114,7 +110,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       " Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
 
-      keywords: [
+    keywords: [
       "second hand laptop chennai",
       "refurbished laptop chennai",
       "used laptop in chennai",
@@ -124,8 +120,8 @@ export async function generateMetadata(): Promise<Metadata> {
       "buy laptop online india",
       "computer accessories shop chennai",
     ],
-    
-      robots: {
+
+    robots: {
       index: true,
       follow: true,
     },
@@ -168,8 +164,32 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+async function getHomeData() {
+  const vendorId = 66;
 
-const HomePage = () => {
+  try {
+    const [bannerRes, categoryRes, productRes] = await Promise.all([
+      fetch(`${baseUrl}/banners/?vendorId=${vendorId}`, { cache: "no-store" }),
+      fetch(`${baseUrl}/api/categories/?vendor_id=${vendorId}`, { cache: "no-store" }),
+      fetch(`${baseUrl}/api/products/?vendor_id=${vendorId}`, { cache: "no-store" }),
+    ]);
+
+    const banners = bannerRes.ok ? (await bannerRes.json())?.banners || [] : [];
+    const categories = categoryRes.ok ? (await categoryRes.json()) || [] : [];
+    const products = productRes.ok ? (await productRes.json()) || [] : [];
+
+    return { banners, categories, products };
+  } catch {
+    return { banners: [], categories: [], products: [] };
+  }
+}
+
+
+const HomePage = async () => {
+  // const { banners } = await getHomeData();
+  const { banners, categories, products } = await getHomeData();
+  console.log(products, 'products data in home page');
+  console.log(categories, 'categories data in home page');
   // const [index, setIndex] = useState(0)
 
   // useEffect(() => {
@@ -182,22 +202,26 @@ const HomePage = () => {
 
   return (
     <>
-     
+
       <div>
         {/* Hero Section */}
-        <Carousel />
+        <Carousel banners={banners} />
 
-        <TopCategories />
-        <NewArrivals />
+        {/* <TopCategories /> */}
+        <TopCategories categories={categories} />
+        {/* <NewArrivals /> */}
+        <NewArrivals products={products} />
         <ProductPromoSection />
-        <HeroSectionTrustedLap/>
+        <HeroSectionTrustedLap />
 
         <FeatureHighlights />
-   
+
 
       </div>
     </>
   )
 }
 
-export default HomePage
+export default HomePage;
+
+
