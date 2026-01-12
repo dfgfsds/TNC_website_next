@@ -41,3 +41,21 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+  .animate-pulse-slow {
+      animation: pulse 6s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.2;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+
+      100% {
+        opacity: 0.2;
+      }
+    }
