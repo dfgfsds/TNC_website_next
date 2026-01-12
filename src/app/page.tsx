@@ -17,8 +17,34 @@ import banner from "../../public/banner/Banner1.jpg"
 
 import HeroSectionTrustedLap from './components/trustedLaptop';
 
-export async function generateMetadata() {
-  const computerStoreSchema = {
+
+export const metadata = {
+  title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+  description: "Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
+  openGraph: {
+    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+    description: "Shop new & refurbished laptops, gaming PCs, and custom builds at TN Computers — Chennai’s trusted laptop showroom.",
+    url: "https://tncomputers.in",
+    type: "website",
+    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
+    description: "Your trusted laptop store in Chennai—new laptops, refurbished systems, gaming PCs & more.",
+    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+  },
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://www.tncomputers.in/"
+  }
+};
+
+
+
+const HomePage = () => {
+
+   const computerStoreSchema = {
     "@context": "https://schema.org",
     "@type": "ComputerStore",
     "@id": "https://www.tncomputers.in/#store",
@@ -57,6 +83,7 @@ export async function generateMetadata() {
     }
   };
 
+  // JSON-LD FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -95,47 +122,6 @@ export async function generateMetadata() {
       }
     ]
   };
-
-  return {
-    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
-    description: "Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
-    keywords: [
-      "second hand laptop chennai",
-      "refurbished laptop chennai",
-      "gaming laptop in chennai",
-      "gaming pc build chennai",
-      "best computer shop in chennai"
-    ],
-    robots: { index: true, follow: true },
-    alternates: { canonical: "https://www.tncomputers.in/" },
-    openGraph: {
-      title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
-      description: "Shop new & refurbished laptops, gaming PCs, and custom builds at TN Computers — Chennai’s trusted laptop showroom",
-      url: "https://www.tncomputers.in/",
-      type: "website",
-      siteName: "TN Computers",
-      images: [
-        {
-          url: "https://www.tncomputers.in/banner/Banner1.jpg",
-          width: 1200,
-          height: 630,
-          alt: "TN Computers Computer Shop Chennai"
-        }
-      ]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
-      description: "Your trusted laptop store in Chennai—new laptops, refurbished systems, gaming PCs & more.",
-      images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
-    },
-    other: { "application/ld+json": JSON.stringify([computerStoreSchema, faqSchema]) }
-  };
-}
-
-
-
-const HomePage = () => {
   // const [index, setIndex] = useState(0)
 
   // useEffect(() => {
@@ -148,6 +134,12 @@ const HomePage = () => {
 
   return (
     <>
+     <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([computerStoreSchema, faqSchema]) }}
+        />
+      </head>
      
       <div>
         {/* Hero Section */}
