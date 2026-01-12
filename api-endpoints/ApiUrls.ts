@@ -1,5 +1,5 @@
-export const baseUrl = 'https://ecomapi.ftdigitalsolutions.org';
-// export const baseUrl = 'https://test-ecomapi.justvy.in';
+// export const baseUrl = 'https://ecomapi.ftdigitalsolutions.org';
+export const baseUrl = 'https://test-ecomapi.justvy.in';
 
 
 const cartCreate = `${baseUrl}/api/carts/`;
