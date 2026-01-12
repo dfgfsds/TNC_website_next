@@ -43,39 +43,53 @@ export const metadata = {
 
 
 
+// async function getHomeData() {
+//   const vendorId = 66;
+
+//   try {
+//     const [bannerRes, categoryRes, productRes] = await Promise.all([
+//       axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`),
+//       axios.get(`${baseUrl}/api/categories/?vendor_id=${vendorId}`),
+//       axios.get(`${baseUrl}/api/products/?vendor_id=${vendorId}`),
+//     ]);
+
+//     return {
+//       banners: bannerRes?.data?.banners || [],
+//       categories: categoryRes?.data?.data || categoryRes?.data || [],
+//       products: productRes?.data?.data || productRes?.data || [],
+//     };
+//   } catch (error) {
+//     console.error("Home SSR API Error:", error);
+//     return {
+//       banners: [],
+//       categories: [],
+//       products: [],
+//     };
+//   }
+// }
 async function getHomeData() {
   const vendorId = 66;
 
-  try {
-    const [bannerRes, categoryRes, productRes] = await Promise.all([
-      axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`),
-      axios.get(`${baseUrl}/api/categories/?vendor_id=${vendorId}`),
-      axios.get(`${baseUrl}/api/products/?vendor_id=${vendorId}`),
-    ]);
+  const [bannersRes, categoriesRes, productsRes] = await Promise.all([
+    fetch(`${baseUrl}/banners/?vendorId=${vendorId}`, { cache: 'no-store' }),
+    fetch(`${baseUrl}/api/categories/?vendor_id=${vendorId}`, { cache: 'no-store' }),
+    fetch(`${baseUrl}/api/products/?vendor_id=${vendorId}`, { cache: 'no-store' }),
+  ]);
 
-    return {
-      banners: bannerRes?.data?.banners || [],
-      categories: categoryRes?.data?.data || categoryRes?.data || [],
-      products: productRes?.data?.data || productRes?.data || [],
-    };
-  } catch (error) {
-    console.error("Home SSR API Error:", error);
-    return {
-      banners: [],
-      categories: [],
-      products: [],
-    };
-  }
+  return {
+    banners: (await bannersRes.json())?.banners ?? [],
+    categories: (await categoriesRes.json())?.data ?? [],
+    products: (await productsRes.json())?.data ?? [],
+  };
 }
 
 
 
-const HomePage = async () => {
+// const HomePage = async () => {
+export default async function HomePage() {
   // const { banners } = await getHomeData();
   const { banners, categories, products } = await getHomeData();
-  console.log(banners, 'banners in home page');
-  console.log(categories, 'categories in home page');
-  console.log(products, 'products in home page');
+
   const computerStoreSchema = {
     "@context": "https://schema.org",
     "@type": "ComputerStore",
@@ -193,6 +207,6 @@ const HomePage = async () => {
   )
 }
 
-export default HomePage;
+// export default HomePage;
 
 
