@@ -79,7 +79,6 @@ const NavbarPage = () => {
     { path: '/', label: 'Home' },
     { path: '/shop', label: 'Shop' },
     { path: '/categories', label: 'Categories' },
-       { path: '/custom-pc-build', label: 'Custom PC' },
     { path: '/about-us', label: 'About' },
     { path: '/blog', label: 'Blog' },
     { path: '/contact-us', label: 'Contact' },
