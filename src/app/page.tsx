@@ -1,16 +1,21 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import CategoryCard from './components/CategoryCard';
+import { fadeUp } from './data/animations';
 import NewArrivals from './components/newArrivals';
 import ProductPromoSection from './components/ProductPromoSection';
 import FeatureHighlights from './components/FeatureHighlights';
+import BrandsSection from './components/BrandsSection';
+import CustomerReviewSection from './components/CustomerReviewSection';
 import Carousel from './components/Carousel';
 import TopCategories from './components/TopCategories';
-
+import { useUser } from '../../context/UserContext';
+import logo from "../../public/tn-computers-logo.png";
+import banner from "../../public/banner/Banner1.jpg"
 
 import HeroSectionTrustedLap from './components/trustedLaptop';
-import { baseUrl } from "../../api-endpoints/ApiUrls";
-
-
-export const dynamic = 'force-dynamic'; // 🔥 ensure SSR
-
+import axios from 'axios';
+import { baseUrl } from '../../api-endpoints/ApiUrls';
 
 
 export const metadata = {
@@ -43,26 +48,34 @@ async function getHomeData() {
 
   try {
     const [bannerRes, categoryRes, productRes] = await Promise.all([
-      fetch(`${baseUrl}/banners/?vendorId=${vendorId}`, { cache: "no-store" }),
-      fetch(`${baseUrl}/api/categories/?vendor_id=${vendorId}`, { cache: "no-store" }),
-      fetch(`${baseUrl}/api/products/?vendor_id=${vendorId}`, { cache: "no-store" }),
+      axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`),
+      axios.get(`${baseUrl}/api/categories/?vendor_id=${vendorId}`),
+      axios.get(`${baseUrl}/api/products/?vendor_id=${vendorId}`),
     ]);
 
-    const banners = bannerRes.ok ? (await bannerRes.json())?.banners || [] : [];
-    const categories = categoryRes.ok ? (await categoryRes.json()) || [] : [];
-    const products = productRes.ok ? (await productRes.json()) || [] : [];
-
-    return { banners, categories, products };
-  } catch {
-    return { banners: [], categories: [], products: [] };
+    return {
+      banners: bannerRes?.data?.banners || [],
+      categories: categoryRes?.data?.data || categoryRes?.data || [],
+      products: productRes?.data?.data || productRes?.data || [],
+    };
+  } catch (error) {
+    console.error("Home SSR API Error:", error);
+    return {
+      banners: [],
+      categories: [],
+      products: [],
+    };
   }
 }
+
 
 
 const HomePage = async () => {
   // const { banners } = await getHomeData();
   const { banners, categories, products } = await getHomeData();
-
+  console.log(banners, 'banners in home page');
+  console.log(categories, 'categories in home page');
+  console.log(products, 'products in home page');
   const computerStoreSchema = {
     "@context": "https://schema.org",
     "@type": "ComputerStore",
@@ -136,13 +149,11 @@ const HomePage = async () => {
         "name": "Can I build a custom Gaming PC at TN Computers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text":
-            "Yes, we specialize in custom PC builds. As a leading Laptop Store in Chennai, we can assemble high-performance gaming PCs and editing workstations tailored to your budget.",
-        },
-      },
-    ],
+          "text": "Yes, we specialize in custom PC builds. As a leading Laptop Store in Chennai, we can assemble high-performance gaming PCs and editing workstations tailored to your budget."
+        }
+      }
+    ]
   };
-
   // const [index, setIndex] = useState(0)
 
   // useEffect(() => {
