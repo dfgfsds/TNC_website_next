@@ -303,19 +303,43 @@ export default function Footer() {
             <p className="text-gray-100 mt-2">Mon – Fri: 9am – 5pm</p>
 
             <div className="flex gap-4 mt-4">
-              <a href="https://www.facebook.com/tncomputershardware" target="_blank">
-                <FaFacebookF className="text-xl text-white hover:text-blue-500" />
-              </a>
-              <a href="https://x.com/Tncomputerstech" target="_blank">
-                <FaTwitter className="text-xl text-white hover:text-sky-400" />
-              </a>
-              <a href="https://www.youtube.com/@TN_Computers" target="_blank">
-                <FaYoutube className="text-xl text-white hover:text-red-500" />
-              </a>
-              <a href="https://www.instagram.com/tn__computers/" target="_blank">
-                <FaInstagram className="text-xl text-white hover:text-pink-500" />
-              </a>
-            </div>
+  <a
+    href="https://www.facebook.com/tncomputershardware"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="TN Computers Facebook Page"
+  >
+    <FaFacebookF className="text-xl text-white hover:text-blue-500" />
+  </a>
+
+  <a
+    href="https://x.com/Tncomputerstech"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="TN Computers Twitter Profile"
+  >
+    <FaTwitter className="text-xl text-white hover:text-sky-400" />
+  </a>
+
+  <a
+    href="https://www.youtube.com/@TN_Computers"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="TN Computers YouTube Channel"
+  >
+    <FaYoutube className="text-xl text-white hover:text-red-500" />
+  </a>
+
+  <a
+    href="https://www.instagram.com/tn__computers/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="TN Computers Instagram Profile"
+  >
+    <FaInstagram className="text-xl text-white hover:text-pink-500" />
+  </a>
+</div>
+
           </div>
 
         </div>
