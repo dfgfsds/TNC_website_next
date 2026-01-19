@@ -154,7 +154,7 @@ const NavbarPage = () => {
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">0</span>
             </div>
 
-            <Link href="/cart">
+            <Link href="/cart" aria-label="View Cart">
               <div className="relative">
                 <FaShoppingCart className="text-lg text-black" />
                 {cartCount > 0 && (
