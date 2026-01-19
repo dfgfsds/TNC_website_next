@@ -362,7 +362,7 @@ const NavbarPage = () => {
               )}
             </div>
 
-            <Link href="/cart">
+            <Link href="/cart" aria-label="View Cart">
               <div className="relative cursor-pointer">
                 <FaShoppingCart className="text-xl" />
                 {cartCount > 0 && (
