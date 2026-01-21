@@ -21,6 +21,16 @@ import { baseUrl, baseUrlTest } from '../../api-endpoints/ApiUrls';
 export const metadata = {
   title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
   description: "Visit TN Computers, the Best computer shop in Chennai. Shop new & Branded laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
+  keywords: [
+    "second hand laptop chennai",
+    "refurbished laptop chennai",
+    "used laptop in chennai",
+    "gaming laptop in chennai",
+    "gaming pc build chennai",
+    "best computer shop in chennai",
+    "buy laptop online india",
+    "computer accessories shop chennai"
+  ],
   openGraph: {
     title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
     description: "Shop new & refurbished laptops, gaming PCs, and custom builds at TN Computers — Chennai’s trusted laptop showroom.",
