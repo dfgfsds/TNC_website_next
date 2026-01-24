@@ -6,10 +6,10 @@ export async function generateMetadata() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ComputerStore",
-    "@id": "https://tncomputers.in",
+    "@id": "https://www.tncomputers.in",
     name: "TN Computers",
-    url: "https://tncomputers.in/contact-us",
-    image: `https://tncomputers.in/${logo.src}`,
+    url: "https://www.tncomputers.in/contact-us",
+    image: `https://www.tncomputers.in/tn-computers-logo.png`,
     telephone: "+91-7429667788",
  
     priceRange: "₹₹",
@@ -57,17 +57,17 @@ export async function generateMetadata() {
       follow: true,
     },
     alternates: {
-      canonical: "https://tncomputers.in/contact-us",
+      canonical: "https://www.tncomputers.in/contact-us",
     },
     openGraph: {
       title: "Contact TN Computers | Best Laptop Showroom in Chennai",
       description:
         "Reach TN Computers for laptops, refurbished systems, gaming PCs & IT accessories. Call us or visit our Chennai showroom today!",
-      url: "https://tncomputers.in/contact-us",
+      url: "https://www.tncomputers.in/contact-us",
       type: "website",
       images: [
         {
-          url: "https://tncomputers.in/logo.png",
+          url: "https://www.tncomputers.in/tn-computers-logo.png",
           width: 1200,
           height: 630,
           alt: "TN Computers Contact Page",
@@ -79,13 +79,13 @@ export async function generateMetadata() {
       title: "Contact TN Computers | Best Laptop Showroom in Chennai",
       description:
         "Get in touch with TN Computers for expert laptop guidance, refurbished systems & gaming setups.",
-      images: ["https://tncomputers.in/logo.png"],
+      images: ["https://www.tncomputers.in/tn-computers-logo.png"],
     },
     other: {
       "application/ld+json": JSON.stringify(schema),
     },
     icons: {
-      icon: "https://tncomputers.in/favicon.ico",
+      icon: "https://www.tncomputers.in/favicon.ico",
     },
   };
 }
