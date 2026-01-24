@@ -1,3 +1,4 @@
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Script from "next/script";
@@ -199,11 +200,15 @@ export default async function HomePage() {
     <>
 
     
-          <Script
-          type="application/ld+json"
-              strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify([computerStoreSchema, faqSchema]) }}
-        />
+   <Script
+  id="home-jsonld-schema"
+  type="application/ld+json"
+  strategy="beforeInteractive"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify([computerStoreSchema, faqSchema]),
+  }}
+/>
+
    
 
       <div>
