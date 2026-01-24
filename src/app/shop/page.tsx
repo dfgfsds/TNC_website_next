@@ -85,7 +85,7 @@ export async function generateMetadata() {
       locale: "en_IN",
       images: [
         {
-          url: "https://www.tncomputers.in/tn-computers-logo.png",
+          url: "https://www.tncomputers.in/prebuilt-pcs.jpg",
           width: 1200,
           height: 630,
           alt: "TN Computers",
@@ -98,7 +98,7 @@ export async function generateMetadata() {
       title: "Buy Laptops, Desktops & Computer Accessories Online",
       description:
         "Shop the best new and refurbished laptops and desktops in Chennai at TN Computers.",
-      images: ["https://www.tncomputers.in/tn-computers-logo.png"],
+      images: ["https://www.tncomputers.in/prebuilt-pcs.jpg"],
     },
 
     other: {

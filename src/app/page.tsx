@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Script from "next/script";
 import CategoryCard from './components/CategoryCard';
 import { fadeUp } from './data/animations';
 import NewArrivals from './components/newArrivals';
@@ -12,6 +13,7 @@ import TopCategories from './components/TopCategories';
 import { useUser } from '../../context/UserContext';
 import logo from "../../public/tn-computers-logo.png";
 import banner from "../../public/banner/Banner1.jpg"
+
 
 import HeroSectionTrustedLap from './components/trustedLaptop';
 import axios from 'axios';
@@ -144,7 +146,7 @@ export default async function HomePage() {
     }
   };
 
-  // JSON-LD FAQ Schema
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -196,12 +198,13 @@ export default async function HomePage() {
   return (
     <>
 
-      <head>
-        <script
+    
+          <Script
           type="application/ld+json"
+              strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify([computerStoreSchema, faqSchema]) }}
         />
-      </head>
+   
 
       <div>
         {/* Hero Section */}

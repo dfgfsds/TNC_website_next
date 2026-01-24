@@ -97,7 +97,7 @@ export default function BuildPC() {
 
         <div className="md:w-1/2 z-10">
           <Image
-            src="https://pcbros.tech/cdn/shop/products/PXL_20220407_135813056.PORTRAIT.jpg"
+            src="/about1.webp"
             alt="Custom PC"
             width={600}
             height={600}
