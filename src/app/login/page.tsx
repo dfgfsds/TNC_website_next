@@ -8,7 +8,9 @@ const LoginPage = () => {
    const router = useRouter();
   const [model, setModel] = useState(true);
   return (
+    <>
     <LoginModal open={model} handleClose={() => router.push('/')} />
+      </>
   )
 }
 
