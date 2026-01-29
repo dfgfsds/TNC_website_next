@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'headphone',
     'hard-drive',
     'keyboard-and-mouse',
-    'custom-pc-build',
+    // 'custom-pc-build',
     'custom-cables',
     'pc-components',
     'ram',
