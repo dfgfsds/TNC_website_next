@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact-us',
     '/refund-policy',
     '/privacy-policy',
+    '/custom-pc-build',
     '/terms',
     '/categories',
     '/profile',
@@ -21,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'headphone',
     'hard-drive',
     'keyboard-and-mouse',
-    // 'custom-pc-build',
+     
     'custom-cables',
     'pc-components',
     'ram',
