@@ -1,9 +1,11 @@
 import type { MetadataRoute } from 'next'
+import categorySeo from '@/app/data/categorySeo.json'
 
 const baseUrl = 'https://www.tncomputers.in'
-const lastMod = new Date()
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastMod = new Date()
+
   const staticRoutes = [
     '',
     '/shop',
@@ -18,30 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/cart',
   ]
 
-  const categorySlugs = [
-    'headphone',
-    'hard-drive',
-    'keyboard-and-mouse',
-     
-    'custom-cables',
-    'pc-components',
-    'ram',
-    'amd',
-    'cpu-cooler',
-    'monitors',
-    'graphics-card',
-    'intel',
-    'power-supply',
-    'ssd',
-    'processor',
-    'cabinet',
-    'desktops',
-    'laptops',
-    'barcode-scanner',
-    'printer',
-    'gamepad',
-    'refurbished-laptops',
-  ]
+  const categorySlugs = Object.keys(categorySeo)
 
   return [
     // 🔹 Static pages
@@ -51,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: route === '' ? 1.0 : 0.8,
     })),
 
-    // 🔹 Category pages
+    // 🔹 Category pages (AUTO from JSON)
     ...categorySlugs.map((slug) => ({
       url: `${baseUrl}/categories/${slug}`,
       lastModified: lastMod,
