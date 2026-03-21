@@ -47,6 +47,8 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
 
+        <meta name="p:domain_verify" content="634c6b0f4bef19f2cafa3c0f0b9b51aa"/>
+
         {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-KVB12R4DF6"
