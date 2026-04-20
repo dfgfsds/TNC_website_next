@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import FeatureHighlights from "../components/FeatureHighlights";
+import toast from "react-hot-toast";
 
 interface Props { }
 
@@ -17,14 +18,14 @@ function ContactSection(props: Props) {
         e.preventDefault();
 
         try {
-            alert("Message sent successfully");
+            toast.success("Message sent successfully");
 
             setName("");
             setEmail("");
             setMessage("");
 
         } catch (error) {
-            alert("Failed to send message");
+            toast.error("Failed to send message");
         }
     };
 
