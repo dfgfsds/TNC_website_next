@@ -231,7 +231,7 @@ function AddressTab() {
     try {
       const upadetApi = await patchUserSelectAddressAPi(
         `user/${userId}/address/${id?.id}`,
-        { updated_by: getUserName }
+        { updated_by: getUserName ? getUserName : "user" }
       );
       if (upadetApi) {
         queryClient.invalidateQueries(['getAddressData'] as InvalidateQueryFilters);
