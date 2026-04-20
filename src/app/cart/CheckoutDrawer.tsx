@@ -61,7 +61,7 @@ const CheckoutDrawer = ({ isOpen, onClose, subtotal }: CheckoutSidebarProps) => 
 
     const handleSelectAddress = async (id: any) => {
         try {
-            const upadetApi = await patchUserSelectAddressAPi(`user/${userId}/address/${id?.id}`, { updated_by: getUserName })
+            const upadetApi = await patchUserSelectAddressAPi(`user/${userId}/address/${id?.id}`, { updated_by: getUserName ? getUserName : "user" })
             if (upadetApi) {
                 queryClient.invalidateQueries(['getAddressData'] as InvalidateQueryFilters);
             }
@@ -230,11 +230,7 @@ const CheckoutDrawer = ({ isOpen, onClose, subtotal }: CheckoutSidebarProps) => 
                             <MapPin className="mx-auto h-8 w-8 text-gray-400" />
                             <p className="mt-2 text-sm text-gray-600">No delivery address found</p>
                             <p className="mt-2 inline-block text-sm text-blue-600 hover:text-blue-700 cursor-pointer"
-                                onClick={() => {
-                                    router.push('/profile?tab=addresses')
-                                }
-                                    //  setOpenMoadl(!openModal)
-                                }
+                                onClick={() => { router.push('/profile?tab=Address') }}
                             >
                                 Add a delivery address
                             </p>

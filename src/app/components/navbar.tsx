@@ -79,7 +79,7 @@ const NavbarPage = () => {
     { path: '/', label: 'Home' },
     { path: '/shop', label: 'Shop' },
     { path: '/categories', label: 'Categories' },
-       { path: '/custom-pc-build', label: 'Custom PC' },
+    { path: '/custom-pc-build', label: 'Custom PC' },
     { path: '/about-us', label: 'About' },
     { path: '/blog', label: 'Blog' },
     { path: '/contact-us', label: 'Contact' },
@@ -416,9 +416,16 @@ const NavbarPage = () => {
 
       <div className="hidden md:block bg-[#a100fe] shadow overflow-x-auto">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-center gap-6 text-sm font-bold text-white uppercase whitespace-nowrap">
-          {categories?.data?.slice(4, 13).map((item: any, index: number) => (
-            <div key={index} className="cursor-pointer" onClick={() => router.push(`/categories/${slugConvert(item.name)}`)}>{item?.name}</div>
-          ))}
+          {categories?.data
+            ?.filter((item: any) =>
+              finalProducts?.some(
+                (p: any) => slugConvert(p.category_name) === slugConvert(item.name)
+              )
+            )
+            ?.slice(4, 13)
+            .map((item: any, index: number) => (
+              <div key={index} className="cursor-pointer" onClick={() => router.push(`/categories/${slugConvert(item.name)}`)}>{item?.name}</div>
+            ))}
         </div>
       </div>
 
