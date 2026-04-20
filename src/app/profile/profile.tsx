@@ -11,6 +11,7 @@ import { patchUserSelectAddressAPi, updateUserAPi } from '../../../api-endpoints
 import { useUser } from '../../../context/UserContext';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import toast from "react-hot-toast";
 
 const tabs = ['Orders',
   //  'Wishlist',
@@ -418,17 +419,20 @@ function AccountInfoTab() {
       const response = await updateUserAPi(`/${user?.data?.id}`, {
         ...formData,
         contact_number: formData.phone,
-        updated_by: user?.data?.name,
+        updated_by: user?.data?.name || "user",
         role: 3,
         vendor: vendorId,
       });
 
       if (response) {
         queryClient.invalidateQueries(["gerUserData"] as InvalidateQueryFilters);
-        // Optional: show toast or success message
+
+        toast.success("Profile updated successfully");
       }
     } catch (error) {
       console.error("Update failed:", error);
+
+      toast.error("Failed to update profile");
     }
   };
 

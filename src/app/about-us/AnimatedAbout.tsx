@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
-import aboutimg from "../../../public/tn-about.jpg"
+import aboutimg from "../../../public/acer.png"
 
 export default function AnimatedAbout() {
     const ref = useRef(null);
@@ -35,7 +35,7 @@ export default function AnimatedAbout() {
             >
                 {/* Image */}
                 <motion.div
-                    className="relative w-full h-64 sm:h-80 md:h-[400px]  rounded-2xl overflow-hidden shadow-md"
+                    className="relative w-full h-64 sm:h-80 md:h-[400px]  rounded-2xl overflow-hidden shadow-none"
                     variants={fadeInUp}
                     initial="hidden"
                     animate={controls}
@@ -56,11 +56,11 @@ export default function AnimatedAbout() {
                     animate={controls}
                 >
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
-                       About Us – TN Computers
+                        About Us – TN Computers
                     </h2>
 
                     <p className="text-base sm:text-lg text-gray-700 leading-relaxed bg-gray-50 p-5 sm:p-6 rounded-xl border border-gray-200 shadow-sm">
-                       Welcome to TN Computers, one of Chennai’s most trusted destinations for new laptops, desktops, custom-built PCs, and refurbished systems. With years of experience in the computer retail and service industry, we are committed to providing reliable technology, expert support, and cost-effective solutions for students, professionals, businesses, and gaming enthusiasts.
+                        Welcome to TN Computers, one of Chennai’s most trusted destinations for new laptops, desktops, custom-built PCs, and refurbished systems. With years of experience in the computer retail and service industry, we are committed to providing reliable technology, expert support, and cost-effective solutions for students, professionals, businesses, and gaming enthusiasts.
                     </p>
 
                     <div className="flex justify-center md:justify-start">
@@ -79,7 +79,7 @@ export default function AnimatedAbout() {
                 </motion.div>
             </div>
 
-        
+
         </section>
     );
 }

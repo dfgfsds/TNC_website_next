@@ -147,7 +147,7 @@ const NavbarPage = () => {
 
 
           <div className="flex items-center gap-4">
-            <FaUser className="text-lg text-black" onClick={() => setSignInModal(true)} />
+            <FaUser className="text-lg text-black" onClick={() => user ? router.push('/profile') : setSignInModal(true)} />
 
             <div className="relative">
               <FaHeart className="text-lg text-black" />
@@ -324,7 +324,10 @@ const NavbarPage = () => {
 
           <div className="flex items-center gap-4 text-sm relative">
             <div className="relative" ref={userMenuRef}>
-              <FaUser className="cursor-pointer" onClick={() => setUserMenuOpen(!userMenuOpen)} />
+              <FaUser
+                className="text-lg text-black cursor-pointer"
+                onClick={() => user ? router.push('/profile') : setSignInModal(true)}
+              />
               {userMenuOpen && (
                 // <div className="absolute right-0 mt-2 w-40 bg-white border shadow-md rounded-md z-20">
                 //   <div onClick={() => setSignInModal(true)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</div>
