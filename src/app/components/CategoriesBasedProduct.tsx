@@ -64,9 +64,8 @@ export default function CategoryClient({ slug }: { slug: string }) {
               </p>
 
               <div
-                className={`prose max-w-none ${
-                  showFullContent ? '' : 'max-h-60 overflow-hidden'
-                }`}
+                className={`prose max-w-none ${showFullContent ? '' : 'max-h-60 overflow-hidden'
+                  }`}
                 dangerouslySetInnerHTML={{
                   __html: seoData.content.body,
                 }}

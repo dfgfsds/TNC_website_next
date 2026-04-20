@@ -29,9 +29,9 @@ export default function AddressForm({ openModal, handleClose, editData }: Addres
     const [userName, setUserName] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const queryClient = useQueryClient();
-     const { user } = useUser();
+    const { user } = useUser();
 
-  useEffect(() => {
+    useEffect(() => {
 
         setUserName(user?.data?.name);
         setUserId(user?.data?.id);
@@ -154,7 +154,7 @@ export default function AddressForm({ openModal, handleClose, editData }: Addres
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-black">Landmark</label>
-                            <textarea name="landmark" value={formData.landmark} onChange={handleChange} required className={inputClass} />
+                            <textarea name="landmark" value={formData.landmark} onChange={handleChange} className={inputClass} />
                         </div>
                     </div>
 

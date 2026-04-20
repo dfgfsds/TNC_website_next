@@ -199,13 +199,15 @@ import dynamic from 'next/dynamic';
 import { Phone } from 'lucide-react';
 import logoImg from '../../../public/tn-computers-logo.png';
 import TopFooter from './TopFooter';
+import razorpayLogo from '../../../public/razorpay_logo.jpeg';
 
 /* 🔥 Lazy-loaded icons (PageSpeed friendly) */
 const FaPhoneAlt = dynamic(() => import('react-icons/fa').then(m => m.FaPhoneAlt));
 const FaFacebookF = dynamic(() => import('react-icons/fa').then(m => m.FaFacebookF));
-const FaTwitter = dynamic(() => import('react-icons/fa').then(m => m.FaTwitter));
+const FaXTwitter = dynamic(() => import('react-icons/fa6').then(m => m.FaXTwitter));
 const FaYoutube = dynamic(() => import('react-icons/fa').then(m => m.FaYoutube));
 const FaInstagram = dynamic(() => import('react-icons/fa').then(m => m.FaInstagram));
+const SiRazorpay = dynamic(() => import('react-icons/si').then(m => m.SiRazorpay));
 
 export default function Footer() {
   return (
@@ -303,42 +305,42 @@ export default function Footer() {
             <p className="text-gray-100 mt-2">Mon – Fri: 9am – 5pm</p>
 
             <div className="flex gap-4 mt-4">
-  <a
-    href="https://www.facebook.com/tncomputershardware"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="TN Computers Facebook Page"
-  >
-    <FaFacebookF className="text-xl text-white hover:text-blue-500" />
-  </a>
+              <a
+                href="https://www.facebook.com/tncomputershardware"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TN Computers Facebook Page"
+              >
+                <FaFacebookF className="text-xl text-white hover:text-blue-500" />
+              </a>
 
-  <a
-    href="https://x.com/Tncomputerstech"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="TN Computers Twitter Profile"
-  >
-    <FaTwitter className="text-xl text-white hover:text-sky-400" />
-  </a>
+              <a
+                href="https://x.com/Tncomputerstech"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TN Computers X (Twitter) Profile"
+              >
+                <FaXTwitter className="text-xl text-white hover:text-sky-400" />
+              </a>
 
-  <a
-    href="https://www.youtube.com/@TN_Computers"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="TN Computers YouTube Channel"
-  >
-    <FaYoutube className="text-xl text-white hover:text-red-500" />
-  </a>
+              <a
+                href="https://www.youtube.com/@TN_Computers"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TN Computers YouTube Channel"
+              >
+                <FaYoutube className="text-xl text-white hover:text-red-500" />
+              </a>
 
-  <a
-    href="https://www.instagram.com/tn__computers/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="TN Computers Instagram Profile"
-  >
-    <FaInstagram className="text-xl text-white hover:text-pink-500" />
-  </a>
-</div>
+              <a
+                href="https://www.instagram.com/tn__computers/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TN Computers Instagram Profile"
+              >
+                <FaInstagram className="text-xl text-white hover:text-pink-500" />
+              </a>
+            </div>
 
           </div>
 
@@ -357,10 +359,18 @@ export default function Footer() {
             </a>. All rights reserved.
           </p>
 
-          <div className="flex gap-3 mt-4 md:mt-0">
-            <Image src="/assets/mastercard.svg" alt="Mastercard" width={48} height={30} />
-            <Image src="/assets/visa.svg" alt="Visa" width={48} height={30} />
-            <Image src="/assets/paypal.svg" alt="Paypal" width={48} height={30} />
+          {/* <div className="flex gap-3 mt-4 md:mt-0">
+            <SiRazorpay className="text-4xl text-white" />
+          </div> */}
+
+          <div className="mt-4 md:mt-0">
+            <Image
+              src={razorpayLogo}
+              alt="Razorpay"
+              width={140}
+              height={45}
+              className="object-contain"
+            />
           </div>
         </div>
       </div>
