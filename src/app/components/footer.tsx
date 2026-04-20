@@ -379,7 +379,7 @@ export default function Footer() {
       <Link
         href="tel:+917429667788"
         aria-label="Call Us"
-        className="fixed bottom-28 left-4 z-50 flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-600 text-white shadow-lg hover:scale-110 transition"
+        className="fixed bottom-[124px] md:bottom-28 left-4 z-50 flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-600 text-white shadow-lg hover:scale-110 transition"
       >
         <Phone size={26} />
       </Link>
