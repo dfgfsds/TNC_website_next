@@ -200,6 +200,7 @@ import { Phone } from 'lucide-react';
 import logoImg from '../../../public/tn-computers-logo.png';
 import TopFooter from './TopFooter';
 import razorpayLogo from '../../../public/razorpay_logo.jpeg';
+import { FaEnvelope } from 'react-icons/fa';
 
 /* 🔥 Lazy-loaded icons (PageSpeed friendly) */
 const FaPhoneAlt = dynamic(() => import('react-icons/fa').then(m => m.FaPhoneAlt));
@@ -220,7 +221,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row justify-between gap-10 text-white">
 
             {/* Phone */}
-            <div className="flex items-center gap-4">
+            {/* <div className="flex items-center gap-4">
               <FaPhoneAlt className="w-8 h-8 text-white" />
               <div>
                 <p className="text-sm text-gray-100">Order and Service</p>
@@ -231,7 +232,53 @@ export default function Footer() {
                   +91 74296 67788
                 </a>
               </div>
+            </div> */}
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              <div className='space-y-9'>
+                {/* Phone */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md">
+                    <FaPhoneAlt className="w-7 h-7 text-white" />
+                  </div>
+
+                  <div>
+                    <a
+                      href="tel:+917429667788"
+                      className="text-2xl font-bold text-gray-100 hover:underline"
+                    >
+                      +91 74296 67788
+                    </a>
+
+                    <p className="text-sm text-gray-200 mt-1">
+                      Order and Service
+                    </p>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md">
+                    <FaEnvelope className="w-7 h-7 text-white" />
+                  </div>
+
+                  <div>
+                    <a
+                      href="mailto:info@tncomputers.in"
+                      className="text-xl font-bold text-gray-100 hover:underline break-all"
+                    >
+                      info@tncomputers.in
+                    </a>
+
+                    <p className="text-sm text-gray-200 mt-1">
+                      Email Support
+                    </p>
+                  </div>
+                </div>
+              </div>
+
             </div>
+
 
             {/* Newsletter */}
             <div className="w-full lg:w-1/2">

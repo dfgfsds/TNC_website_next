@@ -2,94 +2,195 @@ import FaqSection from "../components/contactFaq";
 import ContactSection from "./ContactSection";
 import logo from "../../../public/logo.png";
 
+// export async function generateMetadata() {
+//   const schema = {
+//     "@context": "https://schema.org",
+//     "@type": "ComputerStore",
+//     "@id": "https://www.tncomputers.in",
+//     name: "TN Computers",
+//     url: "https://www.tncomputers.in/contact-us",
+//     image: `https://www.tncomputers.in/tn-computers-logo.png`,
+//     telephone: "+91-7429667788",
+ 
+//     priceRange: "₹₹",
+//     address: {
+//       "@type": "PostalAddress",
+//       streetAddress: "126 B, Vanniar St, Bangaru Colony, K. K. Nagar",
+//       addressLocality: "Chennai",
+//       addressRegion: "TN",
+//       postalCode: "600078",
+//       addressCountry: "IN",
+//     },
+//     openingHoursSpecification: {
+//       "@type": "OpeningHoursSpecification",
+//       dayOfWeek: [
+//         "Monday",
+//         "Tuesday",
+//         "Wednesday",
+//         "Thursday",
+//         "Friday",
+//         "Saturday",
+//       ],
+//       opens: "09:00",
+//       closes: "22:00",
+//     },
+//     sameAs: [
+//       "https://www.facebook.com/tncomputershardware",
+//       "https://www.instagram.com/tn__computers/",
+//       "https://www.youtube.com/@TN_Computers",
+//     ],
+//     contactPoint: {
+//       "@type": "ContactPoint",
+//       telephone: "+91-7429667788",
+//       contactType: "sales",
+//       areaServed: "Chennai",
+//       availableLanguage: ["English", "Tamil"],
+//     },
+//   };
+
+//   return {
+//     title: "Contact TN Computers | Best Laptop Showroom in Chennai",
+//     description:
+//       "Visit TN Computers, the trusted laptop store in Chennai. Contact us for new & refurbished laptops, custom gaming PC builds, and expert IT advice. Call or visit our showroom today!",
+//     robots: {
+//       index: true,
+//       follow: true,
+//     },
+//     alternates: {
+//       canonical: "https://www.tncomputers.in/contact-us",
+//     },
+//     openGraph: {
+//       title: "Contact TN Computers | Best Laptop Showroom in Chennai",
+//       description:
+//         "Reach TN Computers for laptops, refurbished systems, gaming PCs & IT accessories. Call us or visit our Chennai showroom today!",
+//       url: "https://www.tncomputers.in/contact-us",
+//       type: "website",
+//       images: [
+//         {
+//           url: "https://www.tncomputers.in/tn-computers-logo.png",
+//           width: 1200,
+//           height: 630,
+//           alt: "TN Computers Contact Page",
+//         },
+//       ],
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: "Contact TN Computers | Best Laptop Showroom in Chennai",
+//       description:
+//         "Get in touch with TN Computers for expert laptop guidance, refurbished systems & gaming setups.",
+//       images: ["https://www.tncomputers.in/tn-computers-logo.png"],
+//     },
+//     other: {
+//       "application/ld+json": JSON.stringify(schema),
+//     },
+//     icons: {
+//       icon: "https://www.tncomputers.in/favicon.ico",
+//     },
+//   };
+// }
+
+
 export async function generateMetadata() {
+
   const schema = {
     "@context": "https://schema.org",
-    "@type": "ComputerStore",
-    "@id": "https://www.tncomputers.in",
-    name: "TN Computers",
-    url: "https://www.tncomputers.in/contact-us",
-    image: `https://www.tncomputers.in/tn-computers-logo.png`,
-    telephone: "+91-7429667788",
- 
-    priceRange: "₹₹",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "126 B, Vanniar St, Bangaru Colony, K. K. Nagar",
-      addressLocality: "Chennai",
-      addressRegion: "TN",
-      postalCode: "600078",
-      addressCountry: "IN",
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      opens: "09:00",
-      closes: "22:00",
-    },
-    sameAs: [
-      "https://www.facebook.com/tncomputershardware",
-      "https://www.instagram.com/tn__computers/",
-      "https://www.youtube.com/@TN_Computers",
-    ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+91-7429667788",
-      contactType: "sales",
-      areaServed: "Chennai",
-      availableLanguage: ["English", "Tamil"],
-    },
+
+    "@type": "ContactPage",
+
+    "name": "Contact TN Computers",
+
+    "description":
+      "Contact TN Computers Chennai for laptops, gaming PCs, refurbished computers, accessories, printers, custom PC builds, and IT support services.",
+
+    "url": "https://www.tncomputers.in/contact-us",
+
+    "image": "https://www.tncomputers.in/tn-computers-logo.png",
+
+    "mainEntity": {
+      "@type": "Organization",
+
+      "name": "TN Computers",
+
+      "url": "https://www.tncomputers.in",
+
+      "logo": "https://www.tncomputers.in/tn-computers-logo.png",
+
+      "description":
+        "TN Computers is a Chennai-based computer and laptop store offering sales, service, accessories, gaming PCs, and IT solutions."
+    }
   };
 
   return {
     title: "Contact TN Computers | Best Laptop Showroom in Chennai",
+
     description:
-      "Visit TN Computers, the trusted laptop store in Chennai. Contact us for new & refurbished laptops, custom gaming PC builds, and expert IT advice. Call or visit our showroom today!",
+      "Contact TN Computers Chennai for laptops, desktops, accessories & IT support. Call or visit our store for the best deals and expert service.",
+
+    keywords: [
+      "contact TN Computers",
+      "laptop store Chennai contact",
+      "computer shop Chennai phone number",
+      "IT support Chennai contact",
+      "TN Computers address Chennai",
+      "desktop store Chennai contact",
+      "electronics store Chennai contact",
+      "computer service Chennai",
+      "laptop shop near me Chennai",
+    ],
+
     robots: {
       index: true,
       follow: true,
     },
+
     alternates: {
       canonical: "https://www.tncomputers.in/contact-us",
     },
+
     openGraph: {
       title: "Contact TN Computers | Best Laptop Showroom in Chennai",
+
       description:
-        "Reach TN Computers for laptops, refurbished systems, gaming PCs & IT accessories. Call us or visit our Chennai showroom today!",
+        "Contact TN Computers Chennai for laptops, desktops, accessories & IT support. Call or visit our store for the best deals and expert service.",
+
       url: "https://www.tncomputers.in/contact-us",
+
       type: "website",
+
       images: [
         {
           url: "https://www.tncomputers.in/tn-computers-logo.png",
           width: 1200,
           height: 630,
-          alt: "TN Computers Contact Page",
+          alt: "TN Computers Contact Us",
         },
       ],
     },
+
     twitter: {
       card: "summary_large_image",
+
       title: "Contact TN Computers | Best Laptop Showroom in Chennai",
+
       description:
-        "Get in touch with TN Computers for expert laptop guidance, refurbished systems & gaming setups.",
-      images: ["https://www.tncomputers.in/tn-computers-logo.png"],
+        "Contact TN Computers Chennai for laptops, desktops, accessories & IT support. Call or visit our store for the best deals and expert service.",
+
+      images: [
+        "https://www.tncomputers.in/tn-computers-logo.png",
+      ],
     },
+
     other: {
       "application/ld+json": JSON.stringify(schema),
+      "image_src": "https://www.tncomputers.in/tn-computers-logo.png",
     },
+
     icons: {
       icon: "https://www.tncomputers.in/favicon.ico",
     },
   };
 }
-
 
 export default function ContactPage() {
   return (

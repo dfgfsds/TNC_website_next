@@ -67,13 +67,15 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
 
 const products = [
   {
     title: 'GeForce RTX',
     subtitle: '3060Ti',
     tagline: 'THE ULTIMATE PLAY',
-    price: '$599.99',
+    price: '5999.99',
     buttonText: 'Shop Now',
     bgImage:
       'https://cdn.shopify.com/s/files/1/0489/1171/2423/files/razox-img-06.jpg',
@@ -83,7 +85,7 @@ const products = [
     title: 'AORUS ELITE',
     subtitle: 'AX AM5',
     tagline: 'POWER TO THE CORE',
-    price: '$199.99',
+    price: '1999.99',
     buttonText: 'Shop Now',
     bgImage:
       'https://cdn.shopify.com/s/files/1/0489/1171/2423/files/razox-img-07.jpg',
@@ -92,6 +94,7 @@ const products = [
 ];
 
 export default function ProductPromoSection() {
+  const router = useRouter();
   return (
     <section className="py-2 md:py-10 px-4 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -125,12 +128,14 @@ export default function ProductPromoSection() {
               </div>
 
               <div className="flex items-center justify-between mt-4">
-                <span
+                {/* <span
                   className={`${product.priceColor} text-lg md:text-xl font-semibold`}
                 >
                   {product.price}
-                </span>
-                <button className="bg-red-700 text-white font-bold px-4 py-2 rounded shadow hover:bg-red-500 transition">
+                </span> */}
+                <button className="bg-red-700 text-white font-bold px-4 py-2 rounded shadow hover:bg-red-500 transition"
+                  onClick={() => router.push('/categories')}
+                >
                   {product.buttonText} &rarr;
                 </button>
               </div>

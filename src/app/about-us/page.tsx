@@ -18,25 +18,52 @@ import {
 } from 'lucide-react'
 
 export async function generateMetadata() {
+  // const schema = {
+  //   "@context": "https://schema.org",
+  //   "@type": "Store",
+  //   "name": "TN Computers",
+  //   "url": "https://www.tncomputers.in",
+  //   "description": "TN Computers is a trusted laptop store in Chennai offering new laptops, refurbished systems, gaming PCs, and custom-built computers.",
+  //   "image": `https://www.tncomputers.in/${aboutimg.src}`,
+  //   "address": {
+  //     "@type": "PostalAddress",
+  //     "addressLocality": "Chennai",
+  //     "addressRegion": "Tamil Nadu",
+  //     "addressCountry": "India"
+  //   },
+  //   "sameAs": [
+  //     "https://www.facebook.com/tncomputershardware",
+  //     "https://www.youtube.com/@TN_Computers"
+  //   ]
+  // };
+
+  // 👇 REPLACE YOUR EXISTING schema OBJECT WITH THIS
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Store",
-    "name": "TN Computers",
-    "url": "https://www.tncomputers.in",
-    "description": "TN Computers is a trusted laptop store in Chennai offering new laptops, refurbished systems, gaming PCs, and custom-built computers.",
-    "image": `https://www.tncomputers.in/${aboutimg.src}`,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Chennai",
-      "addressRegion": "Tamil Nadu",
-      "addressCountry": "India"
-    },
-    "sameAs": [
-      "https://www.facebook.com/tncomputershardware",
-      "https://www.youtube.com/@TN_Computers"
-    ]
-  };
+    "@type": "AboutPage",
 
+    "name": "About TN Computers",
+
+    "description":
+      "TN Computers is a trusted laptop and computer store in Chennai offering laptops, gaming PCs, refurbished computers, accessories, custom PC builds, printers, and IT solutions.",
+
+    "url": "https://www.tncomputers.in/about-us",
+
+    "image": "https://www.tncomputers.in/tn-computers-logo.png",
+
+    "mainEntity": {
+      "@type": "Organization",
+
+      "name": "TN Computers",
+
+      "url": "https://www.tncomputers.in",
+
+      "logo": "https://www.tncomputers.in/tn-computers-logo.png",
+
+      "description":
+        "TN Computers provides laptops, desktops, gaming PCs, refurbished systems, accessories, and computer hardware solutions in Chennai."
+    }
+  };
   return {
     title: "About Us | TN Computers – Trusted Laptop Store in Chennai",
     description:
@@ -96,7 +123,7 @@ export default function AboutPage() {
 
   return (
     <>
-      
+
 
       <div>
         <AnimatedAbout />
@@ -206,7 +233,7 @@ export default function AboutPage() {
                 Why Customers Choose TN Computers
               </h2>
               <p className="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto">
-                Customers across India trust TN Computers 
+                Customers across India trust TN Computers
               </p>
             </div>
 
@@ -224,23 +251,23 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-           
-          </div>
-           <p className="text-base sm:text-xl text-center mt-5 text-slate-600 max-w-3xl mx-auto">
 
-              From basic computing needs to high-end gaming requirements, we deliver the right system for every user.
-            </p>
+          </div>
+          <p className="text-base sm:text-xl text-center mt-5 text-slate-600 max-w-3xl mx-auto">
+
+            From basic computing needs to high-end gaming requirements, we deliver the right system for every user.
+          </p>
         </section>
         <section className="py-10 sm:py-16">
-           <h2 className="text-2xl md:text-4xl font-black text-center text-slate-900 mb-4 sm:mb-6">
+          <h2 className="text-2xl md:text-4xl font-black text-center text-slate-900 mb-4 sm:mb-6">
             Your Reliable Tech Partner
-              </h2>
+          </h2>
 
-              <p className="text-base sm:text-lg text-center mt-5 text-slate-700 max-w-7xl mx-auto">TN Computers continues to grow as a leading laptop and computer store in Chennai, offering powerful devices, custom PC builds, and value-packed refurbished systems. Whether you’re searching for the best laptop store in Chennai and a dependable place for refurbished and custom-built computers, TN Computers ensures you get the perfect balance of performance, reliability, and affordability.</p>
+          <p className="text-base sm:text-lg text-center mt-5 text-slate-700 max-w-7xl mx-auto">TN Computers continues to grow as a leading laptop and computer store in Chennai, offering powerful devices, custom PC builds, and value-packed refurbished systems. Whether you’re searching for the best laptop store in Chennai and a dependable place for refurbished and custom-built computers, TN Computers ensures you get the perfect balance of performance, reliability, and affordability.</p>
 
         </section>
         <TabsSection />
-      
+
       </div>
     </>
   );

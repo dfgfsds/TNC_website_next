@@ -10,7 +10,7 @@
 //   {
 //     title: 'Great keyboard!',
 //     text: "Love the way it feels! I've been using it for work. I feel like I type faster and more accurate because I’d the way the switches respond to my fingers. Great keyboard!",
-//     date: '28 Jun 2023',
+//     date: '28 Jun 2025',
 //     author: 'Melvin N.',
 //     productImg:
 //       'https://demo811.leotheme.com/prestashop/leo_razox_elementor_demo/img/m/1-manu_default.jpg',
@@ -18,7 +18,7 @@
 //   {
 //     title: 'Love the Sound',
 //     text: 'These guys are top notch. Bought two PCs from them this year. They both arrived promptly and perfectly built and protected.',
-//     date: '28 Jun 2023',
+//     date: '28 Jun 2025',
 //     author: 'Gregory D',
 //     productImg:
 //       'https://demo811.leotheme.com/prestashop/leo_razox_elementor_demo/img/m/1-manu_default.jpg',
@@ -26,7 +26,7 @@
 //   {
 //     title: 'Great keyboard!',
 //     text: "Love the way it feels! I've been using it for work. I feel like I type faster and more accurate because I’d the way the switches respond to my fingers. Great keyboard!",
-//     date: '28 Jun 2023',
+//     date: '28 Jun 2025',
 //     author: 'Melvin N.',
 //     productImg:
 //       'https://demo811.leotheme.com/prestashop/leo_razox_elementor_demo/img/m/1-manu_default.jpg',
@@ -34,7 +34,7 @@
 //   {
 //     title: 'Love the Sound',
 //     text: 'These guys are top notch. Bought two PCs from them this year. They both arrived promptly and perfectly built and protected.',
-//     date: '28 Jun 2023',
+//     date: '28 Jun 2025',
 //     author: 'Gregory D',
 //     productImg:
 //       'https://demo811.leotheme.com/prestashop/leo_razox_elementor_demo/img/m/1-manu_default.jpg',
@@ -149,28 +149,28 @@
 //   {
 //     title: 'Love the Sound',
 //     text: 'These guys are top notch. Bought two PCs from them this year. They both arrived promptly and perfectly built.',
-//     date: '28 Jun 2023',
+//     date: '28 Jun 2025',
 //     author: 'Gregory D',
 //     brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
 //   },
 //   {
 //     title: 'Great keyboard!',
 //     text: "Love the way it feels! I've been using it for work. I feel like I type faster and more accurate.",
-//     date: '28 Jun 2023',
+//     date: '28 Jun 2025',
 //     author: 'Melvin N.',
 //     brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
 //   },
 //   {
 //     title: 'Excellent Service',
 //     text: 'Fast delivery and amazing support. Highly recommended.',
-//     date: '28 Jun 2023',
+//     date: '28 Jun 2025',
 //     author: 'Arjun K',
 //     brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
 //   },
 //   {
 //     title: 'Super Experience',
 //     text: 'Build quality and pricing both are excellent.',
-//     date: '28 Jun 2023',
+//     date: '28 Jun 2025',
 //     author: 'Rahul S',
 //     brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
 //   },
@@ -305,31 +305,45 @@ import Image from 'next/image';
 
 const reviews = [
   {
-    title: 'Love the Sound',
-    text: 'These guys are top notch. Bought two PCs from them this year. They both arrived promptly and perfectly built.',
-    date: '28 Jun 2023',
-    author: 'Gregory D',
+    title: 'Excellent Laptop Store in Chennai',
+    text: 'I was searching for the best laptop shop in Chennai and found TN Computers. Their pricing, support, and laptop collection were excellent. I purchased a Dell i7 laptop with SSD at a great price. Highly recommended laptop store in Chennai.',
+    date: '28 Jun 2025',
+    author: 'Aravind Kumar, Chennai',
     brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
   },
   {
-    title: 'Great keyboard!',
-    text: "Love the way it feels! I've been using it for work. I feel like I type faster and more accurate.",
-    date: '28 Jun 2023',
-    author: 'Melvin N.',
+    title: 'Best Gaming PC Shop in Chennai',
+    text: 'TN Computers built my custom RTX gaming PC exactly the way I wanted. If you are looking for custom PC builders in Chennai or a gaming PC shop in Chennai, this is the right place. Great cable management and performance.',
+    date: '02 July 2025',
+    author: 'Rahul S, Chennai',
     brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
   },
   {
-    title: 'Excellent Service',
-    text: 'Fast delivery and amazing support. Highly recommended.',
-    date: '28 Jun 2023',
-    author: 'Arjun K',
+    title: 'Trusted Refurbished Laptop Store',
+    text: 'I bought a refurbished Dell Latitude laptop for office work. The laptop condition was excellent and the pricing was affordable. One of the best places to buy refurbished laptops in Chennai.',
+    date: '03 Jun 2025',
+    author: 'Priya M, Chennai',
     brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
   },
   {
-    title: 'Super Experience',
-    text: 'Build quality and pricing both are excellent.',
-    date: '28 Jun 2023',
-    author: 'Rahul S',
+    title: 'Affordable Computer Shop in Chennai',
+    text: 'TN Computers is the best computer shop in Chennai for students and professionals. I upgraded my RAM and SSD here. Fast service, affordable pricing, and genuine products.',
+    date: '08 Apr 2025',
+    author: 'Karthik V, Chennai',
+    brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
+  },
+  {
+    title: 'Best Place to Buy Gaming Accessories',
+    text: 'I purchased a gaming keyboard, mouse, monitor, and CPU cooler from TN Computers. Their gaming accessories collection is amazing. Definitely one of the best computer accessories shops in Chennai.',
+    date: '19 Jun 2025',
+    author: 'Naveen Raj, Chennai',
+    brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
+  },
+  {
+    title: 'Great EMI Offers & Laptop Deals',
+    text: 'I was looking for affordable laptops in Chennai with EMI options. TN Computers helped me choose the perfect HP laptop within my budget. Best laptop deals and customer support.',
+    date: '09 May 2025',
+    author: 'Deepak R, Chennai',
     brandImg: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg',
   },
 ];

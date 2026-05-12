@@ -6,6 +6,131 @@ import Image from 'next/image';
 import { slugConvert } from '../../../lib/utils';
 
 
+export async function generateMetadata() {
+
+  const schema = {
+    "@context": "https://schema.org",
+
+    "@type": "CollectionPage",
+
+    "name": "Computer Categories | TN Computers",
+
+    "description":
+      "Explore laptops, gaming PCs, desktops, refurbished computers, printers, accessories, keyboards, storage devices, and IT products at TN Computers Chennai.",
+
+    "url": "https://www.tncomputers.in/categories",
+
+    "image": "https://www.tncomputers.in/tn-computers-logo.png",
+
+    "mainEntity": {
+      "@type": "ItemList",
+
+      "name": "Computer Product Categories",
+
+      "itemListOrder":
+        "https://schema.org/ItemListOrderAscending",
+
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Laptops"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Gaming PCs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Refurbished Computers"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Computer Accessories"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Printers & Storage Devices"
+        }
+      ]
+    }
+  };
+
+  return {
+    title: "Computer Categories | TN Computers Chennai",
+
+    description:
+      "Browse laptop, desktop & accessories categories at TN Computers Chennai. Find top brands, custom PCs and the best deals with warranty.",
+
+    keywords: [
+      "laptop categories Chennai",
+      "computer categories Chennai",
+      "gaming pc categories",
+      "refurbished computers Chennai",
+      "computer accessories Chennai",
+      "desktop categories Chennai",
+      "printers Chennai",
+      "storage devices Chennai",
+      "TN Computers categories",
+    ],
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    alternates: {
+      canonical: "https://www.tncomputers.in/categories",
+    },
+
+    openGraph: {
+      title: "Computer Categories | TN Computers Chennai",
+
+      description:
+        "Browse laptop, desktop & accessories categories at TN Computers Chennai. Find top brands, custom PCs and the best deals with warranty.",
+
+      url: "https://www.tncomputers.in/categories",
+
+      type: "website",
+
+      images: [
+        {
+          url: "https://www.tncomputers.in/tn-computers-logo.png",
+          width: 1200,
+          height: 630,
+          alt: "TN Computers Categories",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+
+      title: "Computer Categories | TN Computers Chennai",
+
+      description:
+        "Browse laptop, desktop & accessories categories at TN Computers Chennai.",
+
+      images: [
+        "https://www.tncomputers.in/tn-computers-logo.png",
+      ],
+    },
+
+    other: {
+      "application/ld+json": JSON.stringify(schema),
+      "image_src":
+        "https://www.tncomputers.in/tn-computers-logo.png",
+    },
+
+    icons: {
+      icon: "https://www.tncomputers.in/favicon.ico",
+    },
+  };
+}
 
 export default function CategoriesPage() {
     
