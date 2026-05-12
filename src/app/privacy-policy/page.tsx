@@ -15,6 +15,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
+
+
 import PrivacyPolicyPage from "./PrivacyClient";
 
 export const metadata: Metadata = {
