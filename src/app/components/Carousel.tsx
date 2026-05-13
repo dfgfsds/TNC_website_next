@@ -125,7 +125,7 @@ export default function Carousel(banners:any) {
   const { vendorId } = useVendor()
   const [currentIndex, setCurrentIndex] = useState(0)
   // const [banners?.banners, setBanners?.banners] = useState<any[]>([])
-
+console.log(banners, 'banners');
   // const bannerGetApi = async () => {
   //   try {
   //     const res = await axios.get(
