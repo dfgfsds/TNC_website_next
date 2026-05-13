@@ -18,7 +18,7 @@ import banner from "../../public/banner/Banner1.jpg"
 
 import HeroSectionTrustedLap from './components/trustedLaptop';
 import axios from 'axios';
-import { baseUrl, baseUrlTest } from '../../api-endpoints/ApiUrls';
+// import { baseUrl, baseUrlTest } from '../../api-endpoints/ApiUrls';
 
 
 export const metadata = {
