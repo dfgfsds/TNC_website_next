@@ -396,7 +396,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center px-6 py-6 border-t border-white">
           <p className="text-gray-400 text-sm">
-            © 2025{' '}
+            © 2026{' '}
             <a
               href="https://www.ftdigitalsolutions.in/"
               className="text-slate-300 font-semibold"
