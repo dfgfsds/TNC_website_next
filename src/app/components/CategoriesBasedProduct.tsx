@@ -126,7 +126,6 @@ export default function CategoryClient({ slug }: { slug: string }) {
     (product: any) => slugConvert(product.category_name) === slug
   )
 
-  // 22 CATEGORIES PREMIUM THEMING MATRIX
   const categoryStyles: Record<string, { container: string; textButton: string; border: string; accent: string }> = {
     laptops: {
       container: 'bg-gradient-to-br from-purple-50 via-white to-indigo-50 border-purple-100 shadow-xl shadow-purple-100/30',
