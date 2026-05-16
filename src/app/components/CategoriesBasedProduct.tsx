@@ -126,6 +126,7 @@ export default function CategoryClient({ slug }: { slug: string }) {
     (product: any) => slugConvert(product.category_name) === slug
   )
 
+  // 22 CATEGORIES PREMIUM THEMING MATRIX
   const categoryStyles: Record<string, { container: string; textButton: string; border: string; accent: string }> = {
     laptops: {
       container: 'bg-gradient-to-br from-purple-50 via-white to-indigo-50 border-purple-100 shadow-xl shadow-purple-100/30',
@@ -153,7 +154,7 @@ export default function CategoryClient({ slug }: { slug: string }) {
 
       {/* TOP SECTION - ONLY TITLE */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 mb-4">
+        <h1 className="text-4xl md:text-4xl font-black tracking-tighter text-blue-600 mb-4">
           {seoData?.content?.h1 || `${categoryName}`}
         </h1>
         <div className={`h-1.5 w-24 mx-auto rounded-full ${currentStyle.textButton.split(' ')[0]}`}></div>
