@@ -180,9 +180,15 @@ export default function CategoryClient({ slug }: { slug: string }) {
         <div className={`mt-24 border rounded-[2.5rem] overflow-hidden transition-all duration-500 ${currentStyle.container}`}>
 
           {/* INTRO MINI BLOCK */}
-          <div className="p-8 md:p-12 pb-0">
+          {/* <div className="p-8 md:p-12 pb-0">
             <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-medium italic opacity-90">
               "{seoData.content.intro.substring(0, 250)}..."
+            </p>
+          </div> */}
+
+          <div className="p-8 md:p-12 pb-0">
+            <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-medium italic opacity-90">
+              &ldquo;{seoData.content.intro.substring(0, 250)}...&rdquo;
             </p>
           </div>
 

@@ -45,10 +45,12 @@ const CheckoutDrawer = ({ isOpen, onClose, subtotal }: CheckoutSidebarProps) => 
 
 
 
-    useEffect(() => {
-        setUserName(user?.data?.name);
-        setUserId(user?.data?.id);
-    }, []);
+useEffect(() => {
+    if (user?.data) {
+        setUserName(user.data.name);
+        setUserId(user.data.id);
+    }
+}, [user?.data]);
 
     useEffect(() => {
         if (data?.data?.length) {
@@ -70,23 +72,42 @@ const CheckoutDrawer = ({ isOpen, onClose, subtotal }: CheckoutSidebarProps) => 
         }
     }
 
-    const getDeliveryCharge = async () => {
+    // const getDeliveryCharge = async () => {
 
+    //     try {
+    //         const userId = user?.data?.id;
+    //         if (!userId) throw new Error("User ID not found");
+    //         const res = await axios.get(`${baseUrl}/vendor-site-payment-delivery-partner-details/${vendorId}/`)
+    //         setDeliveryInfo(res.data[0]);
+
+
+    //     } catch (error) {
+    //         console.error("Error fetching delivery charge:", error);
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     getDeliveryCharge()
+    // }, [paymentMethod])
+
+    useEffect(() => {
+    const fetchDeliveryCharge = async () => {
         try {
             const userId = user?.data?.id;
-            if (!userId) throw new Error("User ID not found");
-            const res = await axios.get(`${baseUrl}/vendor-site-payment-delivery-partner-details/${vendorId}/`)
+            if (!userId) return; 
+
+            const res = await axios.get(`${baseUrl}/vendor-site-payment-delivery-partner-details/${vendorId}/`);
             setDeliveryInfo(res.data[0]);
-
-
         } catch (error) {
             console.error("Error fetching delivery charge:", error);
         }
-    }
+    };
 
-    useEffect(() => {
-        getDeliveryCharge()
-    }, [paymentMethod])
+    fetchDeliveryCharge();
+
+}, [paymentMethod, baseUrl, vendorId, user?.data?.id]);
+
+
     const RAZOR_PAY_KEY = 'rzp_live_RKNXWxLvWCeZr6';
 
 
