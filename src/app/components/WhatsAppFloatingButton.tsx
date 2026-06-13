@@ -1,10 +1,19 @@
-"use client";
+'use client';
 
 import Link from "next/link";
 
 export default function WhatsAppFloatingButton({
   phone = "917429667788",
-  message = "Welcome to TN Computers – How can we help you today?",
+  message = `👋 Welcome to TN Computers!
+
+Thank you for contacting us. We specialize in Laptop & Desktop Sales, Computer Accessories, Printer Solutions, CCTV Installation, Networking, IT Hardware Support, Computer Repairs, and AMC Services.
+
+How can we help you today?
+
+📞 Call: +91 74296 67788
+🌐 Website: https://www.tncomputers.in
+
+Our team will get back to you shortly.`,
 }: {
   phone?: string;
   message?: string;
@@ -19,9 +28,8 @@ export default function WhatsAppFloatingButton({
       className="fixed bottom-16 md:bottom-6 left-4 z-[100] group"
     >
       <div className="relative flex items-center">
-        {/* WhatsApp Button */}
         <div className="relative flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#008f07] to-[#038031] backdrop-blur-xl border border-[#25D366]/40 shadow-[0_0_20px_rgba(37,211,102,0.3)] transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-          {/* WhatsApp SVG Icon */}
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
@@ -31,14 +39,7 @@ export default function WhatsAppFloatingButton({
             <path d="M15.99 4.01C9.93 4.01 5 8.94 5 14.99c0 2.37.75 4.56 2.02 6.36L6 28l6.83-1.79c1.72.94 3.7 1.48 5.82 1.48 6.06 0 11-4.93 11-10.99s-4.94-10.69-10.66-10.69zm.02 19.57c-1.98 0-3.81-.58-5.34-1.56l-.38-.24-4.06 1.07 1.09-3.96-.25-.39A8.92 8.92 0 0 1 7.1 15c0-4.95 4.02-8.97 8.97-8.97 4.95 0 8.97 4.02 8.97 8.97s-4.04 9.55-9.03 9.55z" />
           </svg>
 
-          {/* Glow ring */}
-          {/* <span className="absolute inset-0 rounded-2xl animate-ping border-2 border-[#25D366]/40" /> */}
         </div>
-
-        {/* Tooltip (Desktop Hover Only) */}
-        {/* <span className="ml-3 hidden rounded-xl bg-[#25D366] px-3 py-1 text-sm font-medium text-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 md:block">
-          Chat with us
-        </span> */}
       </div>
     </Link>
   );
