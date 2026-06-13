@@ -126,7 +126,7 @@ const NavbarPage = () => {
   };
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-white shadow-sm">
+    <header className="w-full relative md:sticky top-0 z-50 bg-white shadow-sm">
       {/* Top Notification Bar */}
       <div className=" bg-[#a100fe] text-white text-xs md-text-base text-center py-2 md-py-3 font-bold tracking-wide">
         ENJOY FAST & FREE SHIPPING STOREWIDE!

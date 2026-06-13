@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import TabsData from "../data/TabsData.json";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 
@@ -39,8 +40,8 @@ export default function TrendingTabs() {
     activeTab === "gallery"
       ? TabsData.gallery
       : activeTab === "videos"
-      ? TabsData.videos
-      : TabsData.customers;
+        ? TabsData.videos
+        : TabsData.customers;
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
@@ -61,11 +62,10 @@ export default function TrendingTabs() {
                 setActiveTab(tab.id);
                 setPage(1);
               }}
-              className={`relative flex-shrink-0 px-4 py-2 font-semibold transition-all whitespace-nowrap ${
-                activeTab === tab.id
-                  ? "text-purple-500 border-b-2 border-purple-500"
-                  : "text-gray-500 hover:text-purple-500"
-              }`}
+              className={`relative flex-shrink-0 px-4 py-2 font-semibold transition-all whitespace-nowrap ${activeTab === tab.id
+                ? "text-purple-500 border-b-2 border-purple-500"
+                : "text-gray-500 hover:text-purple-500"
+                }`}
             >
               {tab.label}
             </button>
@@ -80,30 +80,31 @@ export default function TrendingTabs() {
           return (
             <div
               key={item.id}
-              className={`relative overflow-hidden rounded-2xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl ${
-                isTrending ? "lg:col-span-2 lg:row-span-2" : ""
-              }`}
+              className={`relative overflow-hidden rounded-2xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl ${isTrending ? "lg:col-span-2 lg:row-span-2" : ""
+                }`}
             >
               {activeTab === "videos" ? (
                 <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
-  <iframe
-    className="w-full h-full"
-    src={item.src}
-    title={`Video ${item.id}`}
-    allow="autoplay; fullscreen"
-          allowFullScreen
-  ></iframe>
-  <div
-    className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition pointer-events-none"
-  >
-    <Play className="w-12 h-12 text-white" />
-  </div>
-</div>
+                  <iframe
+                    className="w-full h-full"
+                    src={item.src}
+                    title={`Video ${item.id}`}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                  ></iframe>
+                  <div
+                    className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition pointer-events-none"
+                  >
+                    <Play className="w-12 h-12 text-white" />
+                  </div>
+                </div>
 
               ) : (
-                <img
+                <Image
                   src={item.src}
                   alt={`${activeTab} ${item.id}`}
+                  width={600}
+                  height={400}
                   className="w-full md:h-48 sm:h-60 lg:h-full object-cover"
                 />
               )}
@@ -131,11 +132,10 @@ export default function TrendingTabs() {
           <button
             key={i + 1}
             onClick={() => setPage(i + 1)}
-            className={`px-3 sm:px-4 py-2 rounded-full font-semibold transition ${
-              page === i + 1
-                ? "bg-purple-500 text-white shadow-lg"
-                : "bg-gray-100 text-gray-700 hover:bg-purple-100"
-            }`}
+            className={`px-3 sm:px-4 py-2 rounded-full font-semibold transition ${page === i + 1
+              ? "bg-purple-500 text-white shadow-lg"
+              : "bg-gray-100 text-gray-700 hover:bg-purple-100"
+              }`}
           >
             {i + 1}
           </button>
