@@ -80,10 +80,11 @@ async function getHomeData() {
   const vendorId = 66;
 
   try {
+    const headers = { Origin: 'https://tncomputers.in' };
     const [bannerRes, categoryRes, productRes] = await Promise.all([
-      axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`),
-      axios.get(`${baseUrl}/api/categories/?vendor_id=${vendorId}`),
-      axios.get(`${baseUrl}/api/products/?vendor_id=${vendorId}`),
+      axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`, { headers }),
+      axios.get(`${baseUrl}/api/categories/?vendor_id=${vendorId}`, { headers }),
+      axios.get(`${baseUrl}/api/products/?vendor_id=${vendorId}`, { headers }),
     ]);
 
     return {
