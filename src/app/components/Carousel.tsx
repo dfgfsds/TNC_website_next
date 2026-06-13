@@ -76,7 +76,7 @@ export default function Carousel({ banners = [] }: { banners: any[] }) {
   if (!filteredBanners || filteredBanners.length === 0) {
     return (
       <div className="relative w-full overflow-hidden">
-        <div className="relative w-full aspect-[16/5] overflow-hidden bg-gray-100 animate-pulse flex items-center justify-center">
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/5] overflow-hidden bg-gray-100 animate-pulse flex items-center justify-center">
         </div>
       </div>
     )
@@ -88,7 +88,7 @@ export default function Carousel({ banners = [] }: { banners: any[] }) {
     <div className="relative w-full overflow-hidden">
 
       {/* Banner */}
-      <div className="relative w-full aspect-[16/5] overflow-hidden bg-white">
+      <div className="relative w-full aspect-[4/3] md:aspect-[16/5] overflow-hidden bg-white">
 
         {!filteredBanners.length && (
           <div className="h-full bg-gray-200 animate-pulse" />
@@ -108,7 +108,7 @@ export default function Carousel({ banners = [] }: { banners: any[] }) {
               alt="TN Computers Hero Banner"
               fill
               priority
-              className="object-contain sm:object-cover"
+              className="object-fill md:object-cover"
             />
           </div>
         )}

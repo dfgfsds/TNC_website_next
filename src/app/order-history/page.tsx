@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   FaCheckCircle,
   FaShippingFast,
@@ -90,9 +91,11 @@ export default function OrderHistoryPage() {
             transition={{ delay: idx * 0.1 }}
             className="border rounded-xl p-4 md:p-6 shadow-sm bg-white flex flex-col md:flex-row gap-4 md:items-center"
           >
-            <img
+            <Image
               src={order.product.image}
               alt={order.product.name}
+              width={96}
+              height={96}
               className="w-24 h-24 object-cover rounded-lg border"
             />
 
