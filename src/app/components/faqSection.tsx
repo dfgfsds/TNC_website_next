@@ -175,7 +175,7 @@ export default function FaqSection() {
   ];
 
   return (
-    <section className="py-14 sm:py-16 bg-[#f5f7fc]">
+    <section className="py-14 sm:py-16">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
@@ -202,11 +202,10 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className={`rounded-3xl border transition-all duration-300 overflow-hidden ${
-                  isActive
-                    ? 'border-purple-600 bg-white shadow-lg'
-                    : 'border-gray-200 bg-white hover:border-purple-300'
-                }`}
+                className={`rounded-3xl border transition-all duration-300 overflow-hidden ${isActive
+                  ? 'border-purple-600 bg-white shadow-lg'
+                  : 'border-gray-200 bg-white hover:border-purple-300'
+                  }`}
               >
                 {/* BUTTON */}
                 <button
@@ -214,19 +213,17 @@ export default function FaqSection() {
                   className="w-full flex items-center justify-between gap-5 px-6 sm:px-8 py-6 text-left"
                 >
                   <h3
-                    className={`text-lg sm:text-xl font-bold transition ${
-                      isActive ? 'text-purple-700' : 'text-gray-900'
-                    }`}
+                    className={`text-lg sm:text-xl font-bold transition ${isActive ? 'text-purple-700' : 'text-gray-900'
+                      }`}
                   >
                     {faq.question}
                   </h3>
 
                   <div
-                    className={`flex items-center justify-center min-w-[42px] h-[42px] rounded-full transition ${
-                      isActive
-                        ? 'bg-purple-600 text-white'
-                        : 'bg-gray-100 text-gray-700'
-                    }`}
+                    className={`flex items-center justify-center min-w-[42px] h-[42px] rounded-full transition ${isActive
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-gray-100 text-gray-700'
+                      }`}
                   >
                     {isActive ? (
                       <HiMinusSm className="text-2xl" />
@@ -238,11 +235,10 @@ export default function FaqSection() {
 
                 {/* ANSWER */}
                 <div
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    isActive
-                      ? 'grid-rows-[1fr] opacity-100'
-                      : 'grid-rows-[0fr] opacity-0'
-                  }`}
+                  className={`grid transition-all duration-300 ease-in-out ${isActive
+                    ? 'grid-rows-[1fr] opacity-100'
+                    : 'grid-rows-[0fr] opacity-0'
+                    }`}
                 >
                   <div className="overflow-hidden">
                     <div className="px-6 sm:px-8 pb-6">

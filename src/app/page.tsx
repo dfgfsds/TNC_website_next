@@ -18,7 +18,7 @@ import banner from "../../public/banner/Banner1.jpg"
 
 import HeroSectionTrustedLap from './components/trustedLaptop';
 import axios from 'axios';
-// import { baseUrl, baseUrlTest } from '../../api-endpoints/ApiUrls';
+import { baseUrl } from '../../api-endpoints/ApiUrls';
 
 
 export const metadata = {
@@ -81,9 +81,9 @@ async function getHomeData() {
 
   try {
     const [bannerRes, categoryRes, productRes] = await Promise.all([
-      axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/banners/?vendorId=${vendorId}`),
-      axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/categories/?vendor_id=${vendorId}`),
-      axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/products/?vendor_id=${vendorId}`),
+      axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`),
+      axios.get(`${baseUrl}/api/categories/?vendor_id=${vendorId}`),
+      axios.get(`${baseUrl}/api/products/?vendor_id=${vendorId}`),
     ]);
 
     return {
