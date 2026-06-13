@@ -125,9 +125,6 @@ async function getHomeData() {
 export default async function HomePage() {
   // const { banners } = await getHomeData();
   const { banners, categories, products } = await getHomeData();
-  console.log(banners, 'banners from home page');
-  console.log(categories, 'categories from home page');
-  console.log(products, 'products from home page');
   // JSON-LD Computer Store Schema
   // const computerStoreSchema = {
   //   "@context": "https://schema.org",
