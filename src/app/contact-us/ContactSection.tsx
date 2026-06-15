@@ -1,13 +1,34 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from "framer-motion";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import FeatureHighlights from "../components/FeatureHighlights";
+import toast from "react-hot-toast";
 
 interface Props { }
 
 function ContactSection(props: Props) {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        try {
+            toast.success("Message sent successfully");
+
+            setName("");
+            setEmail("");
+            setMessage("");
+
+        } catch (error) {
+            toast.error("Failed to send message");
+        }
+    };
+
     // Motion Variants
     const fadeUp = {
         hidden: { opacity: 0, y: 50 },
@@ -23,7 +44,7 @@ function ContactSection(props: Props) {
     };
 
     return (
-        <section className="bg-[#fffcfc] py-20 px-6 md:px-20">
+        <section className="bg-[#fffcfc] py-10 md:py-12 px-4 md:px-20">
             <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -36,13 +57,15 @@ function ContactSection(props: Props) {
                     custom={1}
                     className="order-1 md:order-2 bg-white p-8 rounded-2xl shadow-lg"
                 >
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <motion.div variants={fadeUp} custom={2}>
                             <label className="block text-sm font-semibold text-gray-700 mb-1">
                                 Name
                             </label>
                             <input
                                 type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                                 placeholder="Your Name"
                             />
@@ -54,6 +77,8 @@ function ContactSection(props: Props) {
                             </label>
                             <input
                                 type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                                 placeholder="you@example.com"
                             />
@@ -65,6 +90,8 @@ function ContactSection(props: Props) {
                             </label>
                             <textarea
                                 rows={4}
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-none"
                                 placeholder="Type your message..."
                             />
@@ -115,13 +142,7 @@ function ContactSection(props: Props) {
                             </span>
                         </div>
                     </div>
-                    {/* Google Maps Heading */}
-                    <h2 className="text-xl font-bold text-gray-900 mb-4">
-                        Find Us on Google Maps
-                    </h2>
-                    <p className="text-gray-600 text-sm mb-8">
-                        Locate the best computer shop in Chennai near you.
-                    </p>
+
                     <div className="mt-8 w-full h-64 rounded-xl overflow-hidden shadow-md">
                         <iframe
                             src="https://www.google.com/maps?q=TN+Computers+Hardware,+126+B,+Vanniar+St,+Bangaru+Colony,+K.+K.+Nagar,+Chennai,+Tamil+Nadu+600078&output=embed"

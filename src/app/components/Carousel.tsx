@@ -1,111 +1,170 @@
+
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 import { baseUrl } from '../../../api-endpoints/ApiUrls'
 import { useVendor } from '../../../context/VendorContext'
 import { useRouter } from 'next/navigation'
 
-export default function Carousel() {
-  const router = useRouter();
-  const { vendorId } = useVendor();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [banners, setBanners] = useState<any[]>([]);
+// export default function Carousel() {
+export default function Carousel({ banners = [] }: { banners: any[] }) {
+  const router = useRouter()
+  const { vendorId } = useVendor()
 
-  // Fetch banners
-  const bannerGetApi = async () => {
-    try {
-      const res = await axios.get(`${baseUrl}/banners/?vendorId=${vendorId}`);
-      if (res.data?.banners) {
-        setBanners(res.data.banners);
-      } else {
-        console.warn('Unexpected API response:', res.data);
-      }
-    } catch (error) {
-      console.log('Error fetching banners:', error);
-    }
-  };
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
 
+  // Detect Mobile View safely
   useEffect(() => {
-    bannerGetApi();
-  }, [vendorId]);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
 
+    checkMobile()
+
+    window.addEventListener("resize", checkMobile)
+
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  // Filter banners based on screen
+  const filteredBanners = useMemo(() => {
+    if (!banners?.length) return []
+
+    return banners.filter((banner: any) =>
+      isMobile
+        ? banner.type === "Mobile View"
+        : banner.type === "Web View"
+    )
+  }, [banners, isMobile])
+
+  // Auto Slide
+  useEffect(() => {
+    if (!filteredBanners.length) return
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) =>
+        prev === filteredBanners.length - 1 ? 0 : prev + 1
+      )
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [filteredBanners])
+
+  // Reset index when banners change
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [isMobile])
+
+  // Prev
   const goToPrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1))
+    setCurrentIndex((prev) =>
+      prev === 0 ? filteredBanners.length - 1 : prev - 1
+    )
   }
 
+  // Next
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1))
+    setCurrentIndex((prev) =>
+      prev === filteredBanners.length - 1 ? 0 : prev + 1
+    )
   }
-  console.log(banners, 'banners');
 
+  // Prevent rendering if we have no banners at all after filtering
+  if (!filteredBanners || filteredBanners.length === 0) {
+    return (
+      <div className="relative w-full overflow-hidden">
+        <div className="relative w-full aspect-[4/3] md:aspect-[16/5] overflow-hidden bg-gray-100 animate-pulse flex items-center justify-center">
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div className="relative w-full">
-      <div className="relative h-56 md:h-[400px] overflow-hidden ">
-        {banners.map((src, index) => (
+
+
+    <div className="relative w-full overflow-hidden">
+
+      {/* Banner */}
+      <div className="relative w-full aspect-[4/3] md:aspect-[16/5] overflow-hidden bg-white">
+
+        {!filteredBanners.length && (
+          <div className="h-full bg-gray-200 animate-pulse" />
+        )}
+
+        {filteredBanners[currentIndex] && (
           <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            onClick={() => router.push(src?.target_url || '/')}
+            className="absolute inset-0 cursor-pointer"
+            onClick={() =>
+              router.push(
+                filteredBanners[currentIndex]?.target_url || "/"
+              )
+            }
           >
             <Image
-              src={src?.image_url}
-              alt={`Carousel image ${index + 1}`}
+              src={filteredBanners[currentIndex]?.image_url}
+              alt="TN Computers Hero Banner"
               fill
-              className="object-cover"
-              priority={index === 0}
+              priority
+              className="object-fill md:object-cover"
             />
           </div>
-        ))}
+        )}
+
       </div>
 
       {/* Prev Button */}
-      <button
-        onClick={goToPrev}
-        className="absolute top-1/2 -translate-y-1/2 left-2 z-30 flex items-center justify-center p-2 sm:p-3 md:p-4 cursor-pointer group focus:outline-none"
-      >
-        <span className="inline-flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/30 hover:bg-white/50 group-focus:ring-4 group-focus:ring-white">
-          <svg
-            className="w-4 h-4 sm:w-5 sm:h-5 text-white"
-            fill="none"
-            viewBox="0 0 6 10"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 1 1 5l4 4"
-            />
-          </svg>
-        </span>
-      </button>
+      {filteredBanners.length > 1 && (
+        <button
+          onClick={goToPrev}
+          className="absolute top-1/2 left-2 sm:left-3 z-30 -translate-y-1/2"
+          aria-label="Previous slide"
+        >
+          <span className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/40 backdrop-blur-md">
+            <svg
+              className="w-4 h-4 text-white"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 1 1 5l4 4"
+              />
+            </svg>
+          </span>
+        </button>
+      )}
 
       {/* Next Button */}
-      <button
-        onClick={goToNext}
-        className="absolute top-1/2 -translate-y-1/2 right-2 z-30 flex items-center justify-center p-2 sm:p-3 md:p-4 cursor-pointer group focus:outline-none"
-      >
-        <span className="inline-flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/30 hover:bg-white/50 group-focus:ring-4 group-focus:ring-white">
-          <svg
-            className="w-4 h-4 sm:w-5 sm:h-5 text-white"
-            fill="none"
-            viewBox="0 0 6 10"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m1 9 4-4-4-4"
-            />
-          </svg>
-        </span>
-      </button>
-
+      {filteredBanners.length > 1 && (
+        <button
+          onClick={goToNext}
+          className="absolute top-1/2 right-2 sm:right-3 z-30 -translate-y-1/2"
+          aria-label="Next slide"
+        >
+          <span className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/40 backdrop-blur-md">
+            <svg
+              className="w-4 h-4 text-white"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+          </span>
+        </button>
+      )}
     </div>
   )
 }
+

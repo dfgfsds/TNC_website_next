@@ -74,9 +74,14 @@ export default function BlogDetail() {
                 />
             </div>
 
-            <div className="prose prose-lg prose-gray max-w-none leading-relaxed mt-10">
+            {/* <div className="prose prose-lg prose-gray max-w-none leading-relaxed mt-10">
                 <ReactMarkdown>{blog.content}</ReactMarkdown>
-            </div>
+            </div> */}
+            <div
+                className="prose prose-gray max-w-none py-5"
+                dangerouslySetInnerHTML={{ __html: blog.content }}
+            />
+
         </div>
     );
 }

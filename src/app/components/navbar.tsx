@@ -79,6 +79,7 @@ const NavbarPage = () => {
     { path: '/', label: 'Home' },
     { path: '/shop', label: 'Shop' },
     { path: '/categories', label: 'Categories' },
+    { path: '/custom-pc-build', label: 'Custom PC' },
     { path: '/about-us', label: 'About' },
     { path: '/blog', label: 'Blog' },
     { path: '/contact-us', label: 'Contact' },
@@ -125,7 +126,7 @@ const NavbarPage = () => {
   };
 
   return (
-    <header className="w-full">
+    <header className="w-full relative md:sticky top-0 z-50 bg-white shadow-sm">
       {/* Top Notification Bar */}
       <div className=" bg-[#a100fe] text-white text-xs md-text-base text-center py-2 md-py-3 font-bold tracking-wide">
         ENJOY FAST & FREE SHIPPING STOREWIDE!
@@ -146,14 +147,14 @@ const NavbarPage = () => {
 
 
           <div className="flex items-center gap-4">
-            <FaUser className="text-lg text-black" onClick={() => setSignInModal(true)} />
+            <FaUser className="text-lg text-black" onClick={() => user ? router.push('/profile') : setSignInModal(true)} />
 
             <div className="relative">
               <FaHeart className="text-lg text-black" />
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">0</span>
             </div>
 
-            <Link href="/cart">
+            <Link href="/cart" aria-label="View Cart">
               <div className="relative">
                 <FaShoppingCart className="text-lg text-black" />
                 {cartCount > 0 && (
@@ -323,7 +324,10 @@ const NavbarPage = () => {
 
           <div className="flex items-center gap-4 text-sm relative">
             <div className="relative" ref={userMenuRef}>
-              <FaUser className="cursor-pointer" onClick={() => setUserMenuOpen(!userMenuOpen)} />
+              <FaUser
+                className="text-lg text-black cursor-pointer"
+                onClick={() => user ? router.push('/profile') : setSignInModal(true)}
+              />
               {userMenuOpen && (
                 // <div className="absolute right-0 mt-2 w-40 bg-white border shadow-md rounded-md z-20">
                 //   <div onClick={() => setSignInModal(true)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</div>
@@ -361,7 +365,7 @@ const NavbarPage = () => {
               )}
             </div>
 
-            <Link href="/cart">
+            <Link href="/cart" aria-label="View Cart">
               <div className="relative cursor-pointer">
                 <FaShoppingCart className="text-xl" />
                 {cartCount > 0 && (
@@ -415,9 +419,16 @@ const NavbarPage = () => {
 
       <div className="hidden md:block bg-[#a100fe] shadow overflow-x-auto">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-center gap-6 text-sm font-bold text-white uppercase whitespace-nowrap">
-          {categories?.data?.slice(0, 8).map((item: any, index: number) => (
-            <div key={index} className="cursor-pointer" onClick={() => router.push(`/categories/${slugConvert(item.name)}`)}>{item?.name}</div>
-          ))}
+          {categories?.data
+            ?.filter((item: any) =>
+              finalProducts?.some(
+                (p: any) => slugConvert(p.category_name) === slugConvert(item.name)
+              )
+            )
+            ?.slice(4, 13)
+            .map((item: any, index: number) => (
+              <div key={index} className="cursor-pointer" onClick={() => router.push(`/categories/${slugConvert(item.name)}`)}>{item?.name}</div>
+            ))}
         </div>
       </div>
 
