@@ -4,16 +4,7 @@ import Link from "next/link";
 
 export default function WhatsAppFloatingButton({
   phone = "917429667788",
-  message = `👋 Welcome to TN Computers!
-
-Thank you for contacting us. We specialize in Laptop & Desktop Sales, Computer Accessories, Printer Solutions, CCTV Installation, Networking, IT Hardware Support, Computer Repairs, and AMC Services.
-
-How can we help you today?
-
-📞 Call: +91 74296 67788
-🌐 Website: https://www.tncomputers.in
-
-Our team will get back to you shortly.`,
+  message = `Hello! I am interested in your services.`,
 }: {
   phone?: string;
   message?: string;
