@@ -158,7 +158,7 @@ export default function Footer() {
             <p className="text-gray-100">Chennai – 600078</p>
             {/* <p className="text-gray-100 mt-2">Mon – Fri: 9am – 5pm</p> */}
 
-            <div className="flex gap-4 mt-4"> 
+            <div className="flex gap-4 mt-4">
               <a
                 href="https://www.facebook.com/tncomputershardware"
                 target="_blank"
@@ -194,6 +194,22 @@ export default function Footer() {
               >
                 <FaInstagram className="text-xl text-white hover:text-pink-500" />
               </a>
+            </div>
+
+            {/* Play Store App Download */}
+            <div className="mt-6">
+              <Link
+                href="https://play.google.com/store/apps/details?id=in.tncomputers.app&hl=en_IN"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block transition-transform hover:scale-105"
+              >
+                <img
+                  src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                  alt="Get it on Google Play"
+                  className="h-16 w-auto"
+                />
+              </Link>
             </div>
 
           </div>
