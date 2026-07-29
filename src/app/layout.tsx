@@ -12,6 +12,7 @@ import { AppProviders } from "./components/providers";
 import { Suspense } from "react";
 import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
 import BottomNav from "./components/BottomNav";
+import GlobalAppPopup from "./components/GlobalAppPopup";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -86,6 +87,7 @@ export default function RootLayout({
           <FooterPage />
           <WhatsAppFloatingButton />
           <Toaster position="top-right" reverseOrder={false} />
+          <GlobalAppPopup />
         </AppProviders>
         <BottomNav />
       </body>
