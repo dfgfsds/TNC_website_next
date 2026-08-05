@@ -429,10 +429,11 @@ function AccountInfoTab() {
 
         toast.success("Profile updated successfully");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Update failed:", error);
+      toast.error(error?.response?.data?.error || error?.response?.data?.message || "Failed to update profile, please try again.");
 
-      toast.error("Failed to update profile");
+      // toast.error("Failed to update profile");
     }
   };
 
