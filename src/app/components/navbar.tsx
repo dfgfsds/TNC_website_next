@@ -23,6 +23,10 @@ import { useUser } from '../../../context/UserContext'
 import { useCartItem } from '../../../context/CartItemContext'
 import { useProducts } from '../../../context/ProductsContext'
 import { slugConvert } from '../../../lib/utils'
+import { postDeviceLogoutApi } from '../../../api-endpoints/authendication'
+import { getDeviceId } from '../../../lib/deviceId'
+import { auth } from '../../../lib/firebase'
+import { signOut } from 'firebase/auth'
 
 const NavbarPage = () => {
   const { products } = useProducts();
@@ -66,14 +70,39 @@ const NavbarPage = () => {
   }, [searchParams])
 
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      const currentUserId = user?.data?.id || (typeof window !== 'undefined' ? localStorage.getItem('userId') : null);
+      if (currentUserId && vendorId) {
+        await postDeviceLogoutApi({
+          vendor_id: vendorId,
+          device_id: getDeviceId(),
+          user_id: currentUserId,
+        });
+      }
+    } catch (err) {
+      console.error("Device logout API error:", err);
+    }
+
+    try {
+      await signOut(auth);
+    } catch (fbErr) {
+      console.error("Firebase signOut error:", fbErr);
+    }
+
     if (typeof window !== 'undefined') {
+      localStorage.removeItem("userId");
+      localStorage.removeItem("userName");
+      localStorage.removeItem("email");
+      localStorage.removeItem("cartId");
       localStorage.clear();
     }
-    localStorage.removeItem("email")
-    localStorage.removeItem("userName")
-    setUser(null)
+    setUser(null);
+    setUserMenuOpen(false);
+    setMobileMenuOpen(false);
+    router.push('/');
   };
+
 
   const NAV_LINKS = [
     { path: '/', label: 'Home' },
@@ -325,43 +354,45 @@ const NavbarPage = () => {
           <div className="flex items-center gap-4 text-sm relative">
             <div className="relative" ref={userMenuRef}>
               <FaUser
-                className="text-lg text-black cursor-pointer"
-                onClick={() => user ? router.push('/profile') : setSignInModal(true)}
+                className="text-lg text-black cursor-pointer hover:text-[#a100fe] transition-colors"
+                onClick={() => user ? setUserMenuOpen(!userMenuOpen) : setSignInModal(true)}
               />
               {userMenuOpen && (
-                // <div className="absolute right-0 mt-2 w-40 bg-white border shadow-md rounded-md z-20">
-                //   <div onClick={() => setSignInModal(true)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</div>
-                //   <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</Link>
-                // </div>
-
-                <div className="absolute right-0 mt-2 w-40 bg-white border shadow-md rounded-md z-20">
+                <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-100 shadow-xl rounded-lg z-20 py-1 divide-y divide-gray-100">
                   {user ? (
                     <>
-                      <div className="block px-4 py-2 text-sm text-gray-700 cursor-default">
+                      <div className="px-4 py-2.5 text-sm font-semibold text-gray-800 bg-gray-50/50">
                         {user?.data?.name || 'Welcome'}
                       </div>
-                      <Link
-                        href="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-                      >
-                        Profile
-                      </Link>
-                      <div className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer' onClick={handleLogout}>
-                        Logout
+                      <div className="py-1">
+                        <Link
+                          href="/profile"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#a100fe] transition-colors"
+                        >
+                          Profile
+                        </Link>
+                        <button
+                          type="button"
+                          className="w-full text-left block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </button>
                       </div>
                     </>
-
                   ) : (
                     <div
-                      onClick={() => setSignInModal(true)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                      onClick={() => {
+                        setUserMenuOpen(false);
+                        setSignInModal(true);
+                      }}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#a100fe] cursor-pointer"
                     >
                       Login
                     </div>
                   )}
-
                 </div>
-
               )}
             </div>
 
@@ -382,37 +413,63 @@ const NavbarPage = () => {
 
       <div className={`fixed inset-0 z-40 md:hidden transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="absolute inset-0 bg-black opacity-50" onClick={() => setMobileMenuOpen(false)} />
-        <div className="relative bg-white w-3/4 h-full px-6 py-6 text-black shadow-lg z-50">
-          <button onClick={() => setMobileMenuOpen(false)} className="absolute top-4 right-4 text-xl">
-            <FaTimes />
-          </button>
+        <div className="relative bg-white w-3/4 h-full px-6 py-6 text-black shadow-lg z-50 flex flex-col justify-between overflow-y-auto">
+          <div>
+            <div className="flex justify-between items-center mb-6">
+              <Image src={logoImg} alt="RAZOX" width={140} height={35} className="h-10 w-auto" />
+              <button onClick={() => setMobileMenuOpen(false)} className="text-xl p-1 text-gray-600 hover:text-black">
+                <FaTimes />
+              </button>
+            </div>
 
-
-          <nav className="flex flex-col gap-4 text-sm font-semibold">
-            {NAV_LINKS.map(({ path, label }) => (
-              <Link
-                key={path}
-                href={path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={pathname === path ? 'text-[#a100fe] font-bold' : ''}
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
-
-
-          <div className="flex gap-6 text-xl mt-6">
-            <FaUser />
-            <FaHeart />
-            {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                {cartCount}
-              </span>
-            )}
-            <FaShoppingCart />
+            <nav className="flex flex-col gap-4 text-sm font-semibold">
+              {NAV_LINKS.map(({ path, label }) => (
+                <Link
+                  key={path}
+                  href={path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`py-1 transition-colors ${pathname === path ? 'text-[#a100fe] font-bold' : 'hover:text-[#a100fe]'}`}
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
           </div>
 
+          <div className="mt-8 border-t pt-4">
+            {user ? (
+              <div className="space-y-3">
+                <div className="text-sm font-bold text-gray-900">
+                  Hi, {user?.data?.name || 'Customer'}
+                </div>
+                <Link
+                  href="/profile"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-sm text-gray-700 hover:text-[#a100fe]"
+                >
+                  My Profile & Orders
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="block text-sm text-red-600 font-medium hover:text-red-700"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setSignInModal(true);
+                }}
+                className="w-full bg-[#a100fe] text-white py-2 rounded-lg text-sm font-medium hover:bg-[#8e00e0] transition-colors"
+              >
+                Sign In / Register
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
