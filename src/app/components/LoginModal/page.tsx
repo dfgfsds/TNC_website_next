@@ -318,7 +318,7 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
             </button>
 
             <p className="text-sm text-gray-600 text-center pt-2">
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <Link href="/register" className="font-medium text-[#a100fe] hover:underline">
                 Create one
               </Link>
@@ -383,4 +383,5 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
 }
 
 export default LoginModal;
+
 
