@@ -1,5 +1,5 @@
 // export const baseUrl = 'https://ecomapi.ftdigitalsolutions.org';
-// export const baseUrl = 'https://test-ecomapi.justvy.in';
+// export const baseUrl = 'https://test-ecomapi.ftdigitalsolutions.org';
 export const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://ecomapi.ftdigitalsolutions.org';
 // export const baseUrlTest = process.env.NEXT_PUBLIC_API_BASE_URL_TEST || 'https://test-ecomapi.justvy.in';
 
@@ -40,6 +40,8 @@ const checkDtdcCharge = `${baseUrl}/Check-Dtdc-Courier-Serviceability-delivery-c
 const codPay = `${baseUrl}/cod-pay-now/`;
 const sendSmsOtpUser = `${baseUrl}/send-sms-opt-user/`;
 const otpVerify = `${baseUrl}/verify-sms-opt-return-user/`;
+const loginWithGoogle = `${baseUrl}/login-with-google/`;
+const deviceLogout = `${baseUrl}/device/logout/`;
 export default {
   cartCreate,
   createUsers,
@@ -77,5 +79,8 @@ export default {
   codPay,
   baseUrl,
   sendSmsOtpUser,
-  otpVerify
+  otpVerify,
+  loginWithGoogle,
+  deviceLogout
 };
+
