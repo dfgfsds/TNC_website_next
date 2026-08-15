@@ -60,6 +60,7 @@ export default function GlobalAppPopup() {
           }}
           className="inline-block transition-transform hover:scale-105"
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
             alt="Get it on Google Play"
