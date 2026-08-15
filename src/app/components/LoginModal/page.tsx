@@ -99,7 +99,14 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
         setToken(res.data.token);
       }
     } catch (err: any) {
-      setError(err?.response?.data?.error || 'Failed to send OTP');
+      const errorMsg = err?.response?.data?.message || err?.response?.data?.error || 'Failed to send OTP';
+      setError(errorMsg);
+
+      if (errorMsg === "No account found with this phone number. Please try Google login or sign up.") {
+        setTimeout(() => {
+          handleGoogleLogin();
+        }, 1000);
+      }
     } finally {
       setLoading(false);
     }
@@ -136,8 +143,24 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
   const handleGoogleLogin = async () => {
     setGoogleLoading(true);
     setError('');
+
+    let isPopupResolved = false;
+
+    // Workaround for Firebase delay: reset loading when window regains focus
+    const handleFocus = () => {
+      window.removeEventListener('focus', handleFocus);
+      setTimeout(() => {
+        if (!isPopupResolved) {
+          setGoogleLoading(false);
+        }
+      }, 1500);
+    };
+    window.addEventListener('focus', handleFocus);
+
     try {
       const result = await signInWithPopup(auth, googleProvider);
+      isPopupResolved = true;
+      window.removeEventListener('focus', handleFocus);
       const idToken = await result.user.getIdToken();
 
       const response: any = await postLoginWithGoogleApi({
@@ -173,8 +196,9 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
       }
     } catch (err: any) {
       console.error("Google login error:", err);
-      if (err?.code === 'auth/popup-closed-by-user') {
-        setError('Login popup was closed before completing sign in.');
+      if (err?.code === 'auth/popup-closed-by-user' || err?.code === 'auth/cancelled-popup-request') {
+        // Silently handle popup close without showing error to the user
+        setError('');
       } else {
         setError(err?.response?.data?.error || err?.response?.data?.message || err?.message || 'Failed to sign in with Google');
       }

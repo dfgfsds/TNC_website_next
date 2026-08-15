@@ -4,10 +4,11 @@ import { deleteAddressApi, getAddressApi, getOrdersAndOrdersItemsApi } from '../
 import { useVendor } from '../../../context/VendorContext';
 import { formatDate, formatPrice } from '../../../lib/utils';
 import { InvalidateQueryFilters, useQuery, useQueryClient } from '@tanstack/react-query';
-import { MapPin, Package, Pencil, Plus, Trash } from 'lucide-react';
+import { MapPin, Package, Pencil, Plus, Trash, LogOut } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import AddressForm from './AddressForm';
-import { patchUserSelectAddressAPi, updateUserAPi } from '../../../api-endpoints/authendication';
+import { patchUserSelectAddressAPi, updateUserAPi, postDeviceLogoutApi } from '../../../api-endpoints/authendication';
+import { getDeviceId } from '../../../lib/deviceId';
 import { useUser } from '../../../context/UserContext';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -390,6 +391,32 @@ function AccountInfoTab() {
   const { user }: any = useUser();
   const { vendorId } = useVendor();
   const queryClient = useQueryClient();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    const storedUserId = typeof window !== 'undefined' ? localStorage.getItem("userId") : null;
+    const currentUserId = user?.data?.id || user?.id || (storedUserId ? Number(storedUserId) : null);
+    const currentVendorId = vendorId ? Number(vendorId) : 1;
+
+    if (currentUserId) {
+      try {
+        await postDeviceLogoutApi({
+          vendor_id: currentVendorId,
+          device_id: getDeviceId(),
+          user_id: currentUserId,
+        });
+      } catch (error) {
+        console.error("Device logout error:", error);
+      }
+    }
+
+    if (typeof window !== 'undefined') {
+      localStorage.clear();
+    }
+    setIsLoggingOut(false);
+    window.location.href = "/login";
+  };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -408,13 +435,31 @@ function AccountInfoTab() {
   }, [user]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+
+    // Restrict phone input to only numbers and max 10 digits
+    if (e.target.id === 'phone') {
+      value = value.replace(/\D/g, '');
+      if (value.length > 10) return;
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [e.target.id]: e.target.value,
+      [e.target.id]: value,
     }));
   };
 
   const handleUpdate = async () => {
+    if (!formData.phone || formData.phone.trim() === '') {
+      toast.error("Mobile number is required");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      toast.error("Mobile number must be exactly 10 digits");
+      return;
+    }
+
     try {
       const response = await updateUserAPi(`/${user?.data?.id}`, {
         ...formData,
@@ -432,8 +477,6 @@ function AccountInfoTab() {
     } catch (error: any) {
       console.error("Update failed:", error);
       toast.error(error?.response?.data?.error || error?.response?.data?.message || "Failed to update profile, please try again.");
-
-      // toast.error("Failed to update profile");
     }
   };
 
@@ -466,19 +509,35 @@ function AccountInfoTab() {
         </div>
 
         <div className="space-y-2 md:col-span-2">
-          <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone</label>
+          <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone <span className="text-red-500">*</span></label>
           <input
             id="phone"
             type="tel"
+            required
+            maxLength={10}
             value={formData.phone}
             onChange={handleChange}
             placeholder="Enter phone number"
-            className="w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
+            className={`w-full border rounded-md p-2 focus:outline-none focus:ring-1 ${formData.phone.length > 0 && formData.phone.length < 10
+              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+              : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
+              }`}
           />
+          {formData.phone.length > 0 && formData.phone.length < 10 && (
+            <p className="text-red-500 text-xs mt-1">Mobile number must be exactly 10 digits.</p>
+          )}
         </div>
       </div>
 
-      <div className="flex justify-end">
+      <div className="flex justify-between items-center pt-4">
+        <button
+          onClick={handleLogout}
+          disabled={isLoggingOut}
+          className="px-4 py-2 bg-red-50 text-red-600 text-sm font-medium rounded-md hover:bg-red-100 transition flex items-center gap-2 disabled:opacity-50"
+        >
+          <LogOut className="w-4 h-4" />
+          {isLoggingOut ? "Logging out..." : "Log Out"}
+        </button>
         <button
           onClick={handleUpdate}
           className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition"
