@@ -206,10 +206,9 @@ function AddressTab() {
 
 
   useEffect(() => {
-
     setUserName(user?.data?.name);
     setUserId(user?.data?.id);
-  }, []);
+  }, [user?.data?.name, user?.data?.id]);
 
   const { data, isLoading }: any = useQuery({
     queryKey: ['getAddressData', userId],

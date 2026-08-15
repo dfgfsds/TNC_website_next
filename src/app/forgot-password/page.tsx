@@ -261,7 +261,7 @@ export default function ForgotPasswordPage() {
               </button>
 
               <div className="text-center mt-4 text-sm">
-                <span className="text-gray-500">Didn't receive the email? </span>
+                <span className="text-gray-500">Didn&apos;t receive the email? </span>
                 {timer > 0 ? (
                   <span className="text-gray-400 font-medium ml-1">Resend in {timer}s</span>
                 ) : (
