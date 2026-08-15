@@ -126,6 +126,7 @@ const NavbarPage = () => {
     }, 300);
 
     return () => clearTimeout(tid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, isOpen]);
 
   // fetchSearchResults
