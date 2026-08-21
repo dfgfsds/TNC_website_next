@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ChevronRight, QrCode } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import QrImage from "../../../public/assets/tn_computers_google_play_qr.png";
 
 export default function MobileAppQR() {
@@ -18,19 +18,27 @@ export default function MobileAppQR() {
         {/* Toggle Button Area (Left side) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-[40px] shrink-0 bg-gray-50 flex items-center justify-center border-r border-gray-100 hover:bg-gray-200 transition-colors cursor-pointer z-10"
+          className="w-[40px] shrink-0 bg-gray-50 flex flex-col items-center justify-center gap-1.5 border-r border-gray-100 hover:bg-purple-50 transition-colors cursor-pointer z-10 py-3"
           aria-label={isOpen ? "Hide QR Code" : "Show QR Code"}
         >
           {isOpen ? (
-            <ChevronRight size={24} className="text-gray-400 group-hover:text-gray-700 transition-colors" />
+            <ChevronRight size={20} className="text-gray-400 group-hover:text-gray-700 transition-colors" />
           ) : (
-            <QrCode size={22} className="text-gray-600 hover:text-[#a100fe] transition-colors" />
+            <>
+              <ChevronLeft size={20} className="text-[#a100fe]" />
+              <span
+                className="text-[9px] font-extrabold text-[#a100fe] uppercase tracking-widest leading-tight"
+                style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+              >
+                App QR
+              </span>
+            </>
           )}
         </button>
 
         {/* QR Content (Right side) */}
-        <div className="p-5 flex flex-col items-center shrink-0 w-[160px]">
-          <div className="w-[120px] h-[120px] relative mb-3">
+        <div className="p-3 flex flex-col items-center shrink-0 w-[120px]">
+          <div className="w-[90px] h-[90px] relative mb-2">
             <Image
               src={QrImage}
               alt="TN Computers App QR"
@@ -38,7 +46,7 @@ export default function MobileAppQR() {
               className="object-contain"
             />
           </div>
-          <p className="text-[10px] font-bold tracking-[0.2em] text-gray-700 text-center uppercase">
+          <p className="text-[9px] font-bold tracking-[0.15em] text-gray-700 text-center uppercase">
             Download App
           </p>
         </div>
