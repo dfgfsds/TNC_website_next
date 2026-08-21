@@ -13,6 +13,7 @@ import { Suspense } from "react";
 import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
 import BottomNav from "./components/BottomNav";
 import GlobalAppPopup from "./components/GlobalAppPopup";
+import MobileAppQR from "./components/MobileAppQR";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +43,17 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-TL2K58MJ');
           `}
         </Script>
-        <meta name="p:domain_verify" content="634c6b0f4bef19f2cafa3c0f0b9b51aa"/>
+        <meta name="p:domain_verify" content="634c6b0f4bef19f2cafa3c0f0b9b51aa" />
+        {/* ✅ Microsoft Clarity Script */}
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "y5bgcubh9f");
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         {/* ✅ Razorpay Checkout Script */}
@@ -86,6 +97,7 @@ export default function RootLayout({
           {children}
           <FooterPage />
           <WhatsAppFloatingButton />
+          <MobileAppQR />
           <Toaster position="top-right" reverseOrder={false} />
           <GlobalAppPopup />
         </AppProviders>

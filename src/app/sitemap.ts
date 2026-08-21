@@ -95,6 +95,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
       changeFrequency: 'yearly' as const,
     },
+    {
+      path: '/connect',
+      priority: 0.8,
+      changeFrequency: 'weekly' as const,
+    },
   ]
 
   // 🔹 Dynamic Categories from JSON

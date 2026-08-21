@@ -147,6 +147,7 @@ export default function Footer() {
               <li><Link href="/categories">Categories</Link></li>
               <li><Link href="/shop">Shop</Link></li>
               <li><Link href="/contact-us">Contact</Link></li>
+              <li><Link href="/connect">Connect</Link></li>
             </ul>
           </div>
 
