@@ -51,7 +51,7 @@ export default function ConnectPage() {
             <span className="text-purple-200 text-3xl md:text-4xl block mt-2">Branded Laptop, Desktop & Gaming PC Shop in Chennai</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl text-purple-100 leading-relaxed font-medium">
-            Welcome to the official TN Computers Connect page. Whether you're looking for branded laptops, desktops, gaming PCs, custom PC builds, refurbished laptops, computer accessories, or reliable IT solutions, this page connects you with all of TN Computers' official platforms in one convenient place.
+            Welcome to the official TN Computers Connect page. Whether you&apos;re looking for branded laptops, desktops, gaming PCs, custom PC builds, refurbished laptops, computer accessories, or reliable IT solutions, this page connects you with all of TN Computers&apos; official platforms in one convenient place.
           </p>
           <p className="mt-4 text-md md:text-lg text-purple-100 leading-relaxed max-w-3xl mx-auto opacity-90">
             As one of the trusted computer stores in Chennai, TN Computers offers a wide range of branded laptops, gaming desktops, custom-built PCs, refurbished systems, and genuine computer accessories for students, professionals, gamers, businesses, and organizations. Stay connected through our website, social media platforms, WhatsApp support, and visit our showroom in Chennai for expert guidance and the latest technology solutions.
@@ -136,7 +136,7 @@ export default function ConnectPage() {
               Your feedback helps us continue providing high-quality computers and exceptional customer service.
             </p>
             <p className="text-blue-100/90 text-sm md:text-base leading-relaxed max-w-2xl hidden sm:block">
-              If you've purchased a laptop, desktop, gaming PC, refurbished computer, or accessories, we'd love to hear about your experience. Your review helps others discover TN Computers as a trusted store in Chennai.
+              If you&apos;ve purchased a laptop, desktop, gaming PC, refurbished computer, or accessories, we&apos;d love to hear about your experience. Your review helps others discover TN Computers as a trusted store in Chennai.
             </p>
           </div>
 
@@ -170,7 +170,7 @@ export default function ConnectPage() {
 
             <div className="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100">
               <p className="text-gray-600 md:text-lg leading-relaxed text-center md:text-left">
-                Whether you're buying a branded laptop, building a custom gaming PC, upgrading your desktop, purchasing a refurbished laptop, or shopping for computer accessories, TN Computers provides genuine products, expert recommendations, competitive pricing, and dependable after-sales support to help you choose the right technology for your personal, professional, gaming, or business needs.
+                Whether you&apos;re buying a branded laptop, building a custom gaming PC, upgrading your desktop, purchasing a refurbished laptop, or shopping for computer accessories, TN Computers provides genuine products, expert recommendations, competitive pricing, and dependable after-sales support to help you choose the right technology for your personal, professional, gaming, or business needs.
               </p>
             </div>
           </div>
@@ -264,7 +264,7 @@ export default function ConnectPage() {
               Follow TN Computers across our official social media channels and become part of our growing customer community. Stay updated with the latest laptop launches, gaming PC builds, desktop offers, computer accessories, exclusive discounts, and technology tips.
             </p>
             <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
-              Whether you're searching for a branded laptop, a custom gaming PC, or reliable computer accessories, TN Computers is here to help you make the right choice with expert guidance and trusted service.
+              Whether you&apos;re searching for a branded laptop, a custom gaming PC, or reliable computer accessories, TN Computers is here to help you make the right choice with expert guidance and trusted service.
             </p>
             <Link href="/shop" className="inline-block bg-[#a100fe] text-white px-12 py-5 rounded-full font-bold text-xl hover:bg-purple-500 transition-all shadow-[0_0_40px_rgb(161,0,254,0.4)] hover:shadow-[0_0_60px_rgb(161,0,254,0.6)] hover:-translate-y-1">
               Explore Our Shop
