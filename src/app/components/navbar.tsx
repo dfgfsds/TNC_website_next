@@ -111,6 +111,7 @@ const NavbarPage = () => {
     { path: '/custom-pc-build', label: 'Custom PC' },
     { path: '/about-us', label: 'About' },
     { path: '/blog', label: 'Blog' },
+    // { path: '/connect', label: 'Connect' },
     { path: '/contact-us', label: 'Contact' },
   ];
 
