@@ -12,6 +12,7 @@ import { baseUrl } from "../../../../api-endpoints/ApiUrls";
 import { auth, googleProvider } from "../../../../lib/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useVendor } from "../../../../context/VendorContext";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   email: string;
@@ -35,6 +36,7 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState('');
   const [token, setToken] = useState<string | null>(null);
+  const router = useRouter();
 
   // Safe to use hooks here
   useEffect(() => {
@@ -81,6 +83,7 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
           }
         }
         handleClose();
+        router.push('/');
         window.location.reload();
       }
     } catch (err: any) {
@@ -131,6 +134,7 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
           localStorage.setItem('cartId', cartRes.data[0].id);
         }
         handleClose();
+        router.push('/');
         window.location.reload();
       }
     } catch (err: any) {
@@ -192,6 +196,7 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
         }
 
         handleClose();
+        router.push('/');
         window.location.reload();
       }
     } catch (err: any) {
@@ -358,7 +363,15 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
                   type="text"
                   id="mobile"
                   value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
+                  onChange={(e) => {
+                    setMobile(e.target.value);
+                    if (otpSent) {
+                      setOtpSent(false);
+                      setOtp('');
+                      setToken(null);
+                      setError('');
+                    }
+                  }}
                   placeholder="Enter mobile number"
                   className="pl-10 pr-4 py-2.5 block w-full text-sm border border-gray-300 rounded-lg shadow-sm focus:border-[#a100fe] focus:ring-1 focus:ring-[#a100fe] focus:outline-none"
                 />
