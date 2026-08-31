@@ -1,330 +1,3 @@
-
-// import { useState } from "react";
-
-// export default function HomeSeoSection() {
-//     const [open, setOpen] = useState(false);
-
-//     return (
-//         <>
-//             {/* Your existing code above... */}
-
-//             {/* Collapsible Info Section */}
-//             <div className="bg-[#f5f7fc] px-4 sm:px-6 lg:px-8">
-//                 <div className="max-w-5xl">
-
-// <div>
-//               <h3 className="text-xl font-bold text-gray-900 mt-8">Best Laptop Store in Chennai for Every Need</h3>
-//               <p>
-//                 Looking for a reliable laptop showroom near me Chennai or a trusted computer shop near me? TN Computers provides premium and budget-friendly solutions for students, gamers, professionals, businesses, and creators.
-//               </p>
-//               <p>We specialize in:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Affordable laptops in Chennai</li>
-//                 <li>Branded laptops Chennai</li>
-//                 <li>Gaming laptop Chennai</li>
-//                 <li>Business laptops Chennai</li>
-//                 <li>i5 / i7 laptops Chennai</li>
-//                 <li>SSD laptops Chennai</li>
-//                 <li>High performance desktop Chennai</li>
-//                 <li>Gaming desktop Chennai</li>
-//                 <li>Workstation PC Chennai</li>
-//                 <li>Refurbished laptops in Chennai</li>
-//                 <li>Refurbished desktop Chennai</li>
-//                 <li>Used laptops Chennai</li>
-//               </ul>
-//               <p>
-//                 From entry-level laptops to RTX gaming PCs, we help customers find the perfect device based on budget and performance needs.
-//               </p>
-
-//               <h3 className="text-xl font-bold text-gray-900 mt-8">Buy Laptops in Chennai from Top Brands</h3>
-//               <p>At TN Computers, you can explore the latest collections from leading brands including:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Dell</li>
-//                 <li>HP</li>
-//                 <li>Lenovo</li>
-//                 <li>Acer</li>
-//                 <li>ASUS</li>
-//                 <li>MSI</li>
-//               </ul>
-//               <p>
-//                 Whether you want to buy Dell laptop Chennai, search for an HP laptop store Chennai, or compare Lenovo laptops Chennai, our showroom offers genuine products with warranty support and expert guidance.
-//               </p>
-
-//               <h3 className="text-xl font-bold text-gray-900 mt-8">Gaming PC Shop in Chennai – Custom Gaming Setup Experts</h3>
-//               <p>
-//                 TN Computers is one of the most trusted destinations for gaming PC Chennai and custom gaming desktop Chennai builds.
-//               </p>
-//               <p>We provide:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>RTX gaming PC Chennai</li>
-//                 <li>Budget gaming PC Chennai</li>
-//                 <li>Esports PC Chennai</li>
-//                 <li>Gaming accessories Chennai</li>
-//                 <li>Gaming desktop Chennai</li>
-//                 <li>Gaming PC setup Chennai</li>
-//                 <li>Buy gaming PC Chennai</li>
-//                 <li>Gaming PC offers Chennai</li>
-//               </ul>
-//               <p>
-//                 Our experts help gamers build powerful PCs for streaming, esports, editing, and AAA gaming titles. If you are searching for an affordable gaming PC build in Chennai or the best gaming PC under 50000 Chennai, TN Computers delivers the best value and performance.
-//               </p>
-
-//               <h3 className="text-xl font-bold text-gray-900 mt-8">Custom PC Builders in Chennai</h3>
-//               <p>
-//                 Searching for reliable custom PC builders in Chennai or a custom PC builder near me Chennai?
-//               </p>
-//               <p>TN Computers offers professional:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Custom PC building service Chennai</li>
-//                 <li>PC assembling shop Chennai</li>
-//                 <li>Workstation PC Chennai</li>
-//                 <li>Gaming PC setup Chennai</li>
-//                 <li>High-performance desktop Chennai</li>
-//                 <li>PC assembly service Chennai</li>
-//               </ul>
-//               <p>We build PCs for:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Gaming</li>
-//                 <li>Video editing</li>
-//                 <li>3D rendering</li>
-//                 <li>Architecture</li>
-//                 <li>Office work</li>
-//                 <li>Streaming</li>
-//                 <li>Programming</li>
-//               </ul>
-//               <p>
-//                 Our team helps you select the right motherboard, processor, RAM, graphics card, cooling system, and cabinet based on your budget.
-//               </p>
-
-//               <h3 className="text-xl font-bold text-gray-900 mt-8">Refurbished Laptops in Chennai at Best Prices</h3>
-//               <p>
-//                 TN Computers is also known for premium-quality refurbished laptops in Chennai and certified refurbished laptops India.
-//               </p>
-//               <p>We stock:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Dell Latitude refurbished laptops</li>
-//                 <li>HP EliteBook refurbished laptops</li>
-//                 <li>Lenovo ThinkPad refurbished laptops</li>
-//                 <li>Refurbished gaming laptops Chennai</li>
-//                 <li>Refurbished desktop Chennai</li>
-//                 <li>Used gaming PC Chennai</li>
-//               </ul>
-//               <p>All systems are quality tested and ideal for:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Students</li>
-//                 <li>Office work</li>
-//                 <li>Online classes</li>
-//                 <li>Business use</li>
-//                 <li>Freelancers</li>
-//               </ul>
-//               <p>Looking for:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Second hand laptops Chennai</li>
-//                 <li>Refurbished laptop price Chennai</li>
-//                 <li>i7 refurbished laptops Chennai price</li>
-//                 <li>Best place to buy used laptops in Chennai</li>
-//               </ul>
-//               <p>
-//                 TN Computers offers affordable and reliable refurbished systems with warranty support.
-//               </p>
-
-//               <h3 className="text-xl font-bold text-gray-900 mt-8">Computer Accessories Shop Chennai</h3>
-//               <p>
-//                 Upgrade your setup with premium accessories from Chennai’s trusted computer accessories shop Chennai.
-//               </p>
-//               <p>Available products include:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Gaming keyboards & mouse</li>
-//                 <li>RGB accessories</li>
-//                 <li>Gaming cabinets</li>
-//                 <li>SSD & RAM upgrades</li>
-//                 <li>Graphics cards Chennai</li>
-//                 <li>Motherboard shop Chennai</li>
-//                 <li>SSD price Chennai</li>
-//                 <li>CPU coolers</li>
-//                 <li>UPS systems</li>
-//                 <li>Monitors & gaming displays</li>
-//                 <li>Barcode scanners & printers</li>
-//               </ul>
-//               <p>We also provide:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Upgrade RAM SSD Chennai</li>
-//                 <li>SSD installation Chennai</li>
-//                 <li>PC repair Chennai</li>
-//                 <li>Laptop service and repair Chennai</li>
-//               </ul>
-
-//               <h3 className="text-xl font-bold text-gray-900 mt-8">Why TN Computers is the Best Computer Store Near Me</h3>
-//               <p>Customers across Chennai trust TN Computers because we offer:</p>
-//               <ul className="list-none space-y-1">
-//                 <li>✅ Genuine branded products</li>
-//                 <li>✅ Best laptop deals Chennai</li>
-//                 <li>✅ Laptop EMI Chennai options</li>
-//                 <li>✅ Affordable pricing</li>
-//                 <li>✅ Expert technical support</li>
-//                 <li>✅ Fast delivery across Chennai</li>
-//                 <li>✅ Reliable after-sales service</li>
-//                 <li>✅ Gaming PC customization</li>
-//                 <li>✅ Certified refurbished laptops Chennai</li>
-//                 <li>✅ Trusted computer shop Chennai reputation</li>
-//               </ul>
-//               <p>Whether you are searching for:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Best computer shop in Chennai near me</li>
-//                 <li>Laptop shop near me</li>
-//                 <li>PC store near me Chennai</li>
-//                 <li>Gaming PC store near me</li>
-//                 <li>Refurbished laptop shop near me</li>
-//               </ul>
-//               <p>
-//                 TN Computers is your trusted technology partner.
-//               </p>
-
-//               <h3 className="text-xl font-bold text-gray-900 mt-8">Laptop Store in Chennai with EMI Options</h3>
-//               <p>
-//                 Buying your dream laptop or gaming PC is easier with flexible payment solutions.
-//               </p>
-//               <p>We provide:</p>
-//               <ul className="list-disc pl-6 space-y-1">
-//                 <li>Laptop EMI Chennai</li>
-//                 <li>Laptop offers Chennai</li>
-//                 <li>Buy laptop online Chennai</li>
-//                 <li>Best laptop deals Chennai</li>
-//                 <li>Cheap laptop Chennai</li>
-//                 <li>Gaming PC offers India</li>
-//               </ul>
-//               <p>
-//                 Visit our showroom or contact our experts for the latest offers and exchange deals.
-//               </p>
-//             </div>
-
-//                     {/* HIDDEN CONTENT */}
-//                     <div
-//                         className={`transition-all duration-500 overflow-hidden ${open ? "max-h-[4000px] mt-6" : "max-h-0"
-//                             }`}
-//                     >
-
-//                         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-start my-4">
-//                             Explore Our Wide Range of Products
-//                         </h2>
-
-//                         {/* FIRST PARAGRAPH ALWAYS VISIBLE */}
-//                         <p className="text-gray-700 text-lg text-start leading-relaxed">
-//                             At <b>TN Computers</b>, we pride ourselves on offering a diverse selection of computing products to meet every need:
-//                         </p>
-
-//                         <div className="text-gray-700 text-lg text-start space-y-4 leading-relaxed">
-
-
-//                             <ul className="list-disc text-start ml-6 mt-4 space-y-1">
-//                                 <li><b>New Laptops and Computers –</b> All major brands available, including Dell, HP, Lenovo, ASUS, Acer, and more.
-//                                 </li>
-//                                 <li><b>Refurbished Laptops and Desktops –</b> Quality-tested systems that deliver performance at affordable prices.
-//                                 </li>
-//                                 <li><b>Custom PC and Laptop Builds –</b> Tailored machines designed for gaming, professional work, or personal use.
-//                                 </li>
-//                                 <li><b>Gaming PCs and Laptops –</b> Powerful, ready-to-use rigs for smooth gameplay and top-tier performance.
-//                                 </li>
-//                                 <li><b>IT Accessories –</b> Keyboards, mice, monitors, storage devices, and more.
-//                                 </li>
-
-//                             </ul>
-
-//                             <p>
-//                                 Whether you need to build a PC online or select a custom PC builder, TN Computers is your one-stop destination in Chennai.
-//                             </p>
-
-//                             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-start my-4">Why Choose TN Computers – Best Laptop Shop in Chennai</h2>
-//                             <p>Choosing the right computer store can be overwhelming, but at TN Computers, we make it simple. Our Chennai showroom stands out because:</p>
-
-//                             <ul className="list-disc ml-6 space-y-1">
-//                                 <li><b>Trusted Expertise –</b> Our team has years of experience in computer sales, repair, and custom builds.</li>
-//                                 <li><b>Affordable Prices –</b> We offer Best Computer shop in Chennai and other quality systems at unbeatable rates.
-//                                 </li>
-//                                 <li><b>Customization Options –</b>  From gaming PC build Chennai to professional workstations, we tailor solutions to your needs.</li>
-//                                 <li><b>After-Sales Support –</b> Enjoy peace of mind with our dedicated service and support.
-//                                 </li>
-//                                 <li><b>Wide Selection –</b> Find everything from laptop showroom in Chennai favorites to rare, high-performance machines.</li>
-//                             </ul>
-//                             <p className="mt-3">Whether you’re a student, professional, or gamer, our goal is to provide a seamless experience from browsing to purchase.</p>
-
-
-
-//                             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-start my-4">Refurbished and Gaming Systems</h2>
-//                             <p>
-//                                 Looking for value without compromise? TN Computers is your go-to for refurbished gaming PC laptops and a computer shop in Chennai. Each system is rigorously tested to ensure reliability and performance. Gaming laptops, high-speed desktops, and professional workstations are all available at competitive prices.
-//                             </p>
-
-//                             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-start my-4">Custom PC Builder – Build Your Dream Machine</h2>
-
-//                             <p className="mt-3">
-
-//                                 Want a PC that’s perfectly suited to your needs? Our custom PC builder service allows you to design a system with the latest components. Whether it’s for gaming PC build Chennai, office work, or creative projects, we help you create a high-performance machine that fits your budget. With TN Computers, building a PC online has never been easier.
-//                             </p>
-//                             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-start my-4">Visit Our Laptop Showroom in Chennai</h2>
-
-//                             <p className="mt-3">Step into our laptop showroom in Chennai to explore our full range of products, get expert advice, and see machines in action. From new laptops and custom PC builds to refurbished systems, we provide hands-on experience to help you make the right choice.</p>
-
-
-//                             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-start my-4">Shop With Confidence – Best Computer Shop in Chennai</h2>
-//                             <p>At TN Computers, we combine quality, affordability, and service to ensure every customer leaves satisfied. Whether you’re buying your first laptop, upgrading your gaming setup, or building a custom PC, we are recognized as the Best Computer shop in Chennai for good reason.</p>
-
-//                             <ul className="space-y-4">
-//                                 <li className="flex items-start gap-3">
-//                                     <span className="mt-3 h-2 w-2 rounded-full  bg-gray-600"></span>
-//                                     <div className="flex gap-2">
-//                                         <h3 className="font-semibold">Laptop Store Chennai</h3>
-//                                         <p className="text-gray-600">- All brands and models available.</p>
-//                                     </div>
-//                                 </li>
-
-//                                 <li className="flex items-start gap-3">
-//                                     <span className="mt-3 h-2 w-2 rounded-full  bg-gray-600"></span>
-//                                     <div className="flex gap-2">
-//                                         <h3 className="font-semibold">Refurbished Laptops in Chennai </h3>
-//                                         <p className="text-gray-600">- Tested and trusted systems.</p>
-//                                     </div>
-//                                 </li>
-//                                 <li className="flex items-start gap-3">
-//                                     <span className="mt-3 h-2 w-2 rounded-full  bg-gray-600"></span>
-//                                     <div className="flex gap-2">
-//                                         <h3 className="font-semibold">Gaming PC Build Chennai</h3>
-//                                         <p className="text-gray-600">- Powerful machines for serious gamers.</p>
-//                                     </div>
-//                                 </li>
-//                                 <li className="flex items-start gap-3">
-//                                     <span className="mt-3 h-2 w-2 rounded-full  bg-gray-600"></span>
-//                                     <div className="flex gap-2">
-//                                         <h3 className="font-semibold">Custom PC Builder</h3>
-//                                         <p className="text-gray-600">- Tailored solutions to meet your needs.</p>
-//                                     </div>
-//                                 </li>
-//                             </ul>
-
-//                             <p>Experience technology like never before with TN Computers – your trusted partner for laptops, desktops, and accessories in Chennai.</p>
-
-//                         </div>
-//                     </div>
-
-//                     {/* READ MORE / LESS BUTTON */}
-//                     <div className="mt-6 text-center">
-//                         <button
-//                             onClick={() => setOpen(!open)}
-//                             className="px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow hover:bg-purple-700 transition"
-//                         >
-//                             {open ? "Read Less" : "Read More"}
-//                         </button>
-//                     </div>
-//                 </div>
-//             </div>
-
-
-
-
-//         </>
-//     );
-// }
-
 "use client";
 
 import { useState } from "react";
@@ -337,490 +10,627 @@ import {
     Gamepad2,
     ShieldCheck,
     Wrench,
+    CheckCircle2,
+    HelpCircle,
+    Star,
+    Quote
 } from "lucide-react";
 
 export default function HomeSeoSection() {
     const [open, setOpen] = useState(false);
+    const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-    const cards = [
+    const toggleFaq = (index: number) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
+
+    const testimonials = [
         {
-            icon: Laptop,
-            title: "Laptop Store Chennai",
-            desc: "Branded laptops, gaming laptops, SSD laptops, and business laptops.",
+            title: "Great PC Build Experience",
+            quote: "Got my PC built at TN Computers and I’m very happy with the performance. The staff were friendly, explained everything clearly, and guided me throughout the purchase. Overall, the experience was smooth and satisfying.",
+            author: "Vejaysundaram R",
+            rating: 5,
         },
         {
-            icon: Gamepad2,
-            title: "Gaming PC Chennai",
-            desc: "RTX gaming PCs, esports setups, streaming builds, and accessories.",
+            title: "Affordable Laptop Purchase",
+            quote: "I purchased an Acer Aspire 3 laptop from TN Computers at a very affordable price. The customer handling was really good, and I’m completely satisfied with the service. A great place to explore branded products.",
+            author: "Udhaya Kumar",
+            rating: 5,
         },
         {
-            icon: Cpu,
-            title: "Custom PC Builder",
-            desc: "Professional workstation and custom gaming desktop builds.",
+            title: "Excellent Laptop Pricing & Support",
+            quote: "I bought a brand-new Lenovo laptop from TN Computers and was really impressed with the pricing. The team provided good customer service and made the overall buying experience easy and comfortable.",
+            author: "Mr. Praveen",
+            rating: 5,
         },
         {
-            icon: ShieldCheck,
-            title: "Refurbished Laptops",
-            desc: "Quality-tested refurbished laptops and desktops with warranty.",
+            title: "Quality Gaming PC at a Great Budget",
+            quote: "I bought a new gaming PC and was very happy with the product and the suggestions provided by the team. The PC quality was better than I expected for my budget. Very satisfied with the overall experience.",
+            author: "Bala Balalakshmi",
+            rating: 5,
         },
         {
-            icon: Monitor,
-            title: "Computer Accessories",
-            desc: "Monitors, SSDs, RAM, graphics cards, printers, and peripherals.",
+            title: "Friendly & Knowledgeable Team",
+            quote: "The staff were knowledgeable, friendly, and patient. They explained the differences between laptop models clearly and answered all my questions without rushing me into a decision. I really appreciated the genuine guidance.",
+            author: "ZS ROSE",
+            rating: 5,
         },
         {
-            icon: Wrench,
-            title: "Repair & Upgrades",
-            desc: "Laptop repair, SSD installation, RAM upgrades, and PC service.",
+            title: "Good Service & Affordable Pricing",
+            quote: "I purchased a PC from TN Computers and was satisfied with the affordable pricing, product quality, and service. The staff had good hardware knowledge and provided helpful guidance throughout the purchase. A recommended place for PCs and laptops.",
+            author: "Lokesh Karthik",
+            rating: 5,
+        },
+    ];
+
+    const faqs = [
+        {
+            question: "Which is a reliable computer store in Chennai for laptops, desktops and gaming PCs?",
+            answer: "TN Computers is a one-stop destination in KK Nagar for laptops, desktops, gaming PCs, custom builds, upgrades and repairs — with staff who explain specs in practical terms instead of pushing the priciest configuration.",
+        },
+        {
+            question: "What makes TN Computers the best computer shop in Chennai for students and businesses?",
+            answer: "TN Computers matches configurations to real usage — budget-friendly builds for students, office-ready systems for businesses, and performance builds for gamers — rather than one-size-fits-all setups.",
+        },
+        {
+            question: "Where can I buy quality PC accessories in Chennai for a gaming setup?",
+            answer: "TN Computers stocks gaming keyboards, mice, headsets, monitors and controllers, chosen for comfort, response time and durability during long sessions.",
+        },
+        {
+            question: "Which is an affordable laptop store in Chennai for students and professionals?",
+            answer: "TN Computers helps balance price and performance — prioritizing portability and battery life for students, processing power for professionals — without compromising on what actually matters for your use case.",
+        },
+        {
+            question: "How do I get a custom PC build in Chennai for gaming or video editing?",
+            answer: "TN Computers plans builds around your actual workload — gaming, streaming, 3D rendering or editing — checking every component works together, not just performs well individually. The same team also sources PC components in Chennai for future upgrades, so your build stays compatible long-term.",
+        },
+        {
+            question: "Are affordable refurbished laptops in Chennai a good option for budget buyers?",
+            answer: "Yes — if you check processor generation, battery health, screen condition and warranty support. TN Computers evaluates these factors so you get real usability, not just a low price tag.",
         },
     ];
 
     return (
-        <section className="mt-16">
-            {/* TOP CARDS */}
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {cards.map((item, index) => {
-                    const Icon = item.icon;
+        <section className="mt-8">
 
-                    return (
-                        <div
-                            key={index}
-                            className="group bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                        >
-                            <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center mb-5 group-hover:bg-purple-600 transition">
-                                <Icon className="w-7 h-7 text-purple-600 group-hover:text-white transition" />
-                            </div>
-
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
-                                {item.title}
-                            </h3>
-
-                            <p className="text-gray-600 leading-relaxed">
-                                {item.desc}
-                            </p>
-                        </div>
-                    );
-                })}
+            {/* FIRST SECTION (ALWAYS VISIBLE) */}
+            {/* 1. H2 - One-Stop Computer Store in Chennai for Every Requirement */}
+            <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-5">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
+                    One-Stop Computer Store in Chennai for Every Requirement
+                </h2>
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                    A good computer purchase starts with understanding how you will use the system. Processor speed, RAM, SSD capacity, graphics performance, display quality, cooling, connectivity, and upgradeability all influence the overall experience.
+                </p>
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                    As a local computer store in Chennai, we aim to make technology purchasing easier by explaining specifications in practical terms. Instead of simply choosing the most expensive configuration, customers can compare options according to their workload, budget, performance expectations, and future requirements.
+                </p>
             </div>
 
-            {/* MAIN CONTENT */}
-            <div className="mt-12 bg-white border border-gray-100 rounded-[32px] shadow-sm overflow-hidden">
+            {/* REMAINING SECTIONS (INSIDE SEE MORE COLLAPSIBLE) */}
+            <div
+                className={`transition-all duration-700 ease-in-out overflow-hidden ${open ? "max-h-[35000px] opacity-100 mt-10 space-y-12" : "max-h-0 opacity-0"
+                    }`}
+            >
+                {/* 2. H2 - Professional Computer Shop in Chennai for Business & Gaming */}
+                <div className="bg-gradient-to-br from-purple-50/70 via-fuchsia-50/40 to-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                    <div>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
+                            Professional Computer Shop in Chennai for Business &amp; Gaming
+                        </h2>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            For office applications, accounting, communication, productivity, and development, TN Computers provides business-ready computers, gaming-ready systems, and customized configurations built for the specific way each system will be used.
+                        </p>
+                    </div>
 
-
-
-                {/* CONTENT */}
-                <div className="px-6 sm:px-10 py-10">
-
-
-
-                    {/* COLLAPSIBLE */}
-                    <div
-                        className={`transition-all duration-700 overflow-hidden ${open ? "max-h-[9000px] opacity-100 mt-10" : "max-h-0 opacity-0"
-                            }`}
-                    >
-                        {/* HEADER */}
-                        <div className="bg-gradient-to-r from-purple-600 via-fuchsia-600 to-violet-600 px-6 sm:px-10 py-10 text-white">
-                            <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight">
-                                Best Laptop Store in Chennai for Every Need
-                            </h2>
-
-                            <p className="mt-5 text-purple-100 text-base sm:text-lg leading-relaxed max-w-5xl">
-                                Looking for a reliable laptop showroom near me Chennai or a trusted
-                                computer shop near me? TN Computers provides premium and
-                                budget-friendly solutions for students, gamers, professionals,
-                                businesses, and creators.
-                            </p>
+                    {/* H3 - For businesses, our solutions can support */}
+                    <div className="bg-white rounded-2xl p-6 border border-purple-100/90 shadow-sm space-y-4">
+                        <h3 className="text-lg sm:text-xl font-bold text-purple-900">
+                            For businesses, our solutions can support:
+                        </h3>
+                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                            {[
+                                "Office and productivity systems",
+                                "Professional workstations",
+                                "Developer and programming PCs",
+                                "Computers for startups and small businesses",
+                                "Upgrade-ready desktop configurations",
+                            ].map((item, idx) => (
+                                <div
+                                    key={idx}
+                                    className="flex items-center gap-3 bg-purple-50/60 border border-purple-100 rounded-xl px-4 py-3 text-sm sm:text-base font-semibold text-gray-800"
+                                >
+                                    <CheckCircle2 className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                                    <span>{item}</span>
+                                </div>
+                            ))}
                         </div>
+                    </div>
 
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        For gamers, requirements often shift toward dedicated graphics, faster processors, high-speed memory, NVMe storage, and performance-focused cooling — and we can help compare performance-focused gaming PCs, graphics cards, monitors, gaming peripherals, and other components to match.
+                    </p>
+                </div>
 
-                        {/* SECTION */}
-                        <div className="space-y-6 text-gray-700 leading-relaxed">
+                {/* 3. H2 - Laptop Store Chennai for Students, Professionals & Businesses */}
+                <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                    <div>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
+                            Laptop Store Chennai for Students, Professionals &amp; Businesses
+                        </h2>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4">
+                            Choosing the right laptop depends on portability, performance, storage, display requirements, battery expectations, and budget. TN Computers provides a one-stop laptop store Chennai experience, where product selection is based on actual usage rather than unnecessary specifications.
+                        </p>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            A trusted laptop store in Chennai for students may prioritize affordability, portability, battery life, and everyday performance, while a professional laptop showroom in Chennai should also help customers compare processors, memory, SSD storage, displays, graphics, and upgrade possibilities. Our recommendations can consider:
+                        </p>
+                    </div>
 
-                            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                {[
-                                    "Affordable laptops in Chennai",
-                                    "Branded laptops Chennai",
-                                    "Gaming laptop Chennai",
-                                    "Business laptops Chennai",
-                                    "i5 / i7 laptops Chennai",
-                                    "SSD laptops Chennai",
-                                    "High performance desktop Chennai",
-                                    "Gaming desktop Chennai",
-                                    "Workstation PC Chennai",
-                                    "Refurbished laptops in Chennai",
-                                    "Refurbished desktop Chennai",
-                                    "Used laptops Chennai",
-                                ].map((item, idx) => (
-                                    <div
-                                        key={idx}
-                                        className="bg-[#f8fafc] border border-gray-100 rounded-2xl px-5 py-4 font-medium"
-                                    >
-                                        {item}
-                                    </div>
-                                ))}
-                            </div>
-
-                            <p className="text-lg">
-                                From entry-level laptops to RTX gaming PCs, we help customers
-                                find the perfect device based on budget and performance needs.
-                            </p>
-
-                            {/* BRANDS */}
-                            <div className="bg-[#f8fafc] border border-gray-100 rounded-3xl p-8">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-5">
-                                    Buy Laptops in Chennai from Top Brands
-                                </h3>
-
-                                <p className="mb-5">
-                                    At TN Computers, you can explore the latest collections from
-                                    leading brands including:
+                    {/* 6 Recommendations Cards */}
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        {[
+                            {
+                                title: "Budget",
+                                desc: "configurations that provide practical value within your spending range",
+                            },
+                            {
+                                title: "Performance",
+                                desc: "the appropriate processor, RAM, SSD, and graphics capabilities for your applications",
+                            },
+                            {
+                                title: "Portability",
+                                desc: "lightweight and compact options for students and professionals on the move",
+                            },
+                            {
+                                title: "Productivity",
+                                desc: "suitable configurations for office work, programming, browsing, and multitasking",
+                            },
+                            {
+                                title: "Creative workloads",
+                                desc: "stronger processors, additional memory, dedicated graphics, and better displays where required",
+                            },
+                            {
+                                title: "Gaming",
+                                desc: "laptops with suitable GPUs, processors, cooling systems, and high-refresh-rate displays",
+                            },
+                        ].map((item, idx) => (
+                            <div
+                                key={idx}
+                                className="bg-purple-50/30 border border-purple-100 rounded-2xl p-5 hover:bg-purple-50/70 hover:border-purple-200 transition-all"
+                            >
+                                <h4 className="text-base font-bold text-purple-700 mb-1.5 flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-purple-600"></span>
+                                    {item.title}
+                                </h4>
+                                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                    — {item.desc}
                                 </p>
+                            </div>
+                        ))}
+                    </div>
 
-                                <div className="flex flex-wrap gap-3">
-                                    {["Dell", "HP", "Lenovo", "Acer", "ASUS", "MSI"].map(
-                                        (brand, idx) => (
-                                            <div
-                                                key={idx}
-                                                className="px-5 py-2 rounded-full bg-white border border-gray-200 font-semibold text-gray-800"
-                                            >
-                                                {brand}
-                                            </div>
-                                        )
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed bg-purple-50/60 border border-purple-100 rounded-2xl p-5">
+                        For customers looking for an affordable laptop store in Chennai, the goal is to find the right balance between price and performance — not to compromise on the specifications that actually matter for your use case.
+                    </p>
+                </div>
+
+                {/* 4. H2 - Gaming PC Chennai for High-Performance Builds */}
+                <div className="bg-gradient-to-br from-gray-950 via-purple-950 to-gray-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-6">
+                    <div className="space-y-4">
+                        <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight">
+                            Gaming PC Chennai for High-Performance Builds
+                        </h2>
+                        <p className="text-purple-100 text-base sm:text-lg leading-relaxed">
+                            A gaming PC should be balanced around the games you play and the performance you expect — not built around a single powerful component. TN Computers offers gaming PC Chennai solutions for every level of gamer, from entry-level setups to high-performance configurations, considering the complete system rather than one part in isolation.
+                        </p>
+                    </div>
+
+                    <div className="space-y-3">
+                        <h3 className="text-lg font-bold text-white">
+                            A well-balanced build typically includes:
+                        </h3>
+                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                            {[
+                                "Powerful CPUs paired with dedicated graphics cards",
+                                "High-speed DDR RAM and NVMe SSD storage",
+                                "Performance cooling, airflow, and cabinet selection",
+                                "Reliable power supplies matched to component load",
+                                "High-refresh-rate monitors and gaming peripherals",
+                                "Motherboard compatibility for current and future upgrades",
+                            ].map((item, idx) => (
+                                <div
+                                    key={idx}
+                                    className="flex items-center gap-3 bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-sm sm:text-base font-medium text-purple-100 backdrop-blur-sm"
+                                >
+                                    <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                                    <span>{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <p className="text-purple-200 text-base sm:text-lg leading-relaxed">
+                        If you&apos;re searching for a trusted gaming PC shop in Chennai, our team can help you compare configurations based on your budget, preferred games, resolution, and refresh rate. As an experienced custom PC builder Chennai, we also plan builds for esports, streaming, video editing, 3D rendering, and other performance-focused workloads — so your custom gaming PC Chennai setup is built around how you&apos;ll actually use it, not just what&apos;s available.
+                    </p>
+
+                    <p className="text-purple-200 text-base sm:text-lg leading-relaxed border-t border-white/10 pt-4">
+                        For competitive gamers and esports users, components can be selected specifically around consistent frame rates and responsive gameplay, with future upgrade potential built into the plan from the start.
+                    </p>
+                </div>
+
+                {/* 5. H2 - PC Building Service Chennai with Custom Configuration */}
+                <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-4">
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
+                        PC Building Service Chennai with Custom Configuration
+                    </h2>
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        A professional PC building service Chennai should consider compatibility and system stability as carefully as individual component performance. TN Computers can assist with component selection and complete PC configurations based on your requirements — checking that every part works together, not just that each one performs well on its own.
+                    </p>
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        From motherboard and power supply compatibility to proper cooling and airflow, our approach focuses on getting the fundamentals right so your system stays reliable long after it&apos;s built, whatever workload it&apos;s built for.
+                    </p>
+                </div>
+
+                {/* 6. H2 - Refurbished Laptops Chennai for Value-Focused Buyers */}
+                <div className="bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-10 space-y-6">
+                    <div>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
+                            Refurbished Laptops Chennai for Value-Focused Buyers
+                        </h2>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-3">
+                            For students, startups, home users, and professionals with limited budgets, refurbished systems can be a practical alternative when selected carefully.
+                        </p>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            TN Computers helps customers exploring refurbished laptops Chennai options evaluate important factors before purchase.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 className="text-lg font-bold text-gray-900 mb-4">
+                            Consider:
+                        </h3>
+                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                            {[
+                                "Processor generation",
+                                "RAM capacity",
+                                "SSD storage",
+                                "Battery condition",
+                                "Screen condition",
+                                "Keyboard and touchpad",
+                                "Ports and connectivity",
+                                "Physical condition",
+                                "Operating system",
+                                "Service or warranty support",
+                            ].map((item, idx) => (
+                                <div
+                                    key={idx}
+                                    className="bg-white border border-gray-200 rounded-xl px-4 py-3 text-center text-sm font-semibold text-gray-800 shadow-sm"
+                                >
+                                    {item}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Customers searching for affordable refurbished laptops in Chennai can compare options based on actual usability instead of focusing only on the lowest price.
+                    </p>
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed font-medium">
+                        For those considering used laptops Chennai, checking specifications, physical condition, battery health, and available support is particularly important.
+                    </p>
+                </div>
+
+                {/* 7. H2 - PC Components Chennai for Upgrades & New Builds */}
+                <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                    <div>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
+                            PC Components Chennai for Upgrades &amp; New Builds
+                        </h2>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            Building or upgrading a computer requires compatible components. TN Computers provides access to PC components Chennai customers may need for new systems and upgrades.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4">
+                            Available categories can include:
+                        </h3>
+                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                            {[
+                                "Processors",
+                                "Motherboards",
+                                "RAM",
+                                "SSDs",
+                                "Graphics cards",
+                                "Power supplies",
+                                "PC cabinets",
+                                "CPU coolers",
+                                "Case fans",
+                                "Monitors",
+                                "Keyboards and mice",
+                            ].map((item, idx) => (
+                                <div
+                                    key={idx}
+                                    className="flex items-center gap-2.5 bg-purple-50/50 border border-purple-100 rounded-xl px-4 py-3 text-sm sm:text-base font-medium text-gray-800 hover:bg-purple-50 transition-colors"
+                                >
+                                    <div className="w-2 h-2 rounded-full bg-purple-600 flex-shrink-0"></div>
+                                    <span>{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Whether you&apos;re upgrading an existing system or sourcing parts for a new build, selecting compatible RAM, SSDs, graphics cards, or cooling solutions can improve performance without needing to replace the entire system.
+                    </p>
+                </div>
+
+                {/* 8. H2 - Gaming Accessories Chennai for Complete Setups */}
+                <div className="bg-gradient-to-r from-purple-50/60 via-white to-fuchsia-50/60 border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                    <div>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
+                            Gaming Accessories Chennai for Complete Setups
+                        </h2>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-3">
+                            A gaming setup is more than the computer itself.
+                        </p>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            TN Computers can help customers explore gaming accessories Chennai options such as:
+                        </p>
+                    </div>
+
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        {[
+                            "Gaming keyboards",
+                            "Gaming mice",
+                            "Headsets",
+                            "Mouse pads",
+                            "Monitors",
+                            "Controllers",
+                            "Other gaming peripherals",
+                        ].map((item, idx) => (
+                            <div
+                                key={idx}
+                                className="bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base font-semibold text-gray-800 shadow-sm flex items-center gap-2"
+                            >
+                                <Gamepad2 className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                                <span>{item}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Choosing accessories based on comfort, response, connectivity, durability, and intended usage can make a significant difference during long gaming sessions.
+                    </p>
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        For customers looking for a gaming shop in Chennai, combining the right PC with suitable peripherals can create a more complete and enjoyable setup.
+                    </p>
+                </div>
+
+                {/* 9. H2 - Laptop Repair Chennai & Computer Repair Chennai */}
+                <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                    <div>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
+                            Laptop Repair Chennai &amp; Computer Repair Chennai
+                        </h2>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-3">
+                            Technical problems can affect work, study, gaming, and business operations. Before replacing a device, it can be useful to identify whether the issue can be resolved through repair, maintenance, or an upgrade.
+                        </p>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            TN Computers supports customers looking for laptop repair Chennai and computer repair Chennai services.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4">
+                            Common requirements include:
+                        </h3>
+                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                            {[
+                                "Laptop troubleshooting",
+                                "Desktop troubleshooting",
+                                "SSD upgrades",
+                                "RAM upgrades",
+                                "Hardware replacement",
+                                "Operating system support",
+                                "Storage upgrades",
+                                "Performance optimization",
+                                "General maintenance",
+                            ].map((item, idx) => (
+                                <div
+                                    key={idx}
+                                    className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm sm:text-base font-medium text-gray-800"
+                                >
+                                    <Wrench className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                                    <span>{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed bg-purple-50/50 border border-purple-100 rounded-2xl p-5">
+                        Customers looking for an expert laptop upgrade service in Chennai can also explore whether increasing RAM or replacing older storage can improve the performance of an existing system.
+                    </p>
+                </div>
+
+                {/* 10. H3 - Why Choose TN Computers? */}
+                <div className="bg-gradient-to-br from-purple-900 via-fuchsia-950 to-violet-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-8">
+                    <div>
+                        <h3 className="text-2xl sm:text-3xl font-extrabold leading-tight mb-4">
+                            Why Choose TN Computers?
+                        </h3>
+                        <p className="text-purple-100 text-base sm:text-lg leading-relaxed">
+                            Technology purchases are easier when customers receive clear information and practical assistance. TN Computers focuses on providing:
+                        </p>
+                    </div>
+
+                    {/* 10 Focus Points */}
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                        {[
+                            "Reliable local support",
+                            "Expert product guidance",
+                            "Customized configurations",
+                            "Competitive pricing",
+                            "Genuine hardware options",
+                            "Upgrade assistance",
+                            "Gaming-focused solutions",
+                            "Business-ready systems",
+                            "Student-friendly options",
+                            "Service-focused technical support",
+                        ].map((item, idx) => (
+                            <div
+                                key={idx}
+                                className="bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-center text-sm font-semibold text-purple-50 backdrop-blur-sm"
+                            >
+                                {item}
+                            </div>
+                        ))}
+                    </div>
+
+                    <p className="text-purple-100 text-base sm:text-lg leading-relaxed">
+                        For customers searching for a computer shop KK Nagar, TN Computers is a convenient local destination bringing together laptops, desktops, gaming PCs, custom PC builds, refurbished computers, components, accessories, upgrades, and technical services — whether you&apos;re a student purchasing your first laptop, a professional upgrading your workstation, a business setting up office computers, or a gamer planning a custom system.
+                    </p>
+
+                    {/* 4 Simple Questions */}
+                    <div className="bg-white/10 border border-white/20 rounded-2xl p-6 sm:p-8 space-y-4">
+                        <h4 className="text-lg sm:text-xl font-bold text-white">
+                            If you are comparing a Computer Shop in Chennai, start with four simple questions:
+                        </h4>
+                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                            {[
+                                "What will you use the computer for?",
+                                "What is your realistic budget?",
+                                "What level of performance do you need?",
+                                "Will you need future upgrades?",
+                            ].map((q, idx) => (
+                                <div
+                                    key={idx}
+                                    className="bg-black/30 rounded-xl p-4 border border-white/10 text-sm font-medium text-purple-100 flex flex-col justify-between"
+                                >
+                                    <span className="text-xs font-bold text-purple-300 uppercase tracking-widest mb-1.5">
+                                        Question 0{idx + 1}
+                                    </span>
+                                    <p className="text-white font-semibold text-sm sm:text-base leading-snug">{q}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <p className="text-purple-200 text-base sm:text-lg leading-relaxed">
+                        The right computer is not always the most expensive configuration. It is the system that provides the performance you need today while giving you practical options for tomorrow. Explore TN Computers for laptops, desktops, gaming PCs, custom PC builds, refurbished laptops, PC components, gaming accessories, upgrades, repairs, and professional technology support in Chennai.
+                    </p>
+                </div>
+
+                {/* 11. Testimonial: */}
+                {/* <div className="space-y-6 pt-4">
+                    <div className="text-center max-w-3xl mx-auto">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 border border-purple-200 text-xs font-bold uppercase tracking-wider text-purple-800 mb-2">
+                            <Quote className="w-3.5 h-3.5" /> Customer Feedback
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                            Testimonial:
+                        </h3>
+                    </div>
+
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {testimonials.map((item, index) => (
+                            <div
+                                key={index}
+                                className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
+                            >
+                                <div>
+                              
+                                    <div className="flex items-center gap-1 text-amber-400 mb-3">
+                                        {[...Array(item.rating)].map((_, i) => (
+                                            <Star key={i} className="w-4 h-4 fill-amber-400" />
+                                        ))}
+                                    </div>
+
+                                    <h4 className="text-lg font-bold text-gray-900 mb-2.5">
+                                        {item.title}
+                                    </h4>
+
+                                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed italic mb-6">
+                                        {item.quote}
+                                    </p>
+                                </div>
+
+                                <div className="pt-4 border-t border-gray-100">
+                                    <p className="font-bold text-gray-900 text-sm">
+                                        — {item.author}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div> */}
+
+                {/* 12. FAQ: */}
+                {/* <div className="space-y-6 pt-4">
+                    <div className="text-center max-w-3xl mx-auto">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 border border-purple-200 text-xs font-bold uppercase tracking-wider text-purple-800 mb-2">
+                            <HelpCircle className="w-3.5 h-3.5" /> Direct Answers
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                            FAQ:
+                        </h3>
+                    </div>
+
+                    <div className="space-y-4 max-w-4xl mx-auto">
+                        {faqs.map((faq, index) => {
+                            const isOpen = activeFaq === index;
+                            return (
+                                <div
+                                    key={index}
+                                    className="border border-purple-100 rounded-2xl overflow-hidden bg-white shadow-sm transition-all"
+                                >
+                                    <button
+                                        onClick={() => toggleFaq(index)}
+                                        className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-purple-50/50 transition-colors"
+                                    >
+                                        <span className="font-bold text-gray-900 text-base sm:text-lg">
+                                            {index + 1}. Q: {faq.question}
+                                        </span>
+                                        <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700">
+                                            {isOpen ? (
+                                                <ChevronUp className="w-5 h-5" />
+                                            ) : (
+                                                <ChevronDown className="w-5 h-5" />
+                                            )}
+                                        </div>
+                                    </button>
+                                    {isOpen && (
+                                        <div className="px-6 pb-6 pt-2 text-gray-700 text-sm sm:text-base leading-relaxed border-t border-purple-50 bg-purple-50/20">
+                                            <strong className="text-purple-900">A: </strong>
+                                            {faq.answer}
+                                        </div>
                                     )}
                                 </div>
-
-                                <p className="mt-5">
-                                    Whether you want to buy Dell laptop Chennai, search for an HP
-                                    laptop store Chennai, or compare Lenovo laptops Chennai, our
-                                    showroom offers genuine products with warranty support and
-                                    expert guidance.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="space-y-10 text-gray-700 leading-relaxed">
-
-                            {/* GAMING */}
-                            <div className="bg-gradient-to-r from-[#faf5ff] to-[#f5f7fc] border border-purple-100 rounded-3xl p-8">
-                                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-5">
-                                    Gaming PC Shop in Chennai – Custom Gaming Setup Experts
-                                </h3>
-
-                                <p>
-                                    TN Computers is one of the most trusted destinations for
-                                    gaming PC Chennai and custom gaming desktop Chennai builds.
-                                </p>
-
-                                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-6">
-                                    {[
-                                        "RTX gaming PC Chennai",
-                                        "Budget gaming PC Chennai",
-                                        "Esports PC Chennai",
-                                        "Gaming accessories Chennai",
-                                        "Gaming desktop Chennai",
-                                        "Gaming PC setup Chennai",
-                                        "Buy gaming PC Chennai",
-                                        "Gaming PC offers Chennai",
-                                    ].map((item, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="bg-white rounded-2xl border border-gray-100 px-4 py-3 font-medium"
-                                        >
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <p className="mt-6">
-                                    Our experts help gamers build powerful PCs for streaming,
-                                    esports, editing, and AAA gaming titles. If you are searching
-                                    for an affordable gaming PC build in Chennai or the best
-                                    gaming PC under 50000 Chennai, TN Computers delivers the best
-                                    value and performance.
-                                </p>
-                            </div>
-
-                            {/* CUSTOM BUILD */}
-                            <div>
-                                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-5">
-                                    Custom PC Builders in Chennai
-                                </h3>
-
-                                <p>
-                                    Searching for reliable custom PC builders in Chennai or a
-                                    custom PC builder near me Chennai?
-                                </p>
-
-                                <div className="grid gap-4 sm:grid-cols-2 mt-6">
-                                    {[
-                                        "Custom PC building service Chennai",
-                                        "PC assembling shop Chennai",
-                                        "Workstation PC Chennai",
-                                        "Gaming PC setup Chennai",
-                                        "High-performance desktop Chennai",
-                                        "PC assembly service Chennai",
-                                    ].map((item, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="bg-[#f8fafc] rounded-2xl border border-gray-100 px-5 py-4"
-                                        >
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <p className="mt-6">
-                                    We build PCs for gaming, video editing, 3D rendering,
-                                    architecture, office work, streaming, and programming. Our
-                                    team helps you select the right motherboard, processor, RAM,
-                                    graphics card, cooling system, and cabinet based on your
-                                    budget.
-                                </p>
-                            </div>
-
-                            {/* REFURBISHED */}
-                            <div className="bg-[#f8fafc] rounded-3xl border border-gray-100 p-8">
-                                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-5">
-                                    Refurbished Laptops in Chennai at Best Prices
-                                </h3>
-
-                                <p className="text-gray-700 leading-relaxed">
-                                    TN Computers is also known for premium-quality refurbished
-                                    laptops in Chennai and certified refurbished laptops India.
-                                </p>
-
-                                {/* STOCK ITEMS */}
-                                <div className="mt-8">
-                                    <h4 className="text-xl font-semibold text-gray-900 mb-4">
-                                        We stock:
-                                    </h4>
-
-                                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                        {[
-                                            "Dell Latitude refurbished laptops",
-                                            "HP EliteBook refurbished laptops",
-                                            "Lenovo ThinkPad refurbished laptops",
-                                            "Refurbished gaming laptops Chennai",
-                                            "Refurbished desktop Chennai",
-                                            "Used gaming PC Chennai",
-                                        ].map((item, idx) => (
-                                            <div
-                                                key={idx}
-                                                className="bg-white border border-gray-100 rounded-2xl px-5 py-4 shadow-sm"
-                                            >
-                                                {item}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* IDEAL FOR */}
-                                <div className="mt-10">
-                                    <h4 className="text-xl font-semibold text-gray-900 mb-4">
-                                        All systems are quality tested and ideal for:
-                                    </h4>
-
-                                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-                                        {[
-                                            "Students",
-                                            "Office work",
-                                            "Online classes",
-                                            "Business use",
-                                            "Freelancers",
-                                        ].map((item, idx) => (
-                                            <div
-                                                key={idx}
-                                                className="bg-purple-50 border border-purple-100 rounded-2xl px-5 py-4 text-center font-medium text-gray-800"
-                                            >
-                                                {item}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* LOOKING FOR */}
-                                <div className="mt-10">
-                                    <h4 className="text-xl font-semibold text-gray-900 mb-4">
-                                        Looking for:
-                                    </h4>
-
-                                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
-                                        {[
-                                            "Second hand laptops Chennai",
-                                            "Refurbished laptop price Chennai",
-                                            "i7 refurbished laptops Chennai price",
-                                            "Best place to buy used laptops in Chennai",
-                                        ].map((item, idx) => (
-                                            <div
-                                                key={idx}
-                                                className="bg-white border border-gray-100 rounded-2xl px-5 py-4"
-                                            >
-                                                {item}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <p className="mt-8 text-lg text-gray-700 leading-relaxed">
-                                    TN Computers offers affordable and reliable refurbished
-                                    systems with warranty support.
-                                </p>
-
-                                {/* ACCESSORIES */}
-                                <div className="mt-14 border-t border-gray-200 pt-10">
-                                    <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-5">
-                                        Computer Accessories Shop Chennai
-                                    </h3>
-
-                                    <p className="text-gray-700 leading-relaxed">
-                                        Upgrade your setup with premium accessories from Chennai’s trusted
-                                        computer accessories shop Chennai.
-                                    </p>
-
-                                    {/* PRODUCTS */}
-                                    <div className="mt-8">
-                                        <h4 className="text-xl font-semibold text-gray-900 mb-4">
-                                            Available products include:
-                                        </h4>
-
-                                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                            {[
-                                                "Gaming keyboards & mouse",
-                                                "RGB accessories",
-                                                "Gaming cabinets",
-                                                "SSD & RAM upgrades",
-                                                "Graphics cards Chennai",
-                                                "Motherboard shop Chennai",
-                                                "SSD price Chennai",
-                                                "CPU coolers",
-                                                "UPS systems",
-                                                "Monitors & gaming displays",
-                                                "Barcode scanners & printers",
-                                            ].map((item, idx) => (
-                                                <div
-                                                    key={idx}
-                                                    className="bg-white border border-gray-100 rounded-2xl px-5 py-4 shadow-sm"
-                                                >
-                                                    {item}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* SERVICES */}
-                                    <div className="mt-10">
-                                        <h4 className="text-xl font-semibold text-gray-900 mb-4">
-                                            We also provide:
-                                        </h4>
-
-                                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                                            {[
-                                                "Upgrade RAM SSD Chennai",
-                                                "SSD installation Chennai",
-                                                "PC repair Chennai",
-                                                "Laptop service and repair Chennai",
-                                            ].map((item, idx) => (
-                                                <div
-                                                    key={idx}
-                                                    className="bg-purple-50 border border-purple-100 rounded-2xl px-5 py-4 text-center font-medium text-gray-800"
-                                                >
-                                                    {item}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* WHY CHOOSE */}
-                            <div>
-                                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-5">
-                                    Why TN Computers is the Best Computer Store Near Me
-                                </h3>
-
-                                <div className="grid gap-4 sm:grid-cols-2">
-                                    {[
-                                        " Genuine branded products",
-                                        " Best laptop deals Chennai",
-                                        " Laptop EMI Chennai options",
-                                        " Affordable pricing",
-                                        " Expert technical support",
-                                        " Fast delivery across Chennai",
-                                        " Reliable after-sales service",
-                                        "Gaming PC customization",
-                                        "Certified refurbished laptops Chennai",
-                                        "Trusted computer shop Chennai reputation",
-                                    ].map((item, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="bg-white border border-gray-100 rounded-2xl px-5 py-4 shadow-sm"
-                                        >
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <p className="mt-6 text-lg">
-                                    TN Computers is your trusted technology partner.
-                                </p>
-                            </div>
-
-                            {/* EMI */}
-                            <div className="bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl p-8 text-white">
-                                <h3 className="text-2xl sm:text-3xl font-bold mb-5">
-                                    Laptop Store in Chennai with EMI Options
-                                </h3>
-
-                                <p className="text-purple-100">
-                                    Buying your dream laptop or gaming PC is easier with flexible
-                                    payment solutions.
-                                </p>
-
-                                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-6">
-                                    {[
-                                        "Laptop EMI Chennai",
-                                        "Laptop offers Chennai",
-                                        "Buy laptop online Chennai",
-                                        "Best laptop deals Chennai",
-                                        "Cheap laptop Chennai",
-                                        "Gaming PC offers India",
-                                    ].map((item, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="bg-white/10 border border-white/20 rounded-2xl px-5 py-4"
-                                        >
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <p className="mt-6 text-purple-100">
-                                    Visit our showroom or contact our experts for the latest
-                                    offers and exchange deals.
-                                </p>
-                            </div>
-                        </div>
+                            );
+                        })}
                     </div>
+                </div> */}
 
-                    {/* BUTTON */}
-                    <div className="mt-10 text-center">
-                        <button
-                            onClick={() => setOpen(!open)}
-                            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-semibold shadow-lg transition-all duration-300 hover:scale-[1.02]"
-                        >
-                            {open ? (
-                                <>
-                                    Read Less <ChevronUp className="w-5 h-5" />
-                                </>
-                            ) : (
-                                <>
-                                    Read More <ChevronDown className="w-5 h-5" />
-                                </>
-                            )}
-                        </button>
-                    </div>
-                </div>
             </div>
+
+            {/* SEE MORE / SEE LESS TOGGLE BUTTON */}
+            <div className="mt-8 text-center">
+                <button
+                    onClick={() => setOpen(!open)}
+                    className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-2xl bg-gradient-to-r from-purple-600 via-fuchsia-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white font-bold shadow-lg shadow-purple-200 hover:shadow-xl hover:shadow-purple-300 transition-all duration-300 hover:scale-[1.02] active:scale-95 text-base sm:text-lg cursor-pointer"
+                >
+                    {open ? (
+                        <>
+                            See Less <ChevronUp className="w-5 h-5" />
+                        </>
+                    ) : (
+                        <>
+                            See More <ChevronDown className="w-5 h-5" />
+                        </>
+                    )}
+                </button>
+            </div>
+
         </section>
     );
 }
