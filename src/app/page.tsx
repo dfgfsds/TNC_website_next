@@ -1,82 +1,87 @@
-
-import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import Script from "next/script";
 import CategoryCard from './components/CategoryCard';
-import { fadeUp } from './data/animations';
 import NewArrivals from './components/newArrivals';
 import ProductPromoSection from './components/ProductPromoSection';
 import FeatureHighlights from './components/FeatureHighlights';
-import BrandsSection from './components/BrandsSection';
-import CustomerReviewSection from './components/CustomerReviewSection';
 import Carousel from './components/Carousel';
 import TopCategories from './components/TopCategories';
-import { useUser } from '../../context/UserContext';
-import logo from "../../public/tn-computers-logo.png";
-import banner from "../../public/banner/Banner1.jpg"
-
-
 import HeroSectionTrustedLap from './components/trustedLaptop';
 import axios from 'axios';
 import { baseUrl } from '../../api-endpoints/ApiUrls';
 
-
 export const metadata = {
-  title: "Best Laptop Store in Chennai | Gaming PC & Refurbished Laptops",
-  description: "Buy laptops, gaming PCs, desktops & refurbished laptops at TN Computers Chennai. Best prices, EMI offers & custom PC builds.",
+  title: "Computer Shop in Chennai | Laptops, PCs & Gaming | TN Computers",
+  description:
+    "TN Computers is a best computer store in Chennai offering laptops, gaming PCs, custom PC builds, refurbished laptops, components, accessories and repairs.",
   keywords: [
-    "laptop store in Chennai",
-    "best laptop shop in Chennai",
     "computer shop in Chennai",
-    "desktop store in Chennai",
-    "buy laptop in Chennai",
+    "computer store Chennai",
+    "laptop store Chennai",
+    "laptop shop Chennai",
+    "laptop dealer Chennai",
+    "gaming laptop Chennai",
     "gaming PC Chennai",
-    "custom PC builders in Chennai",
-    "refurbished laptops in Chennai",
+    "gaming computer Chennai",
+    "custom PC builder Chennai",
+    "custom gaming PC Chennai",
+    "PC building service Chennai",
+    "refurbished laptops Chennai",
     "used laptops Chennai",
-    "computer accessories shop Chennai",
-    "laptop showroom near me Chennai",
-    "gaming desktop Chennai",
-    "budget gaming PC Chennai",
-    "TN Computers Chennai",
-    "laptop EMI Chennai",
-    "refurbished gaming laptops Chennai",
-    "cheap laptop Chennai",
-    "PC store near me Chennai",
-    "custom gaming desktop Chennai",
-    "branded laptops Chennai",
-    "second hand laptop chennai",
-    "refurbished laptop chennai",
-    "used laptop in chennai",
-    "gaming laptop in chennai",
-    "gaming pc build chennai",
-    "best computer shop in chennai",
-    "buy laptop online india",
-    "computer accessories shop chennai"
+    "desktop computers Chennai",
+    "PC components Chennai",
+    "computer hardware Chennai",
+    "gaming accessories Chennai",
+    "laptop repair Chennai",
+    "computer repair Chennai",
+    "computer shop KK Nagar",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://www.tncomputers.in/",
+  },
   openGraph: {
-    title: "Best Laptop Store in Chennai | Gaming PC & Refurbished Laptops",
-    description: "Buy laptops, gaming PCs, desktops & refurbished laptops at TN Computers Chennai. Best prices, EMI offers & custom PC builds.",
-    url: "https://tncomputers.in",
     type: "website",
-    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+    title: "Computer Shop in Chennai | Laptops, PCs & Gaming | TN Computers",
+    description:
+      "Shop laptops, desktop computers, gaming PCs, custom PC builds, refurbished laptops, PC components and accessories at TN Computers in KK Nagar, Chennai.",
+    url: "https://www.tncomputers.in/",
+    siteName: "TN Computers",
+    locale: "en_IN",
+    images: [
+      {
+        url: "https://www.tncomputers.in/images/tn-computers-homepage.jpg",
+        alt: "TN Computers - Computer Shop in Chennai",
+        type: "image/jpeg",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Computer Shop in Chennai | Branded & New | TN Computers",
-    description: "Your trusted laptop store in Chennai—new laptops, refurbished systems, gaming PCs & more.",
-    images: ["https://www.tncomputers.in/banner/Banner1.jpg"]
+    title: "Computer Shop in Chennai | Laptops, PCs & Gaming | TN Computers",
+    description:
+      "Explore laptops, gaming PCs, custom PC builds, refurbished laptops, components, accessories and computer services at TN Computers, KK Nagar Chennai.",
+    images: [
+      {
+        url: "https://www.tncomputers.in/images/tn-computers-homepage.jpg",
+        alt: "TN Computers - Computer Shop in Chennai",
+      },
+    ],
+    site: "@Tncomputerstech",
+    creator: "@Tncomputerstech",
   },
-  robots: "index, follow",
-  alternates: {
-    canonical: "https://www.tncomputers.in/"
-  }
 };
-
-
-
-
-
 
 async function getHomeData() {
   const vendorId = 66;
@@ -104,339 +109,269 @@ async function getHomeData() {
   }
 }
 
-
-// async function getHomeData() {
-//   const vendorId = 66;
-
-//   const [bannersRes, categoriesRes, productsRes] = await Promise.all([
-//     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/banners/?vendorId=${vendorId}`, { cache: 'no-store' }),
-//     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/categories/?vendor_id=${vendorId}`, { cache: 'no-store' }),
-//     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL_TEST}/api/products/?vendor_id=${vendorId}`, { cache: 'no-store' }),
-//   ]);
-
-//   return {
-//     banners: (await bannersRes.json())?.banners ?? [],
-//     categories: (await categoriesRes.json())?.data ?? [],
-//     products: (await productsRes.json())?.data ?? [],
-//   };
-// }
-
-
-
-// const HomePage = async () => {
 export default async function HomePage() {
-  // const { banners } = await getHomeData();
   const { banners, categories, products } = await getHomeData();
-  // JSON-LD Computer Store Schema
-  // const computerStoreSchema = {
-  //   "@context": "https://schema.org",
-  //   "@type": "ComputerStore",
-  //   "@id": "https://www.tncomputers.in/#store",
-  //   "name": "TN Computers",
-  //   "url": "https://tncomputers.in",
-  //   "image": "https://www.tncomputers.in/tn-computers-logo.png",
-  //   "logo": "https://www.tncomputers.in/tn-computers-logo.png",
-  //   "description": "TN Computers is the best laptop store in Chennai offering new laptops, refurbished laptops, gaming PCs, custom PC builds, and IT accessories.",
-  //   "telephone": "+91-7429667788",
-  //   "priceRange": "₹₹",
-  //   "address": {
-  //     "@type": "PostalAddress",
-  //     "streetAddress": "126 B, Vanniar St, Bangaru Colony, K. K. Nagar",
-  //     "addressLocality": "Chennai",
-  //     "addressRegion": "TN",
-  //     "postalCode": "600078",
-  //     "addressCountry": "IN"
-  //   },
-  //   "openingHoursSpecification": {
-  //     "@type": "OpeningHoursSpecification",
-  //     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  //     "opens": "09:00",
-  //     "closes": "22:00"
-  //   },
-  //   "sameAs": [
-  //     "https://www.facebook.com/tncomputershardware",
-  //     "https://www.instagram.com/tn__computers/",
-  //     "https://www.youtube.com/@TN_Computers"
-  //   ],
-  //   "contactPoint": {
-  //     "@type": "ContactPoint",
-  //     "telephone": "+91-7429667788",
-  //     "contactType": "Customer Support",
-  //     "areaServed": "Chennai",
-  //     "availableLanguage": ["English", "Tamil"]
-  //   }
-  // };
-  const computerStoreSchema = {
+
+  const homeJsonLd = {
     "@context": "https://schema.org",
-    "@type": "ComputerStore",
-    "@id": "https://www.tncomputers.in/#store",
-    "name": "TN Computers",
-    "image": "https://www.tncomputers.in/tn-computers-logo.png",
-    "logo": "https://www.tncomputers.in/tn-computers-logo.png",
-    "url": "https://tncomputers.in",
-    "telephone": "+91-7429667788",
-    "priceRange": "₹₹",
-    "description":
-      "TN Computers is a trusted laptop store in Chennai offering laptops, gaming PCs, refurbished laptops, desktops, accessories and custom PC builds.",
-
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "No: 126 B, Vanniar Street, Bangaru Colony, KK Nagar",
-      "addressLocality": "Chennai",
-      "addressRegion": "Tamil Nadu",
-      "postalCode": "600078",
-      "addressCountry": "IN"
-    },
-
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "13.0418",
-      "longitude": "80.1994"
-    },
-
-    "openingHours": "Mo-Sa 09:00-21:00",
-
-    "sameAs": [
-      "https://www.facebook.com/tncomputershardware/",
-      "https://www.instagram.com/tn__computers/",
-      "https://www.youtube.com/@TN_Computers"
-    ],
-
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-7429667788",
-      "contactType": "Customer Support",
-      "areaServed": "Chennai",
-      "availableLanguage": ["English", "Tamil"]
-    },
-
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Computer Products",
-      "itemListElement": [
-        {
-          "@type": "OfferCatalog",
-          "name": "Laptops"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.tncomputers.in/#organization",
+        "name": "TN Computers",
+        "url": "https://www.tncomputers.in/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://www.tncomputers.in/#logo",
+          "url": "https://www.tncomputers.in/images/tn-computers-logo.png",
+          "contentUrl": "https://www.tncomputers.in/images/tn-computers-logo.png"
         },
-        {
-          "@type": "OfferCatalog",
-          "name": "Gaming PCs"
+        "telephone": "+91 74296 67788",
+        "email": "info@tncomputers.in",
+        "sameAs": [
+          "https://www.facebook.com/tncomputershardware",
+          "https://x.com/Tncomputerstech",
+          "https://www.youtube.com/@TN_Computers",
+          "https://www.instagram.com/tn__computers/"
+        ]
+      },
+      {
+        "@type": "ComputerStore",
+        "@id": "https://www.tncomputers.in/#localbusiness",
+        "name": "TN Computers",
+        "url": "https://www.tncomputers.in/",
+        "image": "https://www.tncomputers.in/images/tn-computers-homepage.jpg",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.tncomputers.in/images/tn-computers-logo.png"
         },
-        {
-          "@type": "OfferCatalog",
-          "name": "Refurbished Laptops"
+        "telephone": "+91 74296 67788",
+        "email": "info@tncomputers.in",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "No: 126 B, Vanniar Street, Bangaru Colony",
+          "addressLocality": "KK Nagar",
+          "addressRegion": "Tamil Nadu",
+          "postalCode": "600078",
+          "addressCountry": "IN"
         },
-        {
-          "@type": "OfferCatalog",
-          "name": "Computer Accessories"
+        "parentOrganization": {
+          "@id": "https://www.tncomputers.in/#organization"
         },
-        {
-          "@type": "OfferCatalog",
-          "name": "Custom PC Builds"
-        }
-      ]
-    }
-  };
-
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Which is the best laptop store in Chennai?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "TN Computers is one of the best laptop stores in Chennai offering branded laptops, gaming laptops, refurbished laptops, desktops, and accessories at affordable prices."
-        }
+        "sameAs": [
+          "https://www.facebook.com/tncomputershardware",
+          "https://x.com/Tncomputerstech",
+          "https://www.youtube.com/@TN_Computers",
+          "https://www.instagram.com/tn__computers/"
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Do you build custom gaming PCs in Chennai?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Yes, TN Computers provides custom gaming PC building services in Chennai for gamers, creators, and professionals with RTX graphics and high-performance components."
-        }
+        "@type": "WebSite",
+        "@id": "https://www.tncomputers.in/#website",
+        "name": "TN Computers",
+        "url": "https://www.tncomputers.in/",
+        "publisher": {
+          "@id": "https://www.tncomputers.in/#organization"
+        },
+        "inLanguage": "en-IN"
       },
       {
-        "@type": "Question",
-        "name": "Do you offer EMI options for laptops and gaming PCs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Yes, TN Computers offers flexible EMI options on laptops, desktops, gaming PCs, and accessories."
-        }
+        "@type": "WebPage",
+        "@id": "https://www.tncomputers.in/#webpage",
+        "url": "https://www.tncomputers.in/",
+        "name": "Computer Shop in Chennai | Laptops, PCs & Gaming | TN Computers",
+        "description": "TN Computers offers laptops, desktop computers, gaming PCs, custom PC builds, refurbished laptops, PC components, gaming accessories and computer services in Chennai.",
+        "isPartOf": {
+          "@id": "https://www.tncomputers.in/#website"
+        },
+        "about": {
+          "@id": "https://www.tncomputers.in/#localbusiness"
+        },
+        "publisher": {
+          "@id": "https://www.tncomputers.in/#organization"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.tncomputers.in/images/tn-computers-homepage.jpg"
+        },
+        "inLanguage": "en-IN"
       },
       {
-        "@type": "Question",
-        "name": "Which brands are available at TN Computers Chennai?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "We offer laptops and desktops from top brands including Dell, HP, Lenovo, Acer, ASUS, MSI, and more."
-        }
+        "@type": "ItemList",
+        "@id": "https://www.tncomputers.in/#testimonials",
+        "name": "TN Computers Customer Testimonials",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "Vejaysundaram R"
+              },
+              "reviewBody": "Got my PC built at TN Computers and I’m very happy with the performance. The staff were friendly, explained everything clearly, and guided me throughout the purchase. Overall, the experience was smooth and satisfying.",
+              "itemReviewed": {
+                "@id": "https://www.tncomputers.in/#localbusiness"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "Udhaya Kumar"
+              },
+              "reviewBody": "I purchased an Acer Aspire 3 laptop from TN Computers at a very affordable price. The customer handling was really good, and I’m completely satisfied with the service.",
+              "itemReviewed": {
+                "@id": "https://www.tncomputers.in/#localbusiness"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "Mr. Praveen"
+              },
+              "reviewBody": "I bought a brand-new Lenovo laptop from TN Computers and was really impressed with the pricing. The team provided good customer service and made the overall buying experience easy and comfortable.",
+              "itemReviewed": {
+                "@id": "https://www.tncomputers.in/#localbusiness"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "Bala Balalakshmi"
+              },
+              "reviewBody": "I bought a new gaming PC and was very happy with the product and the suggestions provided by the team. The PC quality was better than I expected for my budget. Very satisfied with the overall experience.",
+              "itemReviewed": {
+                "@id": "https://www.tncomputers.in/#localbusiness"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "ZS ROSE"
+              },
+              "reviewBody": "The staff were knowledgeable, friendly, and patient. They explained the differences between laptop models clearly and answered all my questions without rushing me into a decision.",
+              "itemReviewed": {
+                "@id": "https://www.tncomputers.in/#localbusiness"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "Lokesh Karthik"
+              },
+              "reviewBody": "I purchased a PC from TN Computers and was satisfied with the affordable pricing, product quality, and service. The staff had good hardware knowledge and provided helpful guidance throughout the purchase.",
+              "itemReviewed": {
+                "@id": "https://www.tncomputers.in/#localbusiness"
+              }
+            }
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Can I upgrade SSD and RAM at your computer shop in Chennai?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Yes, we provide SSD installation, RAM upgrades, PC assembly, and laptop upgrade services in Chennai."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you sell gaming accessories in Chennai?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text":
-            "Yes, we sell gaming keyboards, mouse, monitors, cabinets, CPU coolers, gamepads, and gaming accessories in Chennai."
-        }
+        "@type": "FAQPage",
+        "@id": "https://www.tncomputers.in/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which is a reliable computer store in Chennai for laptops, desktops and gaming PCs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TN Computers is a one-stop destination in KK Nagar for laptops, desktops, gaming PCs, custom builds, upgrades and repairs, with staff who explain specifications in practical terms."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What makes TN Computers a good computer shop in Chennai for students and businesses?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TN Computers matches configurations to real usage, including budget-friendly builds for students, office-ready systems for businesses, and performance-focused builds for gamers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I buy quality PC accessories in Chennai for a gaming setup?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TN Computers offers gaming keyboards, mice, headsets, monitors, controllers and other gaming peripherals for complete gaming setups."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which is an affordable laptop store in Chennai for students and professionals?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TN Computers helps customers balance price and performance by considering portability and battery life for students and processing power and specifications for professionals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get a custom PC build in Chennai for gaming or video editing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TN Computers plans custom builds around workloads such as gaming, streaming, 3D rendering and editing while checking component compatibility, performance and future upgrade requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are affordable refurbished laptops in Chennai a good option for budget buyers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Refurbished laptops can be a practical option when processor generation, battery health, screen condition, specifications and warranty or service support are carefully checked."
+            }
+          }
+        ]
       }
     ]
   };
 
-  // 👇 ADD THIS BELOW faqSchema
-  const reviewSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "TN Computers",
-    "url": "https://tncomputers.in",
-    "review": [
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Aravind Kumar"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody":
-          "I was searching for the best laptop shop in Chennai and found TN Computers. Their pricing, support, and laptop collection were excellent. I purchased a Dell i7 laptop with SSD at a great price."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Rahul S"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody":
-          "TN Computers built my custom RTX gaming PC exactly the way I wanted. If you are looking for custom PC builders in Chennai or a gaming PC shop in Chennai, this is the right place."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Priya M"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody":
-          "I bought a refurbished Dell Latitude laptop for office work. The laptop condition was excellent and the pricing was affordable. One of the best places to buy refurbished laptops in Chennai."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Karthik V"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody":
-          "TN Computers is the best computer shop in Chennai for students and professionals. I upgraded my RAM and SSD here. Fast service, affordable pricing, and genuine products."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Naveen Raj"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody":
-          "I purchased a gaming keyboard, mouse, monitor, and CPU cooler from TN Computers. Their gaming accessories collection is amazing."
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Deepak R"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody":
-          "I was looking for affordable laptops in Chennai with EMI options. TN Computers helped me choose the perfect HP laptop within my budget."
-      }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "7185"
-    }
-  };
-
-  // const [index, setIndex] = useState(0)
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setIndex((prev) => (prev + 1) % slides.length)
-  //   }, 5000)
-  //   return () => clearInterval(timer)
-  // }, [])
-
-
   return (
     <>
-
-
       <Script
         id="home-jsonld-schema"
         type="application/ld+json"
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([computerStoreSchema, faqSchema, reviewSchema]),
+          __html: JSON.stringify(homeJsonLd),
         }}
       />
-
-
 
       <div>
         {/* Hero Section */}
         <Carousel banners={banners} />
 
-        {/* <TopCategories /> */}
         <TopCategories categories={categories} />
-        {/* <NewArrivals /> */}
         <NewArrivals products={products} />
         <ProductPromoSection />
         <HeroSectionTrustedLap />
 
         <FeatureHighlights />
-
-
       </div>
     </>
-  )
+  );
 }
-
-// export default HomePage;
-
-
