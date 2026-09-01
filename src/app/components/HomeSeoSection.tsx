@@ -13,108 +13,62 @@ import {
     CheckCircle2,
     HelpCircle,
     Star,
-    Quote
+    Quote,
+    Layers,
+    SlidersHorizontal,
+    Sparkles,
+    Check,
+    HardDrive,
+    Zap,
+    Box,
+    Headphones,
+    Settings,
+    Activity,
+    Compass
 } from "lucide-react";
 
 export default function HomeSeoSection() {
     const [open, setOpen] = useState(false);
-    const [activeFaq, setActiveFaq] = useState<number | null>(null);
-
-    const toggleFaq = (index: number) => {
-        setActiveFaq(activeFaq === index ? null : index);
-    };
-
-    const testimonials = [
-        {
-            title: "Great PC Build Experience",
-            quote: "Got my PC built at TN Computers and I’m very happy with the performance. The staff were friendly, explained everything clearly, and guided me throughout the purchase. Overall, the experience was smooth and satisfying.",
-            author: "Vejaysundaram R",
-            rating: 5,
-        },
-        {
-            title: "Affordable Laptop Purchase",
-            quote: "I purchased an Acer Aspire 3 laptop from TN Computers at a very affordable price. The customer handling was really good, and I’m completely satisfied with the service. A great place to explore branded products.",
-            author: "Udhaya Kumar",
-            rating: 5,
-        },
-        {
-            title: "Excellent Laptop Pricing & Support",
-            quote: "I bought a brand-new Lenovo laptop from TN Computers and was really impressed with the pricing. The team provided good customer service and made the overall buying experience easy and comfortable.",
-            author: "Mr. Praveen",
-            rating: 5,
-        },
-        {
-            title: "Quality Gaming PC at a Great Budget",
-            quote: "I bought a new gaming PC and was very happy with the product and the suggestions provided by the team. The PC quality was better than I expected for my budget. Very satisfied with the overall experience.",
-            author: "Bala Balalakshmi",
-            rating: 5,
-        },
-        {
-            title: "Friendly & Knowledgeable Team",
-            quote: "The staff were knowledgeable, friendly, and patient. They explained the differences between laptop models clearly and answered all my questions without rushing me into a decision. I really appreciated the genuine guidance.",
-            author: "ZS ROSE",
-            rating: 5,
-        },
-        {
-            title: "Good Service & Affordable Pricing",
-            quote: "I purchased a PC from TN Computers and was satisfied with the affordable pricing, product quality, and service. The staff had good hardware knowledge and provided helpful guidance throughout the purchase. A recommended place for PCs and laptops.",
-            author: "Lokesh Karthik",
-            rating: 5,
-        },
-    ];
-
-    const faqs = [
-        {
-            question: "Which is a reliable computer store in Chennai for laptops, desktops and gaming PCs?",
-            answer: "TN Computers is a one-stop destination in KK Nagar for laptops, desktops, gaming PCs, custom builds, upgrades and repairs — with staff who explain specs in practical terms instead of pushing the priciest configuration.",
-        },
-        {
-            question: "What makes TN Computers the best computer shop in Chennai for students and businesses?",
-            answer: "TN Computers matches configurations to real usage — budget-friendly builds for students, office-ready systems for businesses, and performance builds for gamers — rather than one-size-fits-all setups.",
-        },
-        {
-            question: "Where can I buy quality PC accessories in Chennai for a gaming setup?",
-            answer: "TN Computers stocks gaming keyboards, mice, headsets, monitors and controllers, chosen for comfort, response time and durability during long sessions.",
-        },
-        {
-            question: "Which is an affordable laptop store in Chennai for students and professionals?",
-            answer: "TN Computers helps balance price and performance — prioritizing portability and battery life for students, processing power for professionals — without compromising on what actually matters for your use case.",
-        },
-        {
-            question: "How do I get a custom PC build in Chennai for gaming or video editing?",
-            answer: "TN Computers plans builds around your actual workload — gaming, streaming, 3D rendering or editing — checking every component works together, not just performs well individually. The same team also sources PC components in Chennai for future upgrades, so your build stays compatible long-term.",
-        },
-        {
-            question: "Are affordable refurbished laptops in Chennai a good option for budget buyers?",
-            answer: "Yes — if you check processor generation, battery health, screen condition and warranty support. TN Computers evaluates these factors so you get real usability, not just a low price tag.",
-        },
-    ];
 
     return (
-        <section className="mt-8">
-
-            {/* FIRST SECTION (ALWAYS VISIBLE) */}
+        <section className="mt-6 space-y-8">
+            
+            {/* FIRST SECTION (ALWAYS VISIBLE - ULTRA CLEAN CARD) */}
             {/* 1. H2 - One-Stop Computer Store in Chennai for Every Requirement */}
-            <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-5">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
+            <div className="relative group bg-white/95 backdrop-blur-md border border-purple-100/90 rounded-[2rem] p-7 sm:p-10 lg:p-12 shadow-xl shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-300">
+                <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-40"></div>
+                
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-xs font-extrabold uppercase tracking-widest text-purple-700">
+                        <Compass className="w-3.5 h-3.5" /> Full Spectrum IT Store
+                    </div>
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-5">
                     One-Stop Computer Store in Chennai for Every Requirement
                 </h2>
-                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-5 font-normal">
                     A good computer purchase starts with understanding how you will use the system. Processor speed, RAM, SSD capacity, graphics performance, display quality, cooling, connectivity, and upgradeability all influence the overall experience.
                 </p>
-                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed font-normal">
                     As a local computer store in Chennai, we aim to make technology purchasing easier by explaining specifications in practical terms. Instead of simply choosing the most expensive configuration, customers can compare options according to their workload, budget, performance expectations, and future requirements.
                 </p>
             </div>
 
             {/* REMAINING SECTIONS (INSIDE SEE MORE COLLAPSIBLE) */}
             <div
-                className={`transition-all duration-700 ease-in-out overflow-hidden ${open ? "max-h-[35000px] opacity-100 mt-10 space-y-12" : "max-h-0 opacity-0"
-                    }`}
+                className={`transition-all duration-700 ease-in-out overflow-hidden ${
+                    open ? "max-h-[35000px] opacity-100 space-y-10" : "max-h-0 opacity-0"
+                }`}
             >
                 {/* 2. H2 - Professional Computer Shop in Chennai for Business & Gaming */}
-                <div className="bg-gradient-to-br from-purple-50/70 via-fuchsia-50/40 to-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                <div className="relative bg-gradient-to-br from-purple-50/80 via-fuchsia-50/40 to-white border border-purple-100 rounded-[2rem] p-7 sm:p-10 shadow-lg shadow-purple-900/5 space-y-6">
                     <div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100/70 text-xs font-bold text-purple-800 uppercase tracking-wider mb-3">
+                            <Sparkles className="w-3 h-3" /> Commercial &amp; Enthusiast
+                        </span>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
                             Professional Computer Shop in Chennai for Business &amp; Gaming
                         </h2>
@@ -124,11 +78,12 @@ export default function HomeSeoSection() {
                     </div>
 
                     {/* H3 - For businesses, our solutions can support */}
-                    <div className="bg-white rounded-2xl p-6 border border-purple-100/90 shadow-sm space-y-4">
-                        <h3 className="text-lg sm:text-xl font-bold text-purple-900">
+                    <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 sm:p-7 border border-purple-100 shadow-sm space-y-4">
+                        <h3 className="text-lg sm:text-xl font-bold text-purple-950 flex items-center gap-2.5">
+                            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-600"></div>
                             For businesses, our solutions can support:
                         </h3>
-                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
                             {[
                                 "Office and productivity systems",
                                 "Professional workstations",
@@ -138,23 +93,30 @@ export default function HomeSeoSection() {
                             ].map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="flex items-center gap-3 bg-purple-50/60 border border-purple-100 rounded-xl px-4 py-3 text-sm sm:text-base font-semibold text-gray-800"
+                                    className="flex items-center gap-3 bg-purple-50/60 hover:bg-purple-50 border border-purple-100/80 rounded-xl px-4 py-3.5 text-sm sm:text-base font-semibold text-gray-800 transition-colors shadow-xs"
                                 >
-                                    <CheckCircle2 className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                                    <div className="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center flex-shrink-0 text-xs">
+                                        ✓
+                                    </div>
                                     <span>{item}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        For gamers, requirements often shift toward dedicated graphics, faster processors, high-speed memory, NVMe storage, and performance-focused cooling — and we can help compare performance-focused gaming PCs, graphics cards, monitors, gaming peripherals, and other components to match.
-                    </p>
+                    <div className="bg-white/80 rounded-2xl p-5 border border-purple-100/60">
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            For gamers, requirements often shift toward dedicated graphics, faster processors, high-speed memory, NVMe storage, and performance-focused cooling — and we can help compare performance-focused gaming PCs, graphics cards, monitors, gaming peripherals, and other components to match.
+                        </p>
+                    </div>
                 </div>
 
                 {/* 3. H2 - Laptop Store Chennai for Students, Professionals & Businesses */}
-                <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                <div className="bg-white border border-purple-100 rounded-[2rem] p-7 sm:p-10 shadow-lg shadow-purple-900/5 space-y-6">
                     <div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-xs font-bold text-purple-700 uppercase tracking-wider mb-3">
+                            <Laptop className="w-3.5 h-3.5" /> Mobility &amp; Workstations
+                        </span>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
                             Laptop Store Chennai for Students, Professionals &amp; Businesses
                         </h2>
@@ -172,64 +134,85 @@ export default function HomeSeoSection() {
                             {
                                 title: "Budget",
                                 desc: "configurations that provide practical value within your spending range",
+                                gradient: "from-purple-500 to-indigo-500",
                             },
                             {
                                 title: "Performance",
                                 desc: "the appropriate processor, RAM, SSD, and graphics capabilities for your applications",
+                                gradient: "from-fuchsia-500 to-pink-500",
                             },
                             {
                                 title: "Portability",
                                 desc: "lightweight and compact options for students and professionals on the move",
+                                gradient: "from-violet-500 to-purple-500",
                             },
                             {
                                 title: "Productivity",
                                 desc: "suitable configurations for office work, programming, browsing, and multitasking",
+                                gradient: "from-blue-500 to-cyan-500",
                             },
                             {
                                 title: "Creative workloads",
                                 desc: "stronger processors, additional memory, dedicated graphics, and better displays where required",
+                                gradient: "from-amber-500 to-orange-500",
                             },
                             {
                                 title: "Gaming",
                                 desc: "laptops with suitable GPUs, processors, cooling systems, and high-refresh-rate displays",
+                                gradient: "from-emerald-500 to-teal-500",
                             },
                         ].map((item, idx) => (
                             <div
                                 key={idx}
-                                className="bg-purple-50/30 border border-purple-100 rounded-2xl p-5 hover:bg-purple-50/70 hover:border-purple-200 transition-all"
+                                className="group bg-gradient-to-b from-purple-50/40 to-white border border-purple-100 hover:border-purple-300 rounded-2xl p-5 sm:p-6 shadow-xs hover:shadow-md transition-all duration-300"
                             >
-                                <h4 className="text-base font-bold text-purple-700 mb-1.5 flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-purple-600"></span>
-                                    {item.title}
-                                </h4>
-                                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className={`w-2.5 h-2.5 rounded-full bg-gradient-to-r ${item.gradient}`}></span>
+                                    <h4 className="text-base font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
+                                        {item.title}
+                                    </h4>
+                                </div>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed pl-4 border-l-2 border-purple-100 group-hover:border-purple-300 transition-colors">
                                     — {item.desc}
                                 </p>
                             </div>
                         ))}
                     </div>
 
-                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed bg-purple-50/60 border border-purple-100 rounded-2xl p-5">
-                        For customers looking for an affordable laptop store in Chennai, the goal is to find the right balance between price and performance — not to compromise on the specifications that actually matter for your use case.
-                    </p>
+                    <div className="bg-gradient-to-r from-purple-50 via-fuchsia-50/50 to-purple-50 border border-purple-100/90 rounded-2xl p-5 sm:p-6">
+                        <p className="text-gray-800 text-base sm:text-lg leading-relaxed font-medium">
+                            💡 For customers looking for an affordable laptop store in Chennai, the goal is to find the right balance between price and performance — not to compromise on the specifications that actually matter for your use case.
+                        </p>
+                    </div>
                 </div>
 
                 {/* 4. H2 - Gaming PC Chennai for High-Performance Builds */}
-                <div className="bg-gradient-to-br from-gray-950 via-purple-950 to-gray-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-6">
-                    <div className="space-y-4">
-                        <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight">
+                <div className="relative bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 rounded-[2.25rem] p-7 sm:p-10 lg:p-12 text-white shadow-2xl shadow-purple-950/40 border border-purple-800/40 space-y-6 overflow-hidden">
+                    
+                    {/* Futuristic background glow */}
+                    <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-80 h-80 bg-fuchsia-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div className="relative space-y-4">
+                        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-xs font-black uppercase tracking-widest text-purple-300">
+                            <Gamepad2 className="w-4 h-4 text-purple-400" /> High-Performance Rigs
+                        </span>
+                        
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight tracking-tight">
                             Gaming PC Chennai for High-Performance Builds
                         </h2>
-                        <p className="text-purple-100 text-base sm:text-lg leading-relaxed">
+                        
+                        <p className="text-purple-100/90 text-base sm:text-lg leading-relaxed font-normal">
                             A gaming PC should be balanced around the games you play and the performance you expect — not built around a single powerful component. TN Computers offers gaming PC Chennai solutions for every level of gamer, from entry-level setups to high-performance configurations, considering the complete system rather than one part in isolation.
                         </p>
                     </div>
 
-                    <div className="space-y-3">
-                        <h3 className="text-lg font-bold text-white">
+                    <div className="relative space-y-4 pt-2">
+                        <h3 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <Zap className="w-5 h-5 text-amber-400" />
                             A well-balanced build typically includes:
                         </h3>
-                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
                             {[
                                 "Powerful CPUs paired with dedicated graphics cards",
                                 "High-speed DDR RAM and NVMe SSD storage",
@@ -240,7 +223,7 @@ export default function HomeSeoSection() {
                             ].map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="flex items-center gap-3 bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-sm sm:text-base font-medium text-purple-100 backdrop-blur-sm"
+                                    className="flex items-center gap-3 bg-white/10 hover:bg-white/15 border border-white/15 rounded-xl px-4 py-3.5 text-sm sm:text-base font-medium text-purple-50 backdrop-blur-md transition-colors"
                                 >
                                     <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0" />
                                     <span>{item}</span>
@@ -249,17 +232,22 @@ export default function HomeSeoSection() {
                         </div>
                     </div>
 
-                    <p className="text-purple-200 text-base sm:text-lg leading-relaxed">
-                        If you&apos;re searching for a trusted gaming PC shop in Chennai, our team can help you compare configurations based on your budget, preferred games, resolution, and refresh rate. As an experienced custom PC builder Chennai, we also plan builds for esports, streaming, video editing, 3D rendering, and other performance-focused workloads — so your custom gaming PC Chennai setup is built around how you&apos;ll actually use it, not just what&apos;s available.
-                    </p>
+                    <div className="relative pt-3 space-y-4 border-t border-white/10">
+                        <p className="text-purple-200 text-base sm:text-lg leading-relaxed">
+                            If you&apos;re searching for a trusted gaming PC shop in Chennai, our team can help you compare configurations based on your budget, preferred games, resolution, and refresh rate. As an experienced custom PC builder Chennai, we also plan builds for esports, streaming, video editing, 3D rendering, and other performance-focused workloads — so your custom gaming PC Chennai setup is built around how you&apos;ll actually use it, not just what&apos;s available.
+                        </p>
 
-                    <p className="text-purple-200 text-base sm:text-lg leading-relaxed border-t border-white/10 pt-4">
-                        For competitive gamers and esports users, components can be selected specifically around consistent frame rates and responsive gameplay, with future upgrade potential built into the plan from the start.
-                    </p>
+                        <p className="text-purple-200 text-base sm:text-lg leading-relaxed">
+                            For competitive gamers and esports users, components can be selected specifically around consistent frame rates and responsive gameplay, with future upgrade potential built into the plan from the start.
+                        </p>
+                    </div>
                 </div>
 
                 {/* 5. H2 - PC Building Service Chennai with Custom Configuration */}
-                <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-4">
+                <div className="bg-white border border-purple-100 rounded-[2rem] p-7 sm:p-10 shadow-lg shadow-purple-900/5 space-y-4">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-xs font-bold text-purple-700 uppercase tracking-wider">
+                        <Cpu className="w-3.5 h-3.5" /> Precision Assembly
+                    </span>
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
                         PC Building Service Chennai with Custom Configuration
                     </h2>
@@ -272,8 +260,11 @@ export default function HomeSeoSection() {
                 </div>
 
                 {/* 6. H2 - Refurbished Laptops Chennai for Value-Focused Buyers */}
-                <div className="bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-10 space-y-6">
+                <div className="bg-gradient-to-br from-slate-50 to-purple-50/30 border border-slate-200/80 rounded-[2rem] p-7 sm:p-10 shadow-lg shadow-purple-900/5 space-y-6">
                     <div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-xs font-bold text-emerald-800 uppercase tracking-wider mb-3">
+                            <ShieldCheck className="w-3.5 h-3.5" /> Certified Quality Testing
+                        </span>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
                             Refurbished Laptops Chennai for Value-Focused Buyers
                         </h2>
@@ -286,8 +277,8 @@ export default function HomeSeoSection() {
                     </div>
 
                     <div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-4">
-                            Consider:
+                        <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <Check className="w-5 h-5 text-emerald-600" /> Consider:
                         </h3>
                         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
                             {[
@@ -304,25 +295,31 @@ export default function HomeSeoSection() {
                             ].map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="bg-white border border-gray-200 rounded-xl px-4 py-3 text-center text-sm font-semibold text-gray-800 shadow-sm"
+                                    className="bg-white border border-gray-200/90 hover:border-purple-300 rounded-xl px-4 py-3.5 text-center text-sm font-semibold text-gray-800 shadow-xs hover:shadow transition-all"
                                 >
+                                    <span className="text-xs text-purple-600 font-bold block mb-0.5">#{idx + 1}</span>
                                     {item}
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        Customers searching for affordable refurbished laptops in Chennai can compare options based on actual usability instead of focusing only on the lowest price.
-                    </p>
-                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed font-medium">
-                        For those considering used laptops Chennai, checking specifications, physical condition, battery health, and available support is particularly important.
-                    </p>
+                    <div className="space-y-3 pt-2">
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            Customers searching for affordable refurbished laptops in Chennai can compare options based on actual usability instead of focusing only on the lowest price.
+                        </p>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed font-semibold text-purple-950 bg-white p-4 rounded-xl border border-purple-100">
+                            For those considering used laptops Chennai, checking specifications, physical condition, battery health, and available support is particularly important.
+                        </p>
+                    </div>
                 </div>
 
                 {/* 7. H2 - PC Components Chennai for Upgrades & New Builds */}
-                <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                <div className="bg-white border border-purple-100 rounded-[2rem] p-7 sm:p-10 shadow-lg shadow-purple-900/5 space-y-6">
                     <div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-xs font-bold text-purple-700 uppercase tracking-wider mb-3">
+                            <HardDrive className="w-3.5 h-3.5" /> Hardware &amp; Upgrades
+                        </span>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
                             PC Components Chennai for Upgrades &amp; New Builds
                         </h2>
@@ -332,7 +329,8 @@ export default function HomeSeoSection() {
                     </div>
 
                     <div>
-                        <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4">
+                        <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center gap-2">
+                            <Box className="w-4 h-4 text-purple-600" />
                             Available categories can include:
                         </h3>
                         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -351,7 +349,7 @@ export default function HomeSeoSection() {
                             ].map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="flex items-center gap-2.5 bg-purple-50/50 border border-purple-100 rounded-xl px-4 py-3 text-sm sm:text-base font-medium text-gray-800 hover:bg-purple-50 transition-colors"
+                                    className="flex items-center gap-2.5 bg-gradient-to-r from-purple-50/60 to-white border border-purple-100 hover:border-purple-300 rounded-xl px-4 py-3 text-sm sm:text-base font-semibold text-gray-800 hover:text-purple-700 transition-all shadow-xs"
                                 >
                                     <div className="w-2 h-2 rounded-full bg-purple-600 flex-shrink-0"></div>
                                     <span>{item}</span>
@@ -360,14 +358,17 @@ export default function HomeSeoSection() {
                         </div>
                     </div>
 
-                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed bg-purple-50/40 p-5 rounded-xl border border-purple-100">
                         Whether you&apos;re upgrading an existing system or sourcing parts for a new build, selecting compatible RAM, SSDs, graphics cards, or cooling solutions can improve performance without needing to replace the entire system.
                     </p>
                 </div>
 
                 {/* 8. H2 - Gaming Accessories Chennai for Complete Setups */}
-                <div className="bg-gradient-to-r from-purple-50/60 via-white to-fuchsia-50/60 border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                <div className="bg-gradient-to-r from-purple-50/70 via-white to-fuchsia-50/70 border border-purple-100 rounded-[2rem] p-7 sm:p-10 shadow-lg shadow-purple-900/5 space-y-6">
                     <div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fuchsia-100 text-xs font-bold text-fuchsia-800 uppercase tracking-wider mb-3">
+                            <Headphones className="w-3.5 h-3.5" /> Battle-Station Gear
+                        </span>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
                             Gaming Accessories Chennai for Complete Setups
                         </h2>
@@ -379,7 +380,7 @@ export default function HomeSeoSection() {
                         </p>
                     </div>
 
-                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
                         {[
                             "Gaming keyboards",
                             "Gaming mice",
@@ -391,25 +392,30 @@ export default function HomeSeoSection() {
                         ].map((item, idx) => (
                             <div
                                 key={idx}
-                                className="bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base font-semibold text-gray-800 shadow-sm flex items-center gap-2"
+                                className="bg-white border border-gray-200 hover:border-fuchsia-300 rounded-xl px-4 py-3.5 text-sm sm:text-base font-semibold text-gray-800 shadow-xs hover:shadow flex items-center gap-2.5 transition-all"
                             >
-                                <Gamepad2 className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                                <Gamepad2 className="w-4 h-4 text-fuchsia-600 flex-shrink-0" />
                                 <span>{item}</span>
                             </div>
                         ))}
                     </div>
 
-                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        Choosing accessories based on comfort, response, connectivity, durability, and intended usage can make a significant difference during long gaming sessions.
-                    </p>
-                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        For customers looking for a gaming shop in Chennai, combining the right PC with suitable peripherals can create a more complete and enjoyable setup.
-                    </p>
+                    <div className="space-y-3 pt-2">
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            Choosing accessories based on comfort, response, connectivity, durability, and intended usage can make a significant difference during long gaming sessions.
+                        </p>
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            For customers looking for a gaming shop in Chennai, combining the right PC with suitable peripherals can create a more complete and enjoyable setup.
+                        </p>
+                    </div>
                 </div>
 
                 {/* 9. H2 - Laptop Repair Chennai & Computer Repair Chennai */}
-                <div className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+                <div className="bg-white border border-purple-100 rounded-[2rem] p-7 sm:p-10 shadow-lg shadow-purple-900/5 space-y-6">
                     <div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-xs font-bold text-amber-800 uppercase tracking-wider mb-3">
+                            <Settings className="w-3.5 h-3.5" /> Technical Diagnostics
+                        </span>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight mb-4">
                             Laptop Repair Chennai &amp; Computer Repair Chennai
                         </h2>
@@ -422,7 +428,8 @@ export default function HomeSeoSection() {
                     </div>
 
                     <div>
-                        <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4">
+                        <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4 flex items-center gap-2">
+                            <Wrench className="w-4 h-4 text-purple-600" />
                             Common requirements include:
                         </h3>
                         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -439,7 +446,7 @@ export default function HomeSeoSection() {
                             ].map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm sm:text-base font-medium text-gray-800"
+                                    className="flex items-center gap-3 bg-slate-50 hover:bg-purple-50/50 border border-slate-200/80 hover:border-purple-200 rounded-xl px-4 py-3.5 text-sm sm:text-base font-medium text-gray-800 transition-all shadow-xs"
                                 >
                                     <Wrench className="w-4 h-4 text-purple-600 flex-shrink-0" />
                                     <span>{item}</span>
@@ -448,15 +455,19 @@ export default function HomeSeoSection() {
                         </div>
                     </div>
 
-                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed bg-purple-50/50 border border-purple-100 rounded-2xl p-5">
-                        Customers looking for an expert laptop upgrade service in Chennai can also explore whether increasing RAM or replacing older storage can improve the performance of an existing system.
+                    <p className="text-gray-800 text-base sm:text-lg leading-relaxed bg-gradient-to-r from-purple-50 to-fuchsia-50/40 border border-purple-100 rounded-2xl p-5 sm:p-6 font-medium">
+                        🛠️ Customers looking for an expert laptop upgrade service in Chennai can also explore whether increasing RAM or replacing older storage can improve the performance of an existing system.
                     </p>
                 </div>
 
                 {/* 10. H3 - Why Choose TN Computers? */}
-                <div className="bg-gradient-to-br from-purple-900 via-fuchsia-950 to-violet-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl space-y-8">
-                    <div>
-                        <h3 className="text-2xl sm:text-3xl font-extrabold leading-tight mb-4">
+                <div className="relative bg-gradient-to-br from-purple-950 via-fuchsia-950 to-slate-950 rounded-[2.25rem] p-7 sm:p-10 lg:p-12 text-white shadow-2xl shadow-purple-950/40 border border-purple-800/40 space-y-8 overflow-hidden">
+                    
+                    <div className="relative">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-400/20 border border-purple-400/30 text-xs font-bold text-purple-300 uppercase tracking-widest mb-3">
+                            <Sparkles className="w-3.5 h-3.5" /> The TN Advantage
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight mb-4 tracking-tight">
                             Why Choose TN Computers?
                         </h3>
                         <p className="text-purple-100 text-base sm:text-lg leading-relaxed">
@@ -480,7 +491,7 @@ export default function HomeSeoSection() {
                         ].map((item, idx) => (
                             <div
                                 key={idx}
-                                className="bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-center text-sm font-semibold text-purple-50 backdrop-blur-sm"
+                                className="bg-white/10 hover:bg-white/15 border border-white/15 rounded-xl px-4 py-3.5 text-center text-sm font-semibold text-purple-50 backdrop-blur-md transition-all shadow-xs"
                             >
                                 {item}
                             </div>
@@ -492,11 +503,12 @@ export default function HomeSeoSection() {
                     </p>
 
                     {/* 4 Simple Questions */}
-                    <div className="bg-white/10 border border-white/20 rounded-2xl p-6 sm:p-8 space-y-4">
-                        <h4 className="text-lg sm:text-xl font-bold text-white">
+                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 sm:p-8 space-y-4">
+                        <h4 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <HelpCircle className="w-5 h-5 text-purple-300" />
                             If you are comparing a Computer Shop in Chennai, start with four simple questions:
                         </h4>
-                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
                             {[
                                 "What will you use the computer for?",
                                 "What is your realistic budget?",
@@ -505,12 +517,12 @@ export default function HomeSeoSection() {
                             ].map((q, idx) => (
                                 <div
                                     key={idx}
-                                    className="bg-black/30 rounded-xl p-4 border border-white/10 text-sm font-medium text-purple-100 flex flex-col justify-between"
+                                    className="bg-black/30 rounded-xl p-5 border border-white/10 text-sm font-medium text-purple-100 flex flex-col justify-between hover:border-purple-400/50 transition-all"
                                 >
-                                    <span className="text-xs font-bold text-purple-300 uppercase tracking-widest mb-1.5">
+                                    <span className="text-xs font-black text-purple-300 uppercase tracking-widest mb-2">
                                         Question 0{idx + 1}
                                     </span>
-                                    <p className="text-white font-semibold text-sm sm:text-base leading-snug">{q}</p>
+                                    <p className="text-white font-bold text-sm sm:text-base leading-snug">{q}</p>
                                 </div>
                             ))}
                         </div>
@@ -521,111 +533,23 @@ export default function HomeSeoSection() {
                     </p>
                 </div>
 
-                {/* 11. Testimonial: */}
-                {/* <div className="space-y-6 pt-4">
-                    <div className="text-center max-w-3xl mx-auto">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 border border-purple-200 text-xs font-bold uppercase tracking-wider text-purple-800 mb-2">
-                            <Quote className="w-3.5 h-3.5" /> Customer Feedback
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                            Testimonial:
-                        </h3>
-                    </div>
-
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {testimonials.map((item, index) => (
-                            <div
-                                key={index}
-                                className="bg-white border border-purple-100 rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
-                            >
-                                <div>
-                              
-                                    <div className="flex items-center gap-1 text-amber-400 mb-3">
-                                        {[...Array(item.rating)].map((_, i) => (
-                                            <Star key={i} className="w-4 h-4 fill-amber-400" />
-                                        ))}
-                                    </div>
-
-                                    <h4 className="text-lg font-bold text-gray-900 mb-2.5">
-                                        {item.title}
-                                    </h4>
-
-                                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed italic mb-6">
-                                        {item.quote}
-                                    </p>
-                                </div>
-
-                                <div className="pt-4 border-t border-gray-100">
-                                    <p className="font-bold text-gray-900 text-sm">
-                                        — {item.author}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div> */}
-
-                {/* 12. FAQ: */}
-                {/* <div className="space-y-6 pt-4">
-                    <div className="text-center max-w-3xl mx-auto">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 border border-purple-200 text-xs font-bold uppercase tracking-wider text-purple-800 mb-2">
-                            <HelpCircle className="w-3.5 h-3.5" /> Direct Answers
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                            FAQ:
-                        </h3>
-                    </div>
-
-                    <div className="space-y-4 max-w-4xl mx-auto">
-                        {faqs.map((faq, index) => {
-                            const isOpen = activeFaq === index;
-                            return (
-                                <div
-                                    key={index}
-                                    className="border border-purple-100 rounded-2xl overflow-hidden bg-white shadow-sm transition-all"
-                                >
-                                    <button
-                                        onClick={() => toggleFaq(index)}
-                                        className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-purple-50/50 transition-colors"
-                                    >
-                                        <span className="font-bold text-gray-900 text-base sm:text-lg">
-                                            {index + 1}. Q: {faq.question}
-                                        </span>
-                                        <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700">
-                                            {isOpen ? (
-                                                <ChevronUp className="w-5 h-5" />
-                                            ) : (
-                                                <ChevronDown className="w-5 h-5" />
-                                            )}
-                                        </div>
-                                    </button>
-                                    {isOpen && (
-                                        <div className="px-6 pb-6 pt-2 text-gray-700 text-sm sm:text-base leading-relaxed border-t border-purple-50 bg-purple-50/20">
-                                            <strong className="text-purple-900">A: </strong>
-                                            {faq.answer}
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div> */}
-
             </div>
 
             {/* SEE MORE / SEE LESS TOGGLE BUTTON */}
-            <div className="mt-8 text-center">
+            <div className="pt-4 text-center">
                 <button
                     onClick={() => setOpen(!open)}
-                    className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-2xl bg-gradient-to-r from-purple-600 via-fuchsia-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white font-bold shadow-lg shadow-purple-200 hover:shadow-xl hover:shadow-purple-300 transition-all duration-300 hover:scale-[1.02] active:scale-95 text-base sm:text-lg cursor-pointer"
+                    className="group inline-flex items-center gap-3 px-9 py-4 rounded-2xl bg-gradient-to-r from-purple-600 via-fuchsia-600 to-violet-600 hover:from-purple-700 hover:to-violet-700 text-white font-extrabold shadow-xl shadow-purple-500/25 hover:shadow-2xl hover:shadow-purple-500/35 transition-all duration-300 hover:scale-[1.03] active:scale-95 text-base sm:text-lg cursor-pointer"
                 >
                     {open ? (
                         <>
-                            See Less <ChevronUp className="w-5 h-5" />
+                            <span>See Less</span>
+                            <ChevronUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
                         </>
                     ) : (
                         <>
-                            See More <ChevronDown className="w-5 h-5" />
+                            <span>See More</span>
+                            <ChevronDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
                         </>
                     )}
                 </button>
