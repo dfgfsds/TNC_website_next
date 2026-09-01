@@ -183,26 +183,31 @@ export default function CustomerReviewSection() {
         </div>
 
         {/* Video / Showcase Banner */}
-        <div className="relative rounded-2xl overflow-hidden min-h-[280px] shadow-sm border border-gray-200/80">
+        <a
+          href="https://www.instagram.com/reel/DZ2U2CxDeOu/?igsi=MWhtZzJsMGxuYzNqMQ=="
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative block rounded-2xl overflow-hidden min-h-[280px] shadow-sm hover:shadow-xl border border-gray-200/80 transition-all duration-300 cursor-pointer"
+        >
           <Image
             src="https://cdn.shopify.com/s/files/1/0489/1171/2423/files/razox-img-12.jpg"
             alt="Customer Testimonial"
             fill
-            className="object-cover"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width:768px) 100vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end p-6">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center text-xl shadow-lg transition-transform hover:scale-110 cursor-pointer">
+              <div className="w-12 h-12 bg-red-600 group-hover:bg-red-700 text-white rounded-full flex items-center justify-center text-xl shadow-lg transition-transform group-hover:scale-110 flex-shrink-0">
                 ▶
               </div>
               <div>
                 <p className="text-white font-bold text-sm">Customer Stories</p>
-                <p className="text-white/80 text-xs">Watch real buyer experiences</p>
+                <p className="text-white/80 text-xs">Watch real buyer experiences on Instagram</p>
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );

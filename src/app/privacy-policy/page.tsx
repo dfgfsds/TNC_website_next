@@ -1,22 +1,5 @@
-// import type { Metadata } from "next";
-
-// import PrivacyPolicyPage from "./PrivacyClient";
-
-// export const metadata: Metadata = {
-//   title: "Privacy Policy | TN Computers India",
-//   description:
-//     "Read TN Computers privacy policy to understand how we collect, use and protect your personal information on our website.",
-// };
-
-// export default function Page() {
-//   return <PrivacyPolicyPage />;
-// }
-
 import type { Metadata } from "next";
 import Script from "next/script";
-
-
-
 import PrivacyPolicyPage from "./PrivacyClient";
 
 export const metadata: Metadata = {
@@ -43,7 +26,7 @@ export const metadata: Metadata = {
   robots: "index, follow",
 
   alternates: {
-    canonical: "https://www.tncomputers.in/privacy-policy/",
+    canonical: "https://www.tncomputers.in/privacy-policy",
   },
 
   openGraph: {
@@ -51,7 +34,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | TN Computers Chennai",
     description:
       "Learn how TN Computers Chennai collects, uses, and protects your personal information. Your privacy matters to us.",
-    url: "https://www.tncomputers.in/privacy-policy/",
+    url: "https://www.tncomputers.in/privacy-policy",
     siteName: "TN Computers",
     locale: "en_IN",
     images: [
@@ -81,7 +64,7 @@ const privacySchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Privacy Policy",
-  "url": "https://www.tncomputers.in/privacy-policy/",
+  "url": "https://www.tncomputers.in/privacy-policy",
   "description":
     "Privacy policy of TN Computers Chennai explaining how user data is collected, used, and protected.",
   "publisher": {
