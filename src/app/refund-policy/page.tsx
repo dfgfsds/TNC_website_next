@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
 
   alternates: {
-    canonical: "https://www.tncomputers.in/refund-policy/",
+    canonical: "https://www.tncomputers.in/refund-policy",
   },
 
   openGraph: {
