@@ -154,9 +154,22 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-bold text-white mb-3">Contact</h4>
-            <p className="text-gray-100">No: 126 B, Vanniar Street</p>
+            {/* <p className="text-gray-100">No: 126 B, Vanniar Street</p>
             <p className="text-gray-100">Bangaru Colony, KK Nagar</p>
-            <p className="text-gray-100">Chennai – 600078</p>
+            <p className="text-gray-100">Chennai – 600078</p> */}
+
+            <a
+              href="https://maps.app.goo.gl/LXbeantKiekEFgzP9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:opacity-80 transition-opacity"
+            >
+              <p className="text-gray-100">No: 126 B, Vanniar Street</p>
+              <p className="text-gray-100">Bangaru Colony, KK Nagar</p>
+              <p className="text-gray-100">Chennai – 600078</p>
+            </a>
+
+
             {/* <p className="text-gray-100 mt-2">Mon – Fri: 9am – 5pm</p> */}
 
             <div className="flex gap-4 mt-4">
