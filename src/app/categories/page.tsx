@@ -1,108 +1,275 @@
-
+import { Metadata } from "next";
 import CategoriesPage from "./CategoriesUI";
 
-export async function generateMetadata() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "ComputerStore",
-    "@id": "https://www.tncomputers.in",
-    "name": "TN Computers",
-    "image": "https://www.tncomputers.in/tn-computers-logo.png",
-    "url": "https://www.tncomputers.in/categories",
-    "telephone": "+917429667788",
-    "priceRange": "₹₹",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "No: 126 B, Vanniar Street, Bangaru Colony, KK Nagar",
-      "addressLocality": "Chennai",
-      "addressRegion": "TN",
-      "postalCode": "600078",
-      "addressCountry": "IN",
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      "opens": "09:00",
-      "closes": "21:00",
-    },
-    "sameAs": [
-      "https://www.facebook.com/tncomputershardware",
-      "https://www.instagram.com/tn__computers/",
+export const metadata: Metadata = {
+  title: "Computer Store Chennai | Laptops, PC Parts & More",
+  description: "Explore computer categories at TN Computers Chennai, including laptops, desktops, PC components, RAM, SSDs, GPUs, monitors and more.",
+  keywords: "computer store Chennai, computer shop Chennai, computer accessories Chennai, PC components Chennai, laptops Chennai, desktops Chennai, custom PC build Chennai, gaming PC Chennai, RAM, SSD, graphics card, processor, monitor, CPU cooler, power supply, refurbished laptops",
+  alternates: {
+    canonical: "https://www.tncomputers.in/categories",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Computer Store Chennai | Laptops, PC Parts & More",
+    description: "Explore computer categories at TN Computers Chennai, including laptops, desktops, PC components, RAM, SSDs, GPUs, monitors and more.",
+    type: "website",
+    url: "https://www.tncomputers.in/categories",
+    siteName: "TN Computers",
+    images: [
+      {
+        url: "https://www.tncomputers.in/_next/static/media/tn-computers-logo.5bf25c46.png",
+        alt: "TN Computers - Computer Store Chennai",
+      }
     ],
-  };
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Computer Store Chennai | Laptops, PC Parts & More",
+    description: "Explore laptops, desktops, PC components, RAM, SSDs, GPUs, monitors and more at TN Computers Chennai.",
+    images: ["https://www.tncomputers.in/_next/static/media/tn-computers-logo.5bf25c46.png"],
+    site: "@TNcomputerstech",
+  },
+  other: {
+    "image_src": "https://www.tncomputers.in/_next/static/media/tn-computers-logo.5bf25c46.png",
+  }
+};
 
-  return {
-    title: "TN Computers Categories | Best computer online store",
-    description:
-      "Discover our wide range of electronics, including Desktops, Printers, and PC Components. We offer the best deals on new and refurbished computers in Chennai. Shop now!",
-
-    keywords: [
-      "TN Computers",
-      "Computer Store Chennai",
-      "Online Electronics Store",
-      "Refurbished Computers Chennai",
-      "Custom PC Build",
-      "PC Components",
-      "Desktops",
-      "Laptops",
-      "Printers",
-      "Gaming PC",
-      "Computer Hardware",
-      "Buy Computer Online India",
-    ],
-
-    authors: [{ name: "TN Computers" }],
-
-    robots: {
-      index: true,
-      follow: true,
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.tncomputers.in/categories#webpage",
+      "url": "https://www.tncomputers.in/categories",
+      "name": "Computer Store Chennai | Laptops, PC Parts & More",
+      "description": "Explore computer categories at TN Computers Chennai, including laptops, desktops, PC components, RAM, SSDs, GPUs, monitors and more.",
+      "isPartOf": {
+        "@id": "https://www.tncomputers.in/#website"
+      },
+      "about": {
+        "@id": "https://www.tncomputers.in/#business"
+      },
+      "inLanguage": "en-IN"
     },
-
-    alternates: {
-      canonical: "https://www.tncomputers.in/categories",
+    {
+      "@type": "WebSite",
+      "@id": "https://www.tncomputers.in/#website",
+      "url": "https://www.tncomputers.in/",
+      "name": "TN Computers",
+      "publisher": {
+        "@id": "https://www.tncomputers.in/#business"
+      },
+      "inLanguage": "en-IN"
     },
-
-    openGraph: {
-      type: "website",
-      url: "https://www.tncomputers.in/categories",
-      siteName: "TN Computers",
-      title: "TN Computers Categories | Best computer online store",
-      description:
-        "Discover our wide range of electronics, including Desktops, Printers, and PC Components. We offer the best deals on new and refurbished computers in Chennai. Shop now!",
-      locale: "en_IN",
-      images: [
+    {
+      "@type": "Store",
+      "@id": "https://www.tncomputers.in/#business",
+      "name": "TN Computers",
+      "url": "https://www.tncomputers.in/",
+      "logo": "https://www.tncomputers.in/_next/static/media/tn-computers-logo.5bf25c46.png",
+      "image": "https://www.tncomputers.in/_next/static/media/tn-computers-logo.5bf25c46.png",
+      "telephone": "+91 74296 67788",
+      "email": "info@tncomputers.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "No: 126 B, Vanniar Street, Bangaru Colony, KK Nagar",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "600078",
+        "addressCountry": "IN"
+      },
+      "areaServed": [
         {
-          url: "https://www.tncomputers.in/tn-computers-logo.png",
-          width: 1200,
-          height: 630,
-          alt: "TN Computers Categories",
+          "@type": "City",
+          "name": "Chennai"
         },
+        {
+          "@type": "State",
+          "name": "Tamil Nadu"
+        },
+        {
+          "@type": "Country",
+          "name": "India"
+        }
       ],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: "TN Computers Categories | Best computer online store",
-      description:
-        "Discover our wide range of electronics, including Desktops, Printers, and PC Components. We offer the best deals on new and refurbished computers in Chennai. Shop now!",
-      images: [
-        "https://www.tncomputers.in/assets/tn-computers-logo.png",
+      "sameAs": [
+        "https://www.facebook.com/tncomputershardware",
+        "https://x.com/Tncomputerstech",
+        "https://www.youtube.com/@TN_Computers",
+        "https://www.instagram.com/tn__computers/"
       ],
+      "keywords": [
+        "computer store Chennai",
+        "computer shop Chennai",
+        "computer accessories Chennai",
+        "PC components Chennai",
+        "laptops Chennai",
+        "custom PC build Chennai",
+        "gaming PC Chennai"
+      ]
     },
-
-    other: {
-      "application/ld+json": JSON.stringify(schema),
+    {
+      "@type": "ItemList",
+      "@id": "https://www.tncomputers.in/categories#itemlist",
+      "name": "TN Computers Product Categories",
+      "description": "Computer, laptop, PC component and accessory categories available from TN Computers.",
+      "numberOfItems": 20,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Laptops",
+          "url": "https://www.tncomputers.in/categories/laptops"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Desktops",
+          "url": "https://www.tncomputers.in/categories/desktops"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Custom PC Build",
+          "url": "https://www.tncomputers.in/categories/custom-pc-build"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "PC Components",
+          "url": "https://www.tncomputers.in/categories/pc-components"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Processor",
+          "url": "https://www.tncomputers.in/categories/processor"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "RAM",
+          "url": "https://www.tncomputers.in/categories/ram"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "SSD",
+          "url": "https://www.tncomputers.in/categories/ssd"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Graphics Card",
+          "url": "https://www.tncomputers.in/categories/graphics-card"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Monitors",
+          "url": "https://www.tncomputers.in/categories/monitors"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "Power Supply",
+          "url": "https://www.tncomputers.in/categories/power-supply"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "Cabinet",
+          "url": "https://www.tncomputers.in/categories/cabinet"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "CPU Cooler",
+          "url": "https://www.tncomputers.in/categories/cpu-cooler"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "Keyboard and Mouse",
+          "url": "https://www.tncomputers.in/categories/keyboard-and-mouse"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "Headphones",
+          "url": "https://www.tncomputers.in/categories/headphones"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "Printer",
+          "url": "https://www.tncomputers.in/categories/printer"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "name": "Barcode Scanner",
+          "url": "https://www.tncomputers.in/categories/barcode-scanner"
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "name": "Gamepad",
+          "url": "https://www.tncomputers.in/categories/gamepad"
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "name": "Refurbished Laptops",
+          "url": "https://www.tncomputers.in/categories/refurbished-laptops"
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "name": "AMD",
+          "url": "https://www.tncomputers.in/categories/amd"
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "name": "Intel",
+          "url": "https://www.tncomputers.in/categories/intel"
+        }
+      ]
     },
-  };
-}
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.tncomputers.in/categories#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.tncomputers.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Categories",
+          "item": "https://www.tncomputers.in/categories"
+        }
+      ]
+    }
+  ]
+};
 
 export default function CategoriesPageSeo() {
-  return <CategoriesPage/>
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
+      <CategoriesPage />
+    </>
+  );
 }

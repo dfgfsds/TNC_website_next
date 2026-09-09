@@ -1,7 +1,117 @@
+// import "./globals.css";
+// import { Inter } from "next/font/google";
+// import type { Metadata } from "next";
+// import Script from "next/script";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+
+// import NavbarPage from "./components/navbar";
+// import FooterPage from "./components/footer";
+// import { Toaster } from "react-hot-toast";
+// import { AppProviders } from "./components/providers";
+// import { Suspense } from "react";
+// import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
+// import BottomNav from "./components/BottomNav";
+// import GlobalAppPopup from "./components/GlobalAppPopup";
+// import MobileAppQR from "./components/MobileAppQR";
+
+// const inter = Inter({ subsets: ["latin"] });
+
+// export const metadata: Metadata = {
+//   title: "TN Computers: Best Laptop Store in Chennai | New & Refurbished",
+//   description: " Visit TN Computers, the leading laptop showroom in Chennai. Shop new & refurbished laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
+//   verification: {
+//     google: "j8dH9YxheO62XXAxghiINupP8fwIPE1b3eUqjiO53Bs",
+//   },
+// };
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   return (
+//     <html lang="en">
+//       <head>
+//         {/* ✅ GTM SCRIPT — HEAD */}
+//         <Script id="gtm-head" strategy="beforeInteractive">
+//           {`
+//             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+//             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+//             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+//             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+//             })(window,document,'script','dataLayer','GTM-TL2K58MJ');
+//           `}
+//         </Script>
+//         <meta name="p:domain_verify" content="634c6b0f4bef19f2cafa3c0f0b9b51aa" />
+//         {/* ✅ Microsoft Clarity Script */}
+//         <Script id="microsoft-clarity" strategy="afterInteractive">
+//           {`
+//             (function(c,l,a,r,i,t,y){
+//                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+//                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+//                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+//             })(window, document, "clarity", "script", "y5bgcubh9f");
+//           `}
+//         </Script>
+//       </head>
+//       <body className={inter.className}>
+//         {/* ✅ Razorpay Checkout Script */}
+//         <Script
+//           src="https://checkout.razorpay.com/v1/checkout.js"
+//           strategy="beforeInteractive"
+//         />
+
+//         {/* ✅ Google Analytics */}
+//         <Script
+//           src="https://www.googletagmanager.com/gtag/js?id=G-KVB12R4DF6"
+//           strategy="afterInteractive"
+//         />
+
+
+//         <Script id="google-analytics" strategy="afterInteractive">
+//           {`
+//             window.dataLayer = window.dataLayer || [];
+//             function gtag(){dataLayer.push(arguments);}
+//             gtag('js', new Date());
+//             gtag('config', 'G-KVB12R4DF6');
+//           `}
+//         </Script>
+
+
+
+//         {/* ✅ Google Tag Manager (noscript) */}
+//         <noscript>
+//           <iframe
+//             src="https://www.googletagmanager.com/ns.html?id=GTM-TL2K58MJ"
+//             height="0"
+//             width="0"
+//             style={{ display: "none", visibility: "hidden" }}
+//           />
+//         </noscript>
+
+//         <AppProviders>
+//           <Suspense fallback={<div>Loading...</div>}>
+//             <NavbarPage />
+//           </Suspense>
+//           {children}
+//           <FooterPage />
+//           <WhatsAppFloatingButton />
+//           <MobileAppQR />
+//           <Toaster position="top-right" reverseOrder={false} />
+//           <GlobalAppPopup />
+//         </AppProviders>
+//         <BottomNav />
+//       </body>
+//     </html>
+//   );
+// }
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -10,16 +120,33 @@ import FooterPage from "./components/footer";
 import { Toaster } from "react-hot-toast";
 import { AppProviders } from "./components/providers";
 import { Suspense } from "react";
-import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
-import BottomNav from "./components/BottomNav";
-import GlobalAppPopup from "./components/GlobalAppPopup";
-import MobileAppQR from "./components/MobileAppQR";
 
-const inter = Inter({ subsets: ["latin"] });
+// ✅ Non-critical components dynamic import (Lazy Loading for better TBT/INP)
+const WhatsAppFloatingButton = dynamic(
+  () => import("./components/WhatsAppFloatingButton"),
+  { ssr: false }
+);
+const BottomNav = dynamic(() => import("./components/BottomNav"), {
+  ssr: false,
+});
+const GlobalAppPopup = dynamic(() => import("./components/GlobalAppPopup"), {
+  ssr: false,
+});
+const MobileAppQR = dynamic(() => import("./components/MobileAppQR"), {
+  ssr: false,
+});
+
+// ✅ Optimized Font Loading (prevents Layout Shift & Blocking)
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "TN Computers: Best Laptop Store in Chennai | New & Refurbished",
-  description: " Visit TN Computers, the leading laptop showroom in Chennai. Shop new & refurbished laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
+  description:
+    "Visit TN Computers, the leading laptop showroom in Chennai. Shop new & refurbished laptops, gaming PCs, and custom builds. Get expert advice & deals today!",
   verification: {
     google: "j8dH9YxheO62XXAxghiINupP8fwIPE1b3eUqjiO53Bs",
   },
@@ -31,10 +158,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
-        {/* ✅ GTM SCRIPT — HEAD */}
-        <Script id="gtm-head" strategy="beforeInteractive">
+        <meta
+          name="p:domain_verify"
+          content="634c6b0f4bef19f2cafa3c0f0b9b51aa"
+        />
+
+        {/* ✅ GTM SCRIPT — Lazy loaded to fix TBT block */}
+        <Script id="gtm-head" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -43,9 +175,9 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-TL2K58MJ');
           `}
         </Script>
-        <meta name="p:domain_verify" content="634c6b0f4bef19f2cafa3c0f0b9b51aa" />
+
         {/* ✅ Microsoft Clarity Script */}
-        <Script id="microsoft-clarity" strategy="afterInteractive">
+        <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -56,20 +188,19 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={inter.className}>
-        {/* ✅ Razorpay Checkout Script */}
+        {/* ✅ Razorpay Checkout Script — Deferred to avoid initial render lag */}
         <Script
           src="https://checkout.razorpay.com/v1/checkout.js"
-          strategy="beforeInteractive"
+          strategy="lazyOnload"
         />
 
         {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-KVB12R4DF6"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
-
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -77,8 +208,6 @@ export default function RootLayout({
             gtag('config', 'G-KVB12R4DF6');
           `}
         </Script>
-
-
 
         {/* ✅ Google Tag Manager (noscript) */}
         <noscript>
@@ -91,7 +220,7 @@ export default function RootLayout({
         </noscript>
 
         <AppProviders>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={null}>
             <NavbarPage />
           </Suspense>
           {children}
