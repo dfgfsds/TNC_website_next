@@ -126,7 +126,7 @@ function ContactSection(props: Props) {
                         reach us directly using the info below.
                     </p>
 
-                    <div className="space-y-4">
+                    {/* <div className="space-y-4">
                         <div className="flex items-center space-x-4">
                             <FaPhone className="text-[#9333ea]" />
                             <span className="text-gray-700">+91 - 7429667788</span>
@@ -153,7 +153,55 @@ function ContactSection(props: Props) {
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                         ></iframe>
+                    </div> */}
+
+
+                    <div className="space-y-4">
+                        {/* Phone Call */}
+                        <a
+                            href="tel:+917429667788"
+                            className="flex items-center space-x-4 hover:opacity-80 transition-opacity"
+                        >
+                            <FaPhone className="text-[#9333ea]" />
+                            <span className="text-gray-700">+91 - 7429667788</span>
+                        </a>
+
+                        {/* Email */}
+                        <a
+                            href="mailto:info@tncomputers.in"
+                            className="flex items-center space-x-4 hover:opacity-80 transition-opacity"
+                        >
+                            <FaEnvelope className="text-[#9333ea]" />
+                            <span className="text-gray-700">info@tncomputers.in</span>
+                        </a>
+
+                        {/* Location Redirect */}
+                        <a
+                            href="https://maps.app.goo.gl/LXbeantKiekEFgzP9"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-4 hover:opacity-80 transition-opacity"
+                        >
+                            <FaMapMarkerAlt className="text-[#9333ea]" />
+                            <span className="text-gray-700">
+                                Chennai, Tamil Nadu, India
+                            </span>
+                        </a>
                     </div>
+
+                    {/* Embedded Google Map */}
+                    <div className="mt-8 w-full h-64 rounded-xl overflow-hidden shadow-md">
+                        <iframe
+                            src="https://www.google.com/maps?q=TN+Computers+Hardware,+126+B,+Vanniar+St,+Bangaru+Colony,+K.+K.+Nagar,+Chennai,+Tamil+Nadu+600078&output=embed"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+
                 </motion.div>
             </motion.div>
         </section>

@@ -1,125 +1,45 @@
-"use client";
+import { Metadata } from "next";
+import BlogsPageClient from "./BlogsPageClient";
 
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import axios from "axios";
-import { formatDate, slugConvert } from "../../../lib/utils";
-import { baseUrl } from "../../../api-endpoints/ApiUrls";
-import { useVendor } from "../../../context/VendorContext";
-
-interface Blog {
-  id: number;
-  title: string;
-  excerpt: string;
-  image: string;
-  date: string;
-  author: string;
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, duration: 0.6 },
-  }),
+export const metadata: Metadata = {
+  title: "Computer & Laptop Buying Guides in Chennai | TN Computers",
+  description:
+    "Explore computer and laptop buying guides, PC reviews, gaming PC tips and IT accessory advice from TN Computers in Chennai.",
+  keywords:
+    "computer buying guide Chennai, laptop buying guide Chennai, laptop reviews Chennai, PC reviews Chennai, gaming PC guide Chennai, custom PC builds Chennai, refurbished laptops Chennai, computer accessories Chennai, PC components Chennai, gaming laptops Chennai, TN Computers Chennai",
+  alternates: {
+    canonical: "https://www.tncomputers.in/blog",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    title: "Computer & Laptop Buying Guides in Chennai | TN Computers",
+    description:
+      "Explore computer and laptop buying guides, PC reviews, gaming PC tips and IT accessory advice from TN Computers in Chennai.",
+    url: "https://www.tncomputers.in/blog",
+    siteName: "TN Computers",
+    locale: "en_IN",
+    images: [
+      {
+        url: "https://www.tncomputers.in/_next/static/media/tn-computers-logo.5bf25c46.png",
+        alt: "TN Computers Blog - Laptop, PC and Gaming Guides",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Computer & Laptop Buying Guides in Chennai | TN Computers",
+    description:
+      "Explore computer and laptop buying guides, PC reviews, gaming PC tips and IT accessory advice from TN Computers in Chennai.",
+    images: [
+      "https://www.tncomputers.in/_next/static/media/tn-computers-logo.5bf25c46.png",
+    ],
+  },
 };
 
-export default function BlogsPage() {
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [loading, setLoading] = useState(true);
-  const { vendorId } = useVendor()
-
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        // change if dynamic later
-        const response = await axios.get(
-          `${baseUrl}/blog/?vendor_id=${vendorId}`
-        );
-        setBlogs(response.data?.blogs || []);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlogs();
-  }, [vendorId]);
-
-  return (
-    <section className="bg-white py-16 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Blog</h2>
-          <p className="text-gray-500">
-            Tips, trends, and advice for all things desktop, gaming, and IT accessories.
-          </p>
-        </motion.div>
-
-        {loading ? (
-          <p className="text-center text-gray-500">Loading blogs...</p>
-        ) : blogs.length === 0 ? (
-          <p className="text-center text-gray-500">No blogs found.</p>
-        ) : (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {blogs.map((blog: any, i: number) => (
-              <motion.div
-                key={blog.id}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={cardVariants}
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
-              >
-                {/* Image */}
-                <div className="relative w-full h-56">
-                  <Image
-                    src={blog.banner_url}
-                    alt={blog.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col justify-between flex-grow p-6">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800">
-                      {blog.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 mt-2">
-                      {blog.excerpt}
-                    </p>
-                  </div>
-
-                  <div className="mt-6">
-                    <div className="text-xs text-gray-400">
-                      {formatDate(blog.created_at)} · by {blog.author}
-                    </div>
-                    <a
-                      href={`blog/${slugConvert(blog?.title)}`}
-                      className="inline-block mt-2 text-purple-600 hover:underline font-medium text-sm"
-                    >
-                      Read More →
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
-  );
+export default function BlogPage() {
+  return <BlogsPageClient />;
 }

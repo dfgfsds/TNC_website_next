@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: 'demo811.leotheme.com', pathname: '/**' },
       { protocol: 'https', hostname: 'img.freepik.com', pathname: '/**' },
@@ -12,10 +11,15 @@ const nextConfig = {
       { protocol: 'https', hostname: 'www.primeabgb.com', pathname: '/**' },
       { protocol: 'https', hostname: 'digitalpcstore.com', pathname: '/**' },
       { protocol: 'https', hostname: 'ecomapi.ftdigitalsolutions.org', pathname: '/**' },
+      { protocol: 'https', hostname: 't4.ftcdn.net', pathname: '/**' },
+      { protocol: 'https', hostname: 'semantic-ui.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'pcbros.tech', pathname: '/**' },
+      { protocol: 'https', hostname: 'www.tncomputers.in', pathname: '/**' },
+      { protocol: 'https', hostname: 'play.google.com', pathname: '/**' },
     ],
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [320, 420, 640, 768, 1024, 1280],
-    imageSizes: [16, 32, 64, 96, 128, 256],
+    deviceSizes: [320, 420, 640, 768, 828, 1024, 1200, 1280, 1536, 1920],
+    imageSizes: [16, 32, 64, 96, 128, 256, 384],
   },
 
   async headers() {

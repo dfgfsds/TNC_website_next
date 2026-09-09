@@ -1,8 +1,9 @@
 'use client'
 
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useState, useRef, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import {
   FaHeart,
   FaShoppingCart,
@@ -10,23 +11,29 @@ import {
   FaBars,
   FaTimes,
 } from 'react-icons/fa'
-import { FiChevronDown } from 'react-icons/fi'
 import { BiSearch } from 'react-icons/bi'
-import { useCartStore } from '../store/cartStore'
 import { useOutsideClick } from '../hooks/useOutsideClick'
 import Image from 'next/image'
 import logoImg from "../../../public/tn-computers-logo.png"
 import { useCategories } from '../../../context/CategoriesContext'
-import LoginModal from './LoginModal/page'
 import { useVendor } from '../../../context/VendorContext'
 import { useUser } from '../../../context/UserContext'
 import { useCartItem } from '../../../context/CartItemContext'
 import { useProducts } from '../../../context/ProductsContext'
 import { slugConvert } from '../../../lib/utils'
-import { postDeviceLogoutApi } from '../../../api-endpoints/authendication'
-import { getDeviceId } from '../../../lib/deviceId'
-import { auth } from '../../../lib/firebase'
-import { signOut } from 'firebase/auth'
+
+const LoginModal = dynamic(() => import('./LoginModal/page'), { ssr: false })
+
+const NAV_LINKS = [
+  { path: '/', label: 'Home' },
+  { path: '/shop', label: 'Shop' },
+  { path: '/categories', label: 'Categories' },
+  { path: '/custom-pc-build', label: 'Custom PC' },
+  { path: '/about-us', label: 'About' },
+  { path: '/blog', label: 'Blog' },
+  // { path: '/connect', label: 'Connect' },
+  { path: '/contact-us', label: 'Contact' },
+];
 
 const NavbarPage = () => {
   const { products } = useProducts();
@@ -52,7 +59,6 @@ const NavbarPage = () => {
   const { vendorId } = useVendor();
   const { user, setUser } = useUser();
 
-
   const userMenuRef = useRef(null)
 
   useOutsideClick(userMenuRef, () => setUserMenuOpen(false))
@@ -60,7 +66,6 @@ const NavbarPage = () => {
   const cartCount = cartItem?.data?.length || 0;
 
   // Pre-fill search input if ?q=... is present in URL
-
   useEffect(() => {
     const prevSearch = searchParams.get('q')
     if (prevSearch) {
@@ -69,11 +74,12 @@ const NavbarPage = () => {
     }
   }, [searchParams])
 
-
   const handleLogout = async () => {
     try {
       const currentUserId = user?.data?.id || (typeof window !== 'undefined' ? localStorage.getItem('userId') : null);
       if (currentUserId && vendorId) {
+        const { postDeviceLogoutApi } = await import('../../../api-endpoints/authendication');
+        const { getDeviceId } = await import('../../../lib/deviceId');
         await postDeviceLogoutApi({
           vendor_id: vendorId,
           device_id: getDeviceId(),
@@ -85,6 +91,8 @@ const NavbarPage = () => {
     }
 
     try {
+      const { auth } = await import('../../../lib/firebase');
+      const { signOut } = await import('firebase/auth');
       await signOut(auth);
     } catch (fbErr) {
       console.error("Firebase signOut error:", fbErr);
@@ -103,39 +111,12 @@ const NavbarPage = () => {
     router.push('/');
   };
 
-
-  const NAV_LINKS = [
-    { path: '/', label: 'Home' },
-    { path: '/shop', label: 'Shop' },
-    { path: '/categories', label: 'Categories' },
-    { path: '/custom-pc-build', label: 'Custom PC' },
-    { path: '/about-us', label: 'About' },
-    { path: '/blog', label: 'Blog' },
-    // { path: '/connect', label: 'Connect' },
-    { path: '/contact-us', label: 'Contact' },
-  ];
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const tid = setTimeout(() => {
-      if (query.trim().length > 2) {
-        fetchSearchResults(query.trim());
-      } else {
-        setShowDropdown(false);
-      }
-    }, 300);
-
-    return () => clearTimeout(tid);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, isOpen]);
-
   // fetchSearchResults
-  const fetchSearchResults = (term: any) => {
-    if (!products?.data) return;
+  const fetchSearchResults = useCallback((term: any) => {
+    if (!finalProducts) return;
 
     const lower = term.toLowerCase();
-    const activeProducts = finalProducts?.filter((p: any) => {
+    const activeProducts = finalProducts.filter((p: any) => {
       return String(p?.status).toLowerCase() === "true";
     });
 
@@ -154,7 +135,34 @@ const NavbarPage = () => {
 
     setResults({ products: titleMatches, related: related });
     setShowDropdown(true);
-  };
+  }, [finalProducts]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const tid = setTimeout(() => {
+      if (query.trim().length > 2) {
+        fetchSearchResults(query.trim());
+      } else {
+        setShowDropdown(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(tid);
+  }, [query, isOpen, fetchSearchResults]);
+
+  // Memoize active category links to prevent heavy recalculations on keystroke re-renders
+  const categoryLinks = useMemo(() => {
+    if (!categories?.data || !finalProducts?.length) return [];
+    const activeCategorySlugs = new Set(
+      finalProducts.map((p: any) => slugConvert(p.category_name))
+    );
+    return categories.data
+      .filter((item: any) =>
+        activeCategorySlugs.has(slugConvert(item.name))
+      )
+      .slice(4, 13);
+  }, [categories?.data, finalProducts]);
 
   return (
     <header className="w-full relative md:sticky top-0 z-50 bg-white shadow-sm">
@@ -167,7 +175,7 @@ const NavbarPage = () => {
       {/* ===== MOBILE HEADER ===== */}
       <div className="flex md:hidden flex-col items-center justify-center bg-slate-50 text-white md-pt-3 pt-1 py-3 px-4">
         <div className="mt-2 text-xs mb-2 font-bold">
-          <Image src={logoImg} alt="RAZOX" width={200} height={40} className="h-18 w-40" />
+          <Image src={logoImg} alt="RAZOX" width={200} height={40} className="h-18 w-40" priority />
         </div>
         {/* Top Row: Hamburger - Logo - Icons */}
         <div className="w-full flex items-center justify-between">
@@ -275,7 +283,7 @@ const NavbarPage = () => {
 
           {/* Logo */}
           <div className="w-36">
-            <Image alt='logo' className='h-14 w-auto' src={logoImg} width={200} height={80} />
+            <Image alt='logo' className='h-14 w-auto' src={logoImg} width={200} height={80} priority />
           </div>
 
           {/* Navigation Links */}
@@ -478,16 +486,9 @@ const NavbarPage = () => {
 
       <div className="hidden md:block bg-[#a100fe] shadow overflow-x-auto">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-center gap-6 text-sm font-bold text-white uppercase whitespace-nowrap">
-          {categories?.data
-            ?.filter((item: any) =>
-              finalProducts?.some(
-                (p: any) => slugConvert(p.category_name) === slugConvert(item.name)
-              )
-            )
-            ?.slice(4, 13)
-            .map((item: any, index: number) => (
-              <div key={index} className="cursor-pointer" onClick={() => router.push(`/categories/${slugConvert(item.name)}`)}>{item?.name}</div>
-            ))}
+          {categoryLinks.map((item: any, index: number) => (
+            <div key={index} className="cursor-pointer" onClick={() => router.push(`/categories/${slugConvert(item.name)}`)}>{item?.name}</div>
+          ))}
         </div>
       </div>
 
@@ -504,4 +505,5 @@ const NavbarPage = () => {
   )
 }
 
-export default NavbarPage
+export default React.memo(NavbarPage)
+

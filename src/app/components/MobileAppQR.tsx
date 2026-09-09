@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
 import QrImage from "../../../public/assets/tn_computers_google_play_qr.png";
 
 export default function MobileAppQR() {
@@ -22,10 +21,36 @@ export default function MobileAppQR() {
           aria-label={isOpen ? "Hide QR Code" : "Show QR Code"}
         >
           {isOpen ? (
-            <ChevronRight size={20} className="text-gray-400 group-hover:text-gray-700 transition-colors" />
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-gray-400 group-hover:text-gray-700 transition-colors"
+              aria-hidden="true"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
           ) : (
             <>
-              <ChevronLeft size={20} className="text-[#a100fe]" />
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-[#a100fe]"
+                aria-hidden="true"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
               <span
                 className="text-[9px] font-extrabold text-[#a100fe] uppercase tracking-widest leading-tight"
                 style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
@@ -43,6 +68,8 @@ export default function MobileAppQR() {
               src={QrImage}
               alt="TN Computers App QR"
               fill
+              sizes="90px"
+              loading="lazy"
               className="object-contain"
             />
           </div>
@@ -55,3 +82,4 @@ export default function MobileAppQR() {
     </div>
   );
 }
+
