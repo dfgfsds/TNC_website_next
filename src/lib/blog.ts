@@ -48,6 +48,12 @@ export function stripHtml(html: string): string {
     .trim();
 }
 
+const fetchHeaders: HeadersInit = {
+  Origin: "https://www.tncomputers.in",
+  Referer: "https://www.tncomputers.in/",
+  Accept: "application/json",
+};
+
 /**
  * Fetch blog post with memoization across generateMetadata & page render
  */
@@ -60,6 +66,7 @@ export const getBlog = cache(async (idOrSlug: string): Promise<BlogPost | null> 
   if (/^\d+$/.test(decoded)) {
     try {
       const res = await fetch(`${baseUrl}/blog/${decoded}/`, {
+        headers: fetchHeaders,
         next: { revalidate: 60 },
       });
       if (res.ok) {
@@ -75,6 +82,7 @@ export const getBlog = cache(async (idOrSlug: string): Promise<BlogPost | null> 
   // Fetch blogs list by vendor_id
   try {
     const res = await fetch(`${baseUrl}/blog/?vendor_id=${DEFAULT_VENDOR_ID}`, {
+      headers: fetchHeaders,
       next: { revalidate: 60 },
     });
     if (!res.ok) return null;

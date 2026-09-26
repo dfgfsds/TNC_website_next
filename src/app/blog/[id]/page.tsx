@@ -14,9 +14,10 @@ interface PageProps {
     };
 }
 
-/**
- * Server-Side Dynamic SEO Metadata Generation
- */
+
+
+//   Server-Side Dynamic SEO Metadata Generation
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const blog = await getBlog(params.id);
 
