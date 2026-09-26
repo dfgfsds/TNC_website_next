@@ -76,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         blogUrls = allBlogs
           .filter((blog: any) => blog.title && !blog.delete_status)
           .map((blog: any) => ({
-            url: `${siteBaseUrl}/blog/${encodeURIComponent(slugConvert(blog.title))}`,
+            url: `${siteBaseUrl}/blog/${encodeURIComponent(blog.url_slug || slugConvert(blog.title))}`,
             lastModified: new Date(blog.updated_at || blog.created_at || lastMod),
             changeFrequency: 'monthly' as const,
             priority: 0.7,

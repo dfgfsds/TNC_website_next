@@ -194,7 +194,7 @@ export default function BlogsPageClient() {
                                                 {formatDate(blog.created_at || blog.date)} · by {blog.author}
                                             </div>
                                             <Link
-                                                href={`/blog/${slugConvert(blog?.title)}`}
+                                                href={`/blog/${blog?.url_slug || slugConvert(blog?.title)}`}
                                                 className="inline-block mt-2 text-purple-600 hover:underline font-medium text-sm"
                                             >
                                                 Read More →
