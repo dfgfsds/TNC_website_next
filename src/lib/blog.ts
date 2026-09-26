@@ -83,13 +83,14 @@ export const getBlog = cache(async (idOrSlug: string): Promise<BlogPost | null> 
       data?.blogs || data?.results || (Array.isArray(data) ? data : []);
 
     const found = blogs.find((b) => {
-      const bSlug = (b.url_slug || "").toLowerCase().trim();
-      const bTitleSlug = slugConvert(b.title).toLowerCase().trim();
+      const bSlug = typeof b.url_slug === "string" ? b.url_slug.toLowerCase().trim() : "";
+      const bTitleSlug = typeof b.title === "string" ? slugConvert(b.title).toLowerCase().trim() : "";
+      const bUrlSlugConverted = typeof b.url_slug === "string" ? slugConvert(b.url_slug).toLowerCase() : "";
       const bId = String(b.id);
       return (
-        bSlug === target ||
-        bTitleSlug === target ||
-        slugConvert(b.url_slug || "").toLowerCase() === target ||
+        (bSlug && bSlug === target) ||
+        (bTitleSlug && bTitleSlug === target) ||
+        (bUrlSlugConverted && bUrlSlugConverted === target) ||
         bId === target
       );
     });
