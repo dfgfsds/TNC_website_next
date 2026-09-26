@@ -28,24 +28,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         };
     }
 
-    const title = blog.meta_title?.trim() || blog.title;
+    const title =
+        (typeof blog.meta_title === "string" && blog.meta_title.trim()) ||
+        blog.title;
+
     const rawDescription =
-        blog.meta_description?.trim() ||
-        blog.url_description?.trim() ||
-        (blog.description ? stripHtml(blog.description) : "") ||
-        stripHtml(blog.content || "").slice(0, 160);
+        (typeof blog.meta_description === "string" && blog.meta_description.trim()) ||
+        (typeof blog.url_description === "string" && blog.url_description.trim()) ||
+        (typeof blog.description === "string" ? stripHtml(blog.description) : "") ||
+        (typeof blog.content === "string" ? stripHtml(blog.content).slice(0, 160) : "");
 
     const cleanDescription = stripHtml(rawDescription).slice(0, 160);
 
     const canonicalUrl =
-        blog.canonical_tag?.trim() ||
+        (typeof blog.canonical_tag === "string" && blog.canonical_tag.trim()) ||
         `https://www.tncomputers.in/blog/${blog.url_slug || slugConvert(blog.title) || params.id}`;
 
     const bannerImage =
         blog.banner_url ||
         "https://www.tncomputers.in/_next/static/media/tn-computers-logo.5bf25c46.png";
 
-    const imageAlt = blog.image_src_tags?.trim() || blog.title;
+    const imageAlt =
+        (typeof blog.image_src_tags === "string" && blog.image_src_tags.trim()) ||
+        blog.title;
 
     // Extract keywords
     let keywords: string[] = [];
@@ -67,7 +72,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     // Parse robots meta directives
-    const robotsStr = (blog.robots_tag || "index, follow").toLowerCase();
+    const robotsStr = (typeof blog.robots_tag === "string" ? blog.robots_tag : "index, follow").toLowerCase();
     const shouldIndex = !robotsStr.includes("noindex");
     const shouldFollow = !robotsStr.includes("nofollow");
 
@@ -117,7 +122,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             creator: "@tncomputers",
         },
         other: {
-            ...(blog.image_src_tags ? { image_src: bannerImage } : {}),
+            ...(typeof blog.image_src_tags === "string" && blog.image_src_tags.trim()
+                ? { image_src: bannerImage }
+                : {}),
             "article:published_time": blog.created_at,
             ...(blog.updated_at ? { "article:modified_time": blog.updated_at } : {}),
             ...(blog.author ? { "article:author": blog.author } : {}),
@@ -330,13 +337,16 @@ export default async function BlogDetailPage({ params }: PageProps) {
                         <figure className="relative w-full h-64 sm:h-80 md:h-[450px] mb-10 overflow-hidden rounded-xl shadow-sm bg-gray-100">
                             <Image
                                 src={blog.banner_url}
-                                alt={blog.image_src_tags || blog.title}
+                                alt={
+                                    (typeof blog.image_src_tags === "string" && blog.image_src_tags.trim()) ||
+                                    blog.title
+                                }
                                 fill
                                 priority
                                 sizes="(max-width: 768px) 100vw, 896px"
                                 className="object-cover"
                             />
-                            {blog.image_src_tags && (
+                            {typeof blog.image_src_tags === "string" && blog.image_src_tags.trim() && (
                                 <figcaption className="sr-only">
                                     {blog.image_src_tags}
                                 </figcaption>
