@@ -11,6 +11,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'www.primeabgb.com', pathname: '/**' },
       { protocol: 'https', hostname: 'digitalpcstore.com', pathname: '/**' },
       { protocol: 'https', hostname: 'ecomapi.ftdigitalsolutions.org', pathname: '/**' },
+      { protocol: 'https', hostname: 'test-ecomapi.ftdigitalsolutions.org', pathname: '/**' },
       { protocol: 'https', hostname: 't4.ftcdn.net', pathname: '/**' },
       { protocol: 'https', hostname: 'semantic-ui.com', pathname: '/**' },
       { protocol: 'https', hostname: 'pcbros.tech', pathname: '/**' },
