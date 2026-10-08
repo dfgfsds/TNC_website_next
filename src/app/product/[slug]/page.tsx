@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai'; // from dev branch
 
 import { useCartStore } from '../../hooks/useCartStore';
@@ -28,6 +28,7 @@ export default function ProductPage() {
   const product = products?.data?.find((p: any) => slugConvert(p.name) === slug);
 
   const [activeColor, setActiveColor] = useState(product?.colors?.[0] || '#000');
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const addToCart = useCartStore((state) => state.addToCart);
   const [signInmodal, setSignInModal] = useState(false);
@@ -41,6 +42,11 @@ export default function ProductPage() {
     const storedCartId = localStorage.getItem('cartId');
     setCartId(storedCartId);
   }, []);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftPos = useRef(0);
 
   const cartCount = cartItem?.data?.length || 0;
   const isInCart = cartItem?.data?.some((item: any) => item.product?.toString() === slug);
@@ -75,14 +81,80 @@ export default function ProductPage() {
   <div className="max-w-6xl mx-auto p-4">    
     <div className=" grid md:grid-cols-2 gap-8">
       {/* Image */}
-      <div className="border h-fit p-4 rounded">
-        <Image
-          src={product.image_urls[0]}
-          alt={product.name}
-          width={500}
-          height={400}
-          className="w-full h-[300px] object-contain"
-        />
+      <div className="flex flex-col gap-4">
+        <div className="border h-fit p-4 rounded">
+          <Image
+            src={activeImage || product.image_urls?.[0]}
+            alt={product.name}
+            width={500}
+            height={400}
+            className="w-full h-[300px] object-contain"
+          />
+        </div>
+        {product.image_urls && product.image_urls.length > 0 && (
+          <div 
+            ref={scrollRef}
+            className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide select-none cursor-grab active:cursor-grabbing" 
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            onMouseEnter={() => {
+              if (scrollRef.current) {
+                scrollRef.current.onwheel = (e) => {
+                  e.preventDefault();
+                  scrollRef.current!.scrollLeft += e.deltaY;
+                };
+              }
+            }}
+            onMouseLeave={() => {
+              isDown.current = false;
+              if (scrollRef.current) {
+                scrollRef.current.onwheel = null;
+              }
+            }}
+            onMouseDown={(e) => {
+              isDown.current = true;
+              if (scrollRef.current) {
+                startX.current = e.pageX - scrollRef.current.offsetLeft;
+                scrollLeftPos.current = scrollRef.current.scrollLeft;
+              }
+            }}
+            onMouseUp={() => {
+              isDown.current = false;
+            }}
+            onMouseMove={(e) => {
+              if (!isDown.current) return;
+              e.preventDefault();
+              if (scrollRef.current) {
+                const x = e.pageX - scrollRef.current.offsetLeft;
+                const walk = (x - startX.current) * 2;
+                scrollRef.current.scrollLeft = scrollLeftPos.current - walk;
+              }
+            }}
+          >
+            <style jsx>{`
+              .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
+            {product.image_urls.map((url: string, index: number) => (
+              <div 
+                key={index} 
+                className={`border p-1 rounded cursor-pointer flex-shrink-0 ${
+                  (activeImage || product.image_urls[0]) === url ? 'border-[#a100fe] ring-1 ring-[#a100fe]' : 'border-gray-200 hover:border-gray-300'
+                }`}
+                onMouseEnter={() => setActiveImage(url)}
+                onClick={() => setActiveImage(url)}
+              >
+                <Image
+                  src={url}
+                  alt={`${product.name} - ${index + 1}`}
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Details */}
