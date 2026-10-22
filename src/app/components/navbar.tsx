@@ -109,6 +109,9 @@ const NavbarPage = () => {
     setUserMenuOpen(false);
     setMobileMenuOpen(false);
     router.push('/');
+    if (typeof window !== 'undefined') {
+      window.location.reload();
+    }
   };
 
   // fetchSearchResults

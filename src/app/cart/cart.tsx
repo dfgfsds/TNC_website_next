@@ -4,6 +4,9 @@ import { deleteCartitemsApi, updateCartitemsApi } from '../../../api-endpoints/C
 import { getSizesApi, getVariantsProductApi } from '../../../api-endpoints/products';
 import { useCartItem } from '../../../context/CartItemContext';
 import { useProducts } from '../../../context/ProductsContext';
+import { useUser } from '../../../context/UserContext';
+import { useVendor } from '../../../context/VendorContext';
+import LoginModal from '../components/LoginModal/page';
 import {
     InvalidateQueryFilters,
     useQuery,
@@ -11,21 +14,34 @@ import {
 } from '@tanstack/react-query';
 import { Minus, Plus } from 'lucide-react';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CheckoutDrawer from './CheckoutDrawer';
 import Link from 'next/link';
 
 export default function Cart() {
     const [isOpen, setIsOpen] = useState(false);
+    const [signInModal, setSignInModal] = useState(false);
     const queryClient = useQueryClient();
-    const { cartItem }: any = useCartItem();
+    const { cartItem, updateGuestCartQty, removeFromGuestCart }: any = useCartItem();
     const { products }: any = useProducts();
+    const { user } = useUser();
+    const { vendorId } = useVendor();
+
+    useEffect(() => {
+        const shouldOpenCheckout = typeof window !== 'undefined' ? sessionStorage.getItem('openCheckoutAfterLogin') : null;
+        const currentUserId = user?.data?.id || (typeof window !== 'undefined' ? localStorage.getItem('userId') : null);
+        if (shouldOpenCheckout === 'true' && currentUserId) {
+            sessionStorage.removeItem('openCheckoutAfterLogin');
+            setIsOpen(true);
+        }
+    }, [user]);
 
     const matchingProductsArray = cartItem?.data
         ?.map((item: any, index: number) => {
             const matchingProduct = products?.data?.find(
-                (product: any) => product.id === item.product
+                (product: any) => String(product.id) === String(item.product)
             );
+            if (!matchingProduct) return null;
             return {
                 Aid: index,
                 cartId: item?.id,
@@ -33,6 +49,7 @@ export default function Cart() {
                 ...matchingProduct,
             };
         })
+        ?.filter(Boolean)
         ?.sort((a: any, b: any) => a.name?.localeCompare(b.name));
 
     const totalAmount = matchingProductsArray?.reduce((acc: number, item: any) => {
@@ -43,6 +60,18 @@ export default function Cart() {
 
     const handleUpdateCart = async (id: any, type: any, qty: any) => {
         try {
+            const isGuest = String(id).startsWith('guest_') || !localStorage.getItem('userId');
+            if (isGuest) {
+                const prodId = String(id).replace('guest_', '');
+                if (qty === 1 && type === 'decrease') {
+                    if (removeFromGuestCart) removeFromGuestCart(prodId);
+                } else {
+                    const newQty = type === 'increase' ? qty + 1 : qty - 1;
+                    if (updateGuestCartQty) updateGuestCartQty(prodId, newQty);
+                }
+                return;
+            }
+
             if (qty === 1 && type === 'decrease') {
                 const updateApi = await deleteCartitemsApi(`${id}`);
                 if (updateApi) {
@@ -59,6 +88,18 @@ export default function Cart() {
         }
     };
 
+    const handleProceedToCheckout = () => {
+        const isUserLoggedIn = !!(user?.data?.id || (typeof window !== 'undefined' && localStorage.getItem('userId')));
+        if (!isUserLoggedIn) {
+            if (typeof window !== 'undefined') {
+                sessionStorage.setItem('openCheckoutAfterLogin', 'true');
+            }
+            setSignInModal(true);
+            return;
+        }
+        setIsOpen(true);
+    };
+
     function formatPrice(price: number): string {
         return new Intl.NumberFormat('en-IN', {
             style: 'currency',
@@ -67,10 +108,8 @@ export default function Cart() {
         }).format(price);
     }
 
-    
     return (
         <div className="min-h-screen bg-gray-50 py-4">
-         
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 className="text-3xl font-bold text-blue-600 text-center my-4">Your Shopping Cart</h1>
 
@@ -91,7 +130,7 @@ export default function Cart() {
                                     key={product.cartId}
                                     className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col sm:flex-row items-center justify-between gap-4"
                                 >
-                                    <div className="flex items-center gap-4  flex-1">
+                                    <div className="flex items-center gap-4 flex-1">
                                         <Image
                                             src={product?.image_urls?.[0]}
                                             alt={product?.name}
@@ -144,19 +183,30 @@ export default function Cart() {
                                 <span>Total Amount</span>
                                 <span>{formatPrice(totalAmount)}</span>
                             </div>
-                            <div className="flex justify-end  text-xl font-bold text-gray-800 border-b pb-4 mb-4">
+                            <div className="flex justify-end text-xl font-bold text-gray-800 border-b pb-4 mb-4">
                                 <button
                                     className="ml-auto bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-lg font-medium transition duration-300 ease-in-out transform"
-                                    onClick={() => setIsOpen(true)}
+                                    onClick={handleProceedToCheckout}
                                 >
                                     Proceed to Checkout
                                 </button>
                             </div>
-
                         </div>
                     </>
                 )}
                 <CheckoutDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} subtotal={totalAmount} />
+                {signInModal && (
+                    <LoginModal
+                        open={signInModal}
+                        handleClose={() => {
+                            setSignInModal(false);
+                            if (typeof window !== 'undefined') {
+                                sessionStorage.removeItem('openCheckoutAfterLogin');
+                            }
+                        }}
+                        vendorId={vendorId}
+                    />
+                )}
             </div>
         </div>
     );
