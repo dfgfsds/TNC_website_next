@@ -1,6 +1,7 @@
 "use client";
 import { postCreateUserAPi } from "../../../../api-endpoints/authendication";
 import { postCartCreateApi } from "../../../../api-endpoints/CartsApi";
+import { syncGuestCartToApi } from "../../../../lib/cartUtils";
 import { useAuthRedirect } from "../../../../context/useAuthRedirect";
 import { useVendor } from "../../../../context/VendorContext";
 import { Eye, EyeOff, Loader, Lock, Mail, Phone, User, X } from "lucide-react";
@@ -65,11 +66,18 @@ function RegisterModel({ open, handleClose }: any) {
                 const updateApi = await postCartCreateApi('', { user: response?.data?.user?.id, vendor: vendorId, created_by: response?.data?.user?.name });
                 if (updateApi) {
                     setLoading(false);
-                    if (typeof window !== 'undefined') {
-                        localStorage.setItem('cartId', updateApi?.data?.id);
+                    const cartId = updateApi?.data?.id;
+                    if (typeof window !== 'undefined' && cartId) {
+                        localStorage.setItem('cartId', String(cartId));
+                        await syncGuestCartToApi(cartId, response?.data?.user?.id, vendorId, response?.data?.user?.name);
                     }
-                    router.push('/shop');
-                    window.location.reload();
+                    const isCartPage = typeof window !== 'undefined' && window.location.pathname.includes('/cart');
+                    if (isCartPage) {
+                        window.location.reload();
+                    } else {
+                        router.push('/shop');
+                        window.location.reload();
+                    }
                 }
             }
 
