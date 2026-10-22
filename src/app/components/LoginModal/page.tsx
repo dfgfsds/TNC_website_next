@@ -5,7 +5,8 @@ import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Eye, EyeOff, Lock, Mail, Phone, X, Loader2 } from "lucide-react";
-import { getCartApi } from "../../../../api-endpoints/CartsApi";
+import { getCartApi, postCartCreateApi } from "../../../../api-endpoints/CartsApi";
+import { syncGuestCartToApi } from "../../../../lib/cartUtils";
 import Link from "next/link";
 import { postLoginWithGoogleApi, postSendSmsOtpUserApi, postVerifySmsOtpApi } from "../../../../api-endpoints/authendication";
 import { baseUrl } from "../../../../api-endpoints/ApiUrls";
@@ -53,6 +54,43 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
     }
   }, [open]);
 
+  const handlePostLoginCartSync = async (userId: string | number, userName?: string) => {
+    try {
+      let cartId: any = null;
+      const updateApi = await getCartApi(`user/${userId}`);
+      if (updateApi?.data?.[0]?.id) {
+        cartId = updateApi.data[0].id;
+      } else {
+        const createCartRes = await postCartCreateApi('', {
+          user: userId,
+          vendor: vendorId,
+          created_by: userName || 'user',
+        });
+        if (createCartRes?.data?.id) {
+          cartId = createCartRes.data.id;
+        }
+      }
+
+      if (cartId) {
+        localStorage.setItem('cartId', String(cartId));
+        await syncGuestCartToApi(cartId, userId, vendorId, userName);
+      }
+    } catch (cErr) {
+      console.error("Cart sync error on login:", cErr);
+    }
+  };
+
+  const handleFinishLogin = () => {
+    handleClose();
+    const isCartPage = typeof window !== 'undefined' && window.location.pathname.includes('/cart');
+    if (isCartPage) {
+      window.location.reload();
+    } else {
+      router.push('/');
+      window.location.reload();
+    }
+  };
+
   const onSubmit = async (data: FormData) => {
     try {
       const response: any = await axios.post(`${baseUrl}/user_login/`, {
@@ -62,29 +100,21 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
 
       if (response) {
         const uid = response?.data?.user_id || response?.data?.user?.id || response?.data?.id;
+        const uName = response?.data?.name || response?.data?.user?.name;
         if (uid) {
           localStorage.setItem('userId', String(uid));
         }
-        if (response?.data?.name || response?.data?.user?.name) {
-          localStorage.setItem('userName', response?.data?.name || response?.data?.user?.name);
+        if (uName) {
+          localStorage.setItem('userName', uName);
         }
         if (response?.data?.email || response?.data?.user?.email) {
           localStorage.setItem('email', response?.data?.email || response?.data?.user?.email);
         }
 
         if (uid) {
-          try {
-            const updateApi = await getCartApi(`user/${uid}`);
-            if (updateApi?.data?.[0]?.id) {
-              localStorage.setItem('cartId', updateApi.data[0].id);
-            }
-          } catch (cErr) {
-            console.error(cErr);
-          }
+          await handlePostLoginCartSync(uid, uName);
         }
-        handleClose();
-        router.push('/');
-        window.location.reload();
+        handleFinishLogin();
       }
     } catch (err: any) {
       setError(err?.response?.data?.error || 'Something went wrong, please try again later');
@@ -127,15 +157,14 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
       });
 
       const userId = res?.data?.user_id;
+      const userName = res?.data?.user?.name || res?.data?.name;
       if (userId) {
         localStorage.setItem('userId', String(userId));
-        const cartRes = await getCartApi(`user/${userId}`);
-        if (cartRes?.data?.length > 0) {
-          localStorage.setItem('cartId', cartRes.data[0].id);
+        if (userName) {
+          localStorage.setItem('userName', userName);
         }
-        handleClose();
-        router.push('/');
-        window.location.reload();
+        await handlePostLoginCartSync(userId, userName);
+        handleFinishLogin();
       }
     } catch (err: any) {
       setError(err?.response?.data?.error || 'Invalid OTP');
@@ -174,30 +203,22 @@ function LoginModal({ open, handleClose, vendorId: propVendorId }: any) {
 
       if (response) {
         const uid = response?.data?.user_id || response?.data?.user?.id || response?.data?.id;
+        const uName = response?.data?.name || response?.data?.user?.name;
         if (uid) {
           localStorage.setItem('userId', String(uid));
         }
-        if (response?.data?.name || response?.data?.user?.name) {
-          localStorage.setItem('userName', response?.data?.name || response?.data?.user?.name);
+        if (uName) {
+          localStorage.setItem('userName', uName);
         }
         if (response?.data?.email || response?.data?.user?.email) {
           localStorage.setItem('email', response?.data?.email || response?.data?.user?.email);
         }
 
         if (uid) {
-          try {
-            const updateApi = await getCartApi(`user/${uid}`);
-            if (updateApi?.data?.[0]?.id) {
-              localStorage.setItem('cartId', updateApi.data[0].id);
-            }
-          } catch (cartErr) {
-            console.error("Error syncing cart on google login:", cartErr);
-          }
+          await handlePostLoginCartSync(uid, uName);
         }
 
-        handleClose();
-        router.push('/');
-        window.location.reload();
+        handleFinishLogin();
       }
     } catch (err: any) {
       console.error("Google login error:", err);

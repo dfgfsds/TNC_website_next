@@ -11,8 +11,7 @@ import toast from 'react-hot-toast';
 import { useProducts } from '../../../../context/ProductsContext';
 import { postCartitemApi } from '../../../../api-endpoints/CartsApi';
 import { InvalidateQueryFilters, useQueryClient } from '@tanstack/react-query';
-
-import LoginModal from '@/app/components/LoginModal/page';
+import { addToGuestCart } from '../../../../lib/cartUtils';
 
 import { useUser } from '../../../../context/UserContext';
 import { useVendor } from '../../../../context/VendorContext';
@@ -30,7 +29,6 @@ export default function ProductPage() {
   const [activeColor, setActiveColor] = useState(product?.colors?.[0] || '#000');
   const [quantity, setQuantity] = useState(1);
   const addToCart = useCartStore((state) => state.addToCart);
-  const [signInmodal, setSignInModal] = useState(false);
   const [getCartId, setCartId] = useState<string | null>(null);
   const { cartItem }: any = useCartItem();
   const { user } = useUser();
@@ -43,10 +41,20 @@ export default function ProductPage() {
   }, []);
 
   const cartCount = cartItem?.data?.length || 0;
-  const isInCart = cartItem?.data?.some((item: any) => item.product?.toString() === slug);
-
+  const isInCart = cartItem?.data?.some(
+    (item: any) =>
+      (product?.id && String(item.product) === String(product.id)) ||
+      item.product?.toString() === slug
+  );
 
   const handleAddCart = async (id: any, qty: any) => {
+    const isUserLoggedIn = !!(user?.data?.id || (typeof window !== 'undefined' && localStorage.getItem('userId')));
+    if (!isUserLoggedIn) {
+      addToGuestCart(id, qty);
+      toast.success('Added to cart');
+      return;
+    }
+
     const payload = {
       cart: getCartId,
       product: id,
@@ -115,11 +123,7 @@ export default function ProductPage() {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                if (user?.data?.id) {
-                  handleAddCart(product.id, 1);
-                } else {
-                  setSignInModal(true);
-                }
+                handleAddCart(product.id, quantity || 1);
               }}
               className="px-6 py-2 bg-[#a100fe] text-white rounded-lg text-sm font-medium hover:bg-[#a100fe] transition-all duration-300 transform hover:scale-105 hover:shadow-md"
             >
@@ -138,11 +142,6 @@ export default function ProductPage() {
 
        
       </div>
-
-
-      {signInmodal && (
-        <LoginModal open={signInmodal} handleClose={() => setSignInModal(false)} vendorId={vendorId} />
-      )}
     </div>
     <div className='mt-4 md:mt-20 border-t '>
      <h2 className="mt-6 font-bold text-sm uppercase">Description</h2>

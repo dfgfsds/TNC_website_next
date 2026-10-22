@@ -1,15 +1,16 @@
 'use client';
 
-import { patchUserSelectAddressAPi } from '../../../api-endpoints/authendication';
+import { patchUserSelectAddressAPi, updateUserAPi } from '../../../api-endpoints/authendication';
 import { getAddressApi } from '../../../api-endpoints/CartsApi';
 import { InvalidateQueryFilters, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-import { MapPin, X } from 'lucide-react';
+import { MapPin, X, Phone, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useVendor } from '../../../context/VendorContext';
 import { useUser } from '../../../context/UserContext';
 import { useCartItem } from '../../../context/CartItemContext';
+import toast from 'react-hot-toast';
 import Image from 'next/image';
 import check from "../../../public/check.png";
 
@@ -21,6 +22,7 @@ interface CheckoutSidebarProps {
 
 const CheckoutDrawer = ({ isOpen, onClose, subtotal }: CheckoutSidebarProps) => {
     const baseUrl = 'https://ecomapi.ftdigitalsolutions.org';
+    // const baseUrl = 'https://test-ecomapi.ftdigitalsolutions.org';
 
     const [getUserName, setUserName] = useState<string | null>(null);
     const [getCartId, setCartId] = useState<string | null>(null);
@@ -32,25 +34,31 @@ const CheckoutDrawer = ({ isOpen, onClose, subtotal }: CheckoutSidebarProps) => 
     const queryClient = useQueryClient();
     const router = useRouter();
     const { vendorId } = useVendor()
-    const { user } = useUser();
+    const { user, setUser } = useUser();
     const { refetchCart } = useCartItem();
 
     const [userId, setUserId] = useState<string | null>(null);
     const [paymentMethod, setPaymentMethod] = useState("");
+    const [showPhoneModal, setShowPhoneModal] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [updatingPhone, setUpdatingPhone] = useState(false);
+
+    const currentUserId = user?.data?.id || (typeof window !== 'undefined' ? localStorage.getItem('userId') : null);
 
     const { data, isLoading }: any = useQuery({
-        queryKey: ['getAddressData', user?.data?.id],
-        queryFn: () => getAddressApi(`user/${user?.data?.id}`)
+        queryKey: ['getAddressData', currentUserId],
+        queryFn: () => getAddressApi(`user/${currentUserId}`),
+        enabled: !!currentUserId && isOpen,
     });
 
 
 
-useEffect(() => {
-    if (user?.data) {
-        setUserName(user.data.name);
-        setUserId(user.data.id);
-    }
-}, [user?.data]);
+    useEffect(() => {
+        if (user?.data) {
+            setUserName(user.data.name);
+            setUserId(user.data.id);
+        }
+    }, [user?.data]);
 
     useEffect(() => {
         if (data?.data?.length) {
@@ -91,41 +99,135 @@ useEffect(() => {
     // }, [paymentMethod])
 
     useEffect(() => {
-    const fetchDeliveryCharge = async () => {
-        try {
-            const userId = user?.data?.id;
-            if (!userId) return; 
+        const fetchDeliveryCharge = async () => {
+            try {
+                const userId = user?.data?.id;
+                if (!userId) return;
 
-            const res = await axios.get(`${baseUrl}/vendor-site-payment-delivery-partner-details/${vendorId}/`);
-            setDeliveryInfo(res.data[0]);
-        } catch (error) {
-            console.error("Error fetching delivery charge:", error);
-        }
-    };
+                const res = await axios.get(`${baseUrl}/vendor-site-payment-delivery-partner-details/${vendorId}/`);
+                setDeliveryInfo(res.data[0]);
+            } catch (error) {
+                console.error("Error fetching delivery charge:", error);
+            }
+        };
 
-    fetchDeliveryCharge();
+        fetchDeliveryCharge();
 
-}, [paymentMethod, baseUrl, vendorId, user?.data?.id]);
+    }, [paymentMethod, baseUrl, vendorId, user?.data?.id]);
 
 
     const RAZOR_PAY_KEY = 'rzp_live_RKNXWxLvWCeZr6';
 
 
 
-    const placeOrder = async () => {
+    useEffect(() => {
+        if (showPhoneModal && !phoneNumber) {
+            const existingPhone = user?.data?.contact_number || (typeof window !== 'undefined' ? localStorage.getItem('contact_number') : '');
+            if (existingPhone && existingPhone !== 'null' && existingPhone !== 'undefined') {
+                setPhoneNumber(String(existingPhone).replace(/\D/g, '').slice(0, 10));
+            }
+        }
+    }, [showPhoneModal, user?.data?.contact_number, phoneNumber]);
+
+    const handleUpdatePhone = async () => {
+        if (!phoneNumber || phoneNumber.trim() === '') {
+            toast.error("Mobile number is required");
+            return;
+        }
+
+        if (!/^\d{10}$/.test(phoneNumber.trim())) {
+            toast.error("Mobile number must be exactly 10 digits");
+            return;
+        }
+
+        const activeUserId = user?.data?.id || (typeof window !== 'undefined' ? localStorage.getItem('userId') : null);
+        if (!activeUserId) {
+            toast.error("User ID not found");
+            return;
+        }
+
+        setUpdatingPhone(true);
         try {
-            const userId = user?.data?.id;
-            if (!userId) throw new Error("User ID not found");
+            const formattedPhone = phoneNumber.trim();
+            const currentVendorId = vendorId || 66;
+            const response = await updateUserAPi(`/${activeUserId}`, {
+                name: user?.data?.name || (typeof window !== 'undefined' ? localStorage.getItem('name') : "") || "user",
+                email: user?.data?.email || (typeof window !== 'undefined' ? localStorage.getItem('email') : ""),
+                contact_number: formattedPhone,
+                updated_by: user?.data?.name || "user",
+                role: 3,
+                vendor: currentVendorId,
+            });
+
+            if (response) {
+                queryClient.invalidateQueries(["gerUserData"] as InvalidateQueryFilters);
+                queryClient.invalidateQueries(["getUserData"] as InvalidateQueryFilters);
+                if (setUser && user) {
+                    setUser({
+                        ...user,
+                        data: {
+                            ...(user.data || {}),
+                            contact_number: formattedPhone,
+                        }
+                    });
+                }
+                if (typeof window !== 'undefined') {
+                    localStorage.setItem('contact_number', formattedPhone);
+                }
+                toast.success("Profile updated successfully");
+                setShowPhoneModal(false);
+                await placeOrder(formattedPhone);
+            }
+        } catch (error: any) {
+            console.error("Update failed:", error);
+            toast.error(error?.response?.data?.error || error?.response?.data?.message || "Failed to update profile, please try again.");
+        } finally {
+            setUpdatingPhone(false);
+        }
+    };
+
+    const placeOrder = async (overridePhone?: string) => {
+        try {
+            const activeUserId = user?.data?.id || (typeof window !== 'undefined' ? localStorage.getItem('userId') : null);
+            if (!activeUserId) throw new Error("User ID not found");
             if (!selectedAddressId) throw new Error("No address selected");
 
+            const rawPhone = (typeof overridePhone === 'string' && overridePhone.trim() !== '')
+                ? overridePhone
+                : (user?.data?.contact_number || (typeof window !== 'undefined' ? localStorage.getItem('contact_number') : null));
+
+            const customerPhone = rawPhone && String(rawPhone).trim() !== '' && String(rawPhone) !== 'null' && String(rawPhone) !== 'undefined'
+                ? String(rawPhone).trim()
+                : null;
+
+            if (!customerPhone) {
+                setShowPhoneModal(true);
+                return;
+            }
+
+            const currentVendorId = vendorId || 66;
+
             const payload = {
-                user_id: parseInt(userId),
-                vendor_id: vendorId,
-                customer_phone: user?.data?.contact_number,
+                user_id: parseInt(String(activeUserId)),
+                vendor_id: currentVendorId,
+                customer_phone: customerPhone,
             };
 
             if (paymentMethod === "cod") {
                 const response = await axios.post(`${baseUrl}/cod-pay-now/`, payload);
+
+                if (response?.data?.success === false || response?.data?.status === false) {
+                    const msg = response?.data?.message || response?.data?.error || "";
+                    if (
+                        msg.includes("customer_phone") ||
+                        msg.includes("Missing required fields")
+                    ) {
+                        setShowPhoneModal(true);
+                        return;
+                    }
+                    throw new Error(msg || "Failed to place COD order");
+                }
+
                 refetchCart();
                 setShowSuccessModal(true);
 
@@ -135,6 +237,20 @@ useEffect(() => {
                 }, 5000);
             } else {
                 const response = await axios.post(`${baseUrl}/prepaid-pay-now/`, payload);
+
+                if (response?.data?.success === false || response?.data?.status === false || !response?.data?.payment_order_id) {
+                    const msg = response?.data?.message || response?.data?.error || "";
+                    if (
+                        msg.includes("customer_phone") ||
+                        msg.includes("Missing required fields") ||
+                        !customerPhone
+                    ) {
+                        setShowPhoneModal(true);
+                        return;
+                    }
+                    throw new Error(msg || "Failed to initialize payment");
+                }
+
                 const { payment_order_id, final_price } = response.data;
 
                 const options = {
@@ -154,9 +270,9 @@ useEffect(() => {
                         }, 5000);
                     },
                     prefill: {
-                        name: user?.name,
-                        email: user?.email,
-                        contact: user?.contact_number,
+                        name: user?.data?.name || user?.name || getUserName || "User",
+                        email: user?.data?.email || user?.email || (typeof window !== 'undefined' ? localStorage.getItem('email') : ''),
+                        contact: customerPhone,
                     },
                     notes: {
                         address: "Selected Address",
@@ -169,8 +285,23 @@ useEffect(() => {
                 const razor = new (window as any).Razorpay(options);
                 razor.open();
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error("Error placing order:", error);
+            const errorData = error?.response?.data;
+            const errorMsg = typeof errorData === 'string'
+                ? errorData
+                : (errorData?.message || errorData?.error || error?.message || "");
+
+            if (
+                errorMsg.includes("customer_phone") ||
+                errorMsg.includes("Missing required fields") ||
+                errorMsg.toLowerCase().includes("customer_phone are required") ||
+                errorMsg.toLowerCase().includes("phone")
+            ) {
+                setShowPhoneModal(true);
+                return;
+            }
+
             setShowFailureModal(true);
             setTimeout(() => {
                 setShowFailureModal(false);
@@ -283,7 +414,7 @@ useEffect(() => {
 
                     {/* Place Order Button */}
                     <button
-                        onClick={placeOrder}
+                        onClick={() => placeOrder()}
                         disabled={!selectedAddressId}
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium transition"
                     >
@@ -318,6 +449,79 @@ useEffect(() => {
                     <div className="bg-white p-6 rounded-lg shadow-lg text-center max-w-sm">
                         <h2 className="text-lg font-bold text-red-600 mb-2">Order Failed</h2>
                         <p className="text-gray-600">You will be redirected back to your cart.</p>
+                    </div>
+                </div>
+            )}
+
+            {/* Phone Number Required Modal */}
+            {showPhoneModal && (
+                <div className="fixed inset-0 z-[10015] flex items-center justify-center bg-black/60 p-4">
+                    <div className="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-sm relative animate-in fade-in zoom-in-95 duration-200">
+                        <button
+                            onClick={() => setShowPhoneModal(false)}
+                            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition"
+                            aria-label="Close"
+                        >
+                            <X className="h-5 w-5" />
+                        </button>
+
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
+                            <Phone className="h-6 w-6" />
+                        </div>
+
+                        <h3 className="text-xl font-bold text-gray-900 text-center mb-1">
+                            Enter Phone Number
+                        </h3>
+                        <p className="text-sm text-gray-600 text-center mb-5">
+                            Please provide your 10-digit mobile number to complete your order.
+                        </p>
+
+                        <div className="space-y-4">
+                            <div>
+                                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">
+                                    Mobile Number
+                                </label>
+                                <div className="flex rounded-lg border border-gray-300 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 overflow-hidden">
+                                    <span className="inline-flex items-center px-3 bg-gray-100 text-gray-500 text-sm font-medium border-r border-gray-300">
+                                        +91
+                                    </span>
+                                    <input
+                                        type="tel"
+                                        maxLength={10}
+                                        value={phoneNumber}
+                                        onChange={(e) => {
+                                            const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                                            setPhoneNumber(val);
+                                        }}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter') {
+                                                e.preventDefault();
+                                                handleUpdatePhone();
+                                            }
+                                        }}
+                                        placeholder="Enter 10-digit number"
+                                        className="w-full px-3 py-2.5 text-gray-900 text-sm outline-none"
+                                        autoFocus
+                                    />
+                                </div>
+                            </div>
+
+                            <button
+                                type="button"
+                                disabled={updatingPhone}
+                                onClick={handleUpdatePhone}
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                            >
+                                {updatingPhone ? (
+                                    <>
+                                        <Loader2 className="h-4 w-4 animate-spin" />
+                                        <span>Saving & Processing...</span>
+                                    </>
+                                ) : (
+                                    <span>Confirm & Place Order</span>
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
